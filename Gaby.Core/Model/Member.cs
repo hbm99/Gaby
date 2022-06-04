@@ -9,7 +9,13 @@ namespace Gaby.Core.Model
 	public class Member : IClient
 	{
 
-        public int IdC { get; set; }
+        public Member()
+        {
+            Offers = new HashSet<Offer>();
+            InscriptionDates = new HashSet<InscriptionDate>();
+        }
+
+        public int ClientId { get; set; }
 
         /// <summary>
         /// Returns member's schedule.
@@ -35,6 +41,16 @@ namespace Gaby.Core.Model
         /// Returns ailments data.
         /// </summary>
         public string? Ailments { get; set; }
+
+        /// <summary>
+        /// Returns offers registered of the member.
+        /// </summary>
+        public virtual ICollection<Offer> Offers { get; set; }
+
+        /// <summary>
+        /// Returns inscription dates from offers.
+        /// </summary>
+        public virtual ICollection<InscriptionDate> InscriptionDates { get; set; } 
     }
 }
 

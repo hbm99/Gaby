@@ -6,8 +6,13 @@ namespace Gaby.Core.Model
     /// </summary>
     public class Offer : IOffer
     {
-        
-        public int IdO { get; set; }
+        public Offer()
+        {
+            Members = new HashSet<Member>();
+            InscriptionDates = new HashSet<InscriptionDate>();
+        }
+
+        public int OfferId { get; set; }
 
         /// <summary>
         /// Returns offer price.
@@ -18,6 +23,17 @@ namespace Gaby.Core.Model
         /// Returns offer availability.
         /// </summary>
         public bool Availability { get; set; }
-    }
-}
 
+        /// <summary>
+        /// Returns members related to offer.
+        /// </summary>
+        public virtual ICollection<Member> Members { get; set; }
+
+        /// <summary>
+        /// Returns inscription dates.
+        /// </summary>
+        public virtual ICollection<InscriptionDate> InscriptionDates { get; set; }
+
+    }
+
+}

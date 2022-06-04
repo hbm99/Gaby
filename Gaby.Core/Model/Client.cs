@@ -8,13 +8,13 @@ namespace Gaby.Core.Model
 	public class Client : IClient
 	{
         
-        public int IdC { get; set; }
+        public int ClientId { get; set; }
 
         /// <summary>
         /// Returns client name.
         /// </summary>
         public string? Name { get; set; }
-
+        
     }
 }
 

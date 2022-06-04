@@ -4,15 +4,12 @@ namespace Gaby.Core.Model
 	/// <summary>
 	/// Body measurements.
 	/// </summary>
-	public class Measurements : IClient
+	public class Measurements : IClient, IMeasurements
 	{
 		
-        public int IdC { get; set; }
+        public int ClientId { get; set; }
 
-        /// <summary>
-        /// Returns the measurements code (primary key).
-        /// </summary>
-        public int IdM { get; set; }
+        public int MeasurementsId { get; set; }
 
         /// <summary>
         /// Returns client height.

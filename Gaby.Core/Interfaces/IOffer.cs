@@ -9,7 +9,7 @@ namespace Gaby.Core.Interfaces
 		/// <summary>
         /// Returns offer Id (key).
         /// </summary>
-		int IdO { get; set; }
+		int OfferId { get; set; }
 	}
 }
 

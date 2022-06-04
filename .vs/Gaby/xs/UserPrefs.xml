@@ -1,10 +1,15 @@
 ﻿<Properties StartupConfiguration="{C31FF2BF-4556-402D-852A-B51BD12AFCC4}|Default">
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Gaby.UI/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Gaby.Core/Model/Value.cs">
     <Files>
-      <File FileName="Gaby.UI/Program.cs" Line="12" Column="1" />
-      <File FileName="Gaby.Infrastructure/OnionContext.cs" Line="2" Column="37" />
-      <File FileName="Gaby.Services/Class1.cs" Line="1" Column="1" />
+      <File FileName="Gaby.Core/Common/Entity.cs" Line="7" Column="2" />
+      <File FileName="Gaby.Core/Model/Value.cs" Line="10" Column="2" />
+      <File FileName="Gaby.Core/Model/Client.cs" Line="21" Column="1" />
+      <File FileName="Gaby.Core/Model/Inscription.cs" Line="9" Column="1" />
+      <File FileName="Gaby.Core/Model/Measurements.cs" Line="18" Column="35" />
+      <File FileName="Gaby.Core/Model/Member.cs" Line="9" Column="31" />
+      <File FileName="Gaby.Core/Model/Offer.cs" Line="17" Column="22" />
+      <File FileName="Gaby.Core/Interfaces/IClient.cs" Line="1" Column="1" />
+      <File FileName="Gaby.Core/Interfaces/IOffer.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,9 +18,7 @@
             <Node name="Gaby.Core" expanded="True" />
             <Node name="Gaby.Infrastructure" expanded="True" />
             <Node name="Gaby.Services" expanded="True" />
-            <Node name="Gaby.UI" expanded="True">
-              <Node name="Program.cs" selected="True" />
-            </Node>
+            <Node name="Gaby.UI" expanded="True" />
           </Node>
         </State>
       </Pad>
@@ -24,10 +27,11 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Gaby.UI PreferredExecutionTarget="/Applications/Safari.app" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.Gaby.UI PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

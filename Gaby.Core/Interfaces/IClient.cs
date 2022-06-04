@@ -9,7 +9,7 @@ namespace Gaby.Core.Interfaces
         /// <summary>
         /// Returns client Id (key).
         /// </summary>
-        int IdC { get; set; }
+        int ClientId { get; set; }
     }
 }
 
