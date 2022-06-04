@@ -8,18 +8,18 @@ namespace Gaby.Infrastructure
      * Then move the entities into Gaby.Core project and keep here the DbContext.
      * See https://docs.microsoft.com/en-us/ef/core/managing-schemas/scaffolding?tabs=dotnet-core-cli
      */
-    public class OnionContext : DbContext
+    public class GabyContext : DbContext
     {
-        public OnionContext(DbContextOptions<OnionContext> options) : base(options)
+        public GabyContext(DbContextOptions<GabyContext> options) : base(options)
         {
 
         }
 
-        public virtual DbSet<Value> Values { get; set; }
+        public virtual DbSet<Member>? Members { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Value>(entity => { entity.ToTable("Values"); });
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
