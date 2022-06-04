@@ -10,9 +10,9 @@ namespace Gaby.Infrastructure
      */
     public class OnionContext : DbContext
     {
-        public OnionContext(DbContextOptions<OnionContext> options)
-            : base(options)
+        public OnionContext(DbContextOptions<OnionContext> options) : base(options)
         {
+
         }
 
         public virtual DbSet<Value> Values { get; set; }
