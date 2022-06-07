@@ -1,0 +1,12 @@
+/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Shared/bin/Debug/net6.0/Gaby.Shared.deps.json
+/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Shared/bin/Debug/net6.0/Gaby.Shared.dll
+/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Shared/bin/Debug/net6.0/Gaby.Shared.pdb
+/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Shared/obj/Debug/net6.0/Gaby.Shared.csproj.AssemblyReference.cache
+/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Shared/obj/Debug/net6.0/Gaby.Shared.GeneratedMSBuildEditorConfig.editorconfig
+/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Shared/obj/Debug/net6.0/Gaby.Shared.AssemblyInfoInputs.cache
+/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Shared/obj/Debug/net6.0/Gaby.Shared.AssemblyInfo.cs
+/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Shared/obj/Debug/net6.0/Gaby.Shared.csproj.CoreCompileInputs.cache
+/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Shared/obj/Debug/net6.0/Gaby.Shared.dll
+/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Shared/obj/Debug/net6.0/refint/Gaby.Shared.dll
+/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Shared/obj/Debug/net6.0/Gaby.Shared.pdb
+/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Shared/obj/Debug/net6.0/ref/Gaby.Shared.dll
