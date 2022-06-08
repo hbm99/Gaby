@@ -11,53 +11,53 @@ build_property.EnableTrimAnalyzer = true
 build_property.IncludeAllContentForSelfExtract = 
 build_property.RootNamespace = Gaby.Client
 build_property.RootNamespace = Gaby.Client
-build_property.ProjectDir = /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Client/
+build_property.ProjectDir = /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Client
+build_property.MSBuildProjectDirectory = /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Client/App.razor]
+[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Client/Pages/Authentication.razor]
+[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Pages/Authentication.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXV0aGVudGljYXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Client/Pages/Counter.razor]
+[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Client/Pages/FetchData.razor]
+[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Pages/FetchData.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRmV0Y2hEYXRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Client/Pages/Index.razor]
+[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Client/Shared/LoginDisplay.razor]
+[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Shared/LoginDisplay.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0xvZ2luRGlzcGxheS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Client/Shared/RedirectToLogin.razor]
+[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Shared/RedirectToLogin.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1JlZGlyZWN0VG9Mb2dpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Client/Shared/SurveyPrompt.razor]
+[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1N1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Client/_Imports.razor]
+[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Client/Shared/MainLayout.razor]
+[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-yuaxkwmmtc
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Client/Shared/NavMenu.razor]
+[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-fsm3pp3ah2

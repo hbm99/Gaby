@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Gaby.Shared.Interfaces;
 using Gaby.Shared.Utils;
 
 namespace Gaby.Shared.Model
 {
-    public class MemberClient
+    public class MemberClient : IClient
     {
         public MemberClient()
         {

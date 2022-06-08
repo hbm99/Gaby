@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj": {}
+    "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj": {}
   },
   "projects": {
-    "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj": {
+    "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj",
+        "projectUniqueName": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj",
         "projectName": "Gaby.Shared",
-        "projectPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj",
+        "projectPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj",
         "packagesPath": "/Users/hanselblanco/.nuget/packages/",
-        "outputPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Shared/obj/",
+        "outputPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Shared/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/hanselblanco/.nuget/NuGet/NuGet.Config"

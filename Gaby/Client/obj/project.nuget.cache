@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "C2fleL82Y5Wl3WblAioG6JSI/YEU4OWUo6IORlhTbnWp0Y/1P0F6BDW55HP6FZoDR+UlDlGnuRbKxvCRFEDYSA==",
+  "dgSpecHash": "83MGMDbkwYpLEDffKf3FYV5qS8wWPszqf2tL4jp/FtA/HrUfIyKKUzAgYxB52Ms2+w4hV6G06tUwBF6XVskU9Q==",
   "success": true,
-  "projectFilePath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Client/Gaby.Client.csproj",
+  "projectFilePath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Gaby.Client.csproj",
   "expectedPackageFiles": [
     "/Users/hanselblanco/.nuget/packages/microsoft.aspnetcore.authorization/6.0.5/microsoft.aspnetcore.authorization.6.0.5.nupkg.sha512",
     "/Users/hanselblanco/.nuget/packages/microsoft.aspnetcore.components/6.0.5/microsoft.aspnetcore.components.6.0.5.nupkg.sha512",

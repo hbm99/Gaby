@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Gaby.Shared.Interfaces;
 
 namespace Gaby.Shared.Model
 {
-    public class Offer
+    public class Offer : IOffer
     {
         public Offer()
         {
@@ -35,5 +36,6 @@ namespace Gaby.Shared.Model
         /// Returns inscription dates.
         /// </summary>
         public virtual ICollection<InscriptionDate> InscriptionDates { get; set; }
+
     }
 }

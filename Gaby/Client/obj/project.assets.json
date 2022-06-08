@@ -1727,11 +1727,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Client/Gaby.Client.csproj",
+      "projectUniqueName": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Gaby.Client.csproj",
       "projectName": "Gaby.Client",
-      "projectPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Client/Gaby.Client.csproj",
+      "projectPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Gaby.Client.csproj",
       "packagesPath": "/Users/hanselblanco/.nuget/packages/",
-      "outputPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Client/obj/",
+      "outputPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/hanselblanco/.nuget/NuGet/NuGet.Config"
@@ -1746,8 +1746,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj": {
-              "projectPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj"
+            "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj": {
+              "projectPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj"
             }
           }
         }

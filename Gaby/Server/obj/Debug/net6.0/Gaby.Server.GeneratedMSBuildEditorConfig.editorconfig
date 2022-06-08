@@ -8,17 +8,17 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Gaby.Server
 build_property.RootNamespace = Gaby.Server
-build_property.ProjectDir = /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Server/
+build_property.ProjectDir = /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Server
+build_property.MSBuildProjectDirectory = /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Server/Areas/Identity/Pages/Shared/_LoginPartial.cshtml]
+[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/Areas/Identity/Pages/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Server/Pages/Error.cshtml]
+[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

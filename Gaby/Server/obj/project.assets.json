@@ -3054,11 +3054,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Server/Gaby.Server.csproj",
+      "projectUniqueName": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/Gaby.Server.csproj",
       "projectName": "Gaby.Server",
-      "projectPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Server/Gaby.Server.csproj",
+      "projectPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/Gaby.Server.csproj",
       "packagesPath": "/Users/hanselblanco/.nuget/packages/",
-      "outputPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Server/obj/",
+      "outputPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/hanselblanco/.nuget/NuGet/NuGet.Config"
@@ -3073,11 +3073,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Client/Gaby.Client.csproj": {
-              "projectPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Client/Gaby.Client.csproj"
+            "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Gaby.Client.csproj": {
+              "projectPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Gaby.Client.csproj"
             },
-            "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj": {
-              "projectPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj"
+            "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj": {
+              "projectPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj"
             }
           }
         }
