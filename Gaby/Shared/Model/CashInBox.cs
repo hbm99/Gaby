@@ -21,6 +21,8 @@ namespace Gaby.Shared.Model
 		/// </summary>
 		public decimal Amount { get; set; }
 
+		[Required]
+        public virtual CashInBoxDate CashInBoxDate { get; set; }
     }
 }
 

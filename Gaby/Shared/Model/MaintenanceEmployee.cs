@@ -5,7 +5,7 @@ using Gaby.Shared.Interfaces;
 namespace Gaby.Shared.Model
 {
     [Table("MaintenanceEmployees")]
-    public class MaintenanceEmployee: Employee, IBasicSalary
+    public class MaintenanceEmployee: Employee, IBasicSalary, IExtraSalary
 	{
 
         /// <summary>
@@ -14,6 +14,8 @@ namespace Gaby.Shared.Model
         public ICollection<EquipmentRepair>? Repairs { get; set; }
 
         public decimal BasicSalary { get; set; }
+
+        public decimal ExtraSalary { get; set; }
     }
 }
 

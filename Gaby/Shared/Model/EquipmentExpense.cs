@@ -9,9 +9,11 @@ namespace Gaby.Shared.Model
         
         public EquipmentExpense()
         {
-			ExpenseTypeId = "Equipo";
+			ExpenseType.ExpenseTypeName = "Equipment";
         }
 
+        [ForeignKey("EquipmentId")]
+        [InverseProperty("Expenses")]
         public Equipment Equipment { get; set; }
     }
 }

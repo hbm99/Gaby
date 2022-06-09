@@ -15,7 +15,7 @@ namespace Gaby.Shared.Model
 		/// <summary>
 		/// Returns insertion/extraction moment.
 		/// </summary>
-		public DateTime Datetime { get; set; }
+		public DateTime DateTime { get; set; }
 
 		[ForeignKey("CashInBoxId")]
         public virtual CashInBox? CashInBox { get; set; }

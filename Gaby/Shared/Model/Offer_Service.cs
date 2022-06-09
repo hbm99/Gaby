@@ -12,19 +12,17 @@ namespace Gaby.Shared.Model
 
 		}
 
-        [Key]
+        
+        [Required]
         [ForeignKey("ServiceId")]
         public int ServiceId { get; set; }
 
-        //tener dos Key declarados así no pincha según la doc de Msft,
-        //hay q manejarlo en el DbContext con el modelBuilder y demás,
-        //ver lo que hizo Elena
-        [Key]
+        public virtual Service Service { get; set; }
+
+
+        [Required]
         [ForeignKey("OfferId")]
         public int OfferId { get; set; }
-
-        
-        public virtual Service Service { get; set; }
 
         public virtual Offer Offer { get; set; }
 

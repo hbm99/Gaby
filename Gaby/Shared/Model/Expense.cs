@@ -22,7 +22,7 @@ namespace Gaby.Shared.Model
 
 
         [Required]
-        public string ExpenseTypeId { get; set; }
+        public virtual ExpenseType ExpenseType { get; set; }
 
         
         public ICollection<Payment> Payments { get; set; }

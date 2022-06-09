@@ -10,15 +10,18 @@ namespace Gaby.Shared.Model
     /// </summary>
     public class Measurements : IClient, IMeasurements
     {
-
-        [Key]
-        public int ClientId { get; set; }
-
         [Key]
         public int MeasurementsId { get; set; }
 
         [ForeignKey("ClientId")]
+        public int ClientId { get; set; }
+
         public MemberClient MemberClient { get; set; }
+
+        /// <summary>
+        /// Returns measurements date.
+        /// </summary>
+        public DateOnly MeasurementsDate { get; set; }
 
         /// <summary>
         /// Returns client height.

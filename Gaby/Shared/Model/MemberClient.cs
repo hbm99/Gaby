@@ -1,28 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Gaby.Shared.Interfaces;
 using Gaby.Shared.Utils;
 
 namespace Gaby.Shared.Model
 {
-    public class MemberClient : IClient
+    [Table("Members")]
+    public class MemberClient : BasicClient
     {
         public MemberClient()
         {
             Offers = new HashSet<Offer>();
             InscriptionDates = new HashSet<InscriptionDate>();
         }
-
-        [Key]
-        public int ClientId { get; set; }
-
-        [ForeignKey("ClientId")]
-        public BasicClient BasicClient { get; set; }
 
         /// <summary>
         /// Returns member's schedule.

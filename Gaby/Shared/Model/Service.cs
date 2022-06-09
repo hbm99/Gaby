@@ -15,7 +15,7 @@ namespace Gaby.Shared.Model
 		[Key]
         public int ServiceId { get; set; }
 
-		
+		[Required]
 		/// <summary>
         /// Returns type of service.
         /// </summary>

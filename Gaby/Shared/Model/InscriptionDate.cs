@@ -19,7 +19,7 @@ namespace Gaby.Shared.Model
         /// <summary>
         /// Returns inscription moment.
         /// </summary>
-        public DateTime Datetime { get; set; }
+        public DateTime DateTime { get; set; }
 
         /// <summary>
         /// Returns members registered on that date. 

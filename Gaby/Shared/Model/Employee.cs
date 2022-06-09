@@ -1,12 +1,12 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using Gaby.Shared.Interfaces;
+
 namespace Gaby.Shared.Model
 {
-    public abstract class Employee
+    public abstract class Employee : IEmployee
     {
-
-        /// <summary>
-        /// Returns the ID of the employee. This ID is the identity number of the employee. 
-        /// </summary>
+        [Key]
         public string EmployeeId { get; set; }
 
         /// <summary>

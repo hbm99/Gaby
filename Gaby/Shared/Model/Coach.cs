@@ -9,6 +9,7 @@ namespace Gaby.Shared.Model
     public class Coach : Employee, IBasicSalary, IExtraSalary
     {
         public decimal BasicSalary { get; set; }
+
         public decimal ExtraSalary { get; set; }
     }
 }
