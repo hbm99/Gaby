@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,12 +16,13 @@ namespace Gaby.Shared.Model
             InscriptionDates = new HashSet<InscriptionDate>();
         }
 
+        [Key]
         public int OfferId { get; set; }
 
         /// <summary>
         /// Returns offer price.
         /// </summary>
-        public int Price { get; set; }
+        public decimal Price { get; set; }
 
         /// <summary>
         /// Returns offer availability.

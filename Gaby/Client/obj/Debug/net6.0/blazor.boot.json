@@ -199,15 +199,15 @@
       "mscorlib.dll": "sha256-ghlJNtzzYlKIliGPuf0A0Yu6dmLycSx3F9uyeddFb\/g=",
       "netstandard.dll": "sha256-qpOz\/RBwhlIYfaE2GDEmjiproxkvSf2b9GeqHxvH+lg=",
       "System.Private.CoreLib.dll": "sha256-sfzSZ3YKC2rpF77TVOKLuPgQag93QXr9U4AUc9d\/LKA=",
-      "Gaby.Shared.dll": "sha256-PwE6BemZ3wVTf7q1Modmhz43ARg7RmmmvZZmStv9m+A=",
-      "Gaby.Client.dll": "sha256-BGaBjMLc3tBKhozFoOmO7BYqCFhAXMaCX4JwCJp6RDs="
+      "Gaby.Shared.dll": "sha256-CYyQEg3gSZ0HqUkGpTsrzxhQ08LocvkoRYGU44bPgFU=",
+      "Gaby.Client.dll": "sha256-ntkDUjD9JBAijvDOo8q5Et3mAfVd4mP0CtMOkj75tKA="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "Gaby.Shared.pdb": "sha256-\/YiFoXJxCzlk89EjZEt+2Tc8AQFa3A2Qd8YqeDsbC8s=",
-      "Gaby.Client.pdb": "sha256-gjzkUacoNIU0ZNsGferMUhzTltgAwcIlZHM4tcJUg\/I="
+      "Gaby.Shared.pdb": "sha256-Lm9R\/OwWJ+TtBRyIZfEGyrPIf8YDnwIo+GUyVGoWrtg=",
+      "Gaby.Client.pdb": "sha256-sNndJnqS+l3uI\/olHIeO2N8KjNvw46M47p52sUa7OOs="
     },
     "runtime": {
       "dotnet.6.0.5.huu749vc12.js": "sha256-783uOt0jgblQfP6Yz5TJeuW2xxtl6UHZQPngZtCz79U=",

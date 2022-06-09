@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Gaby.Shared.Interfaces;
 
 namespace Gaby.Shared.Model
@@ -10,12 +12,14 @@ namespace Gaby.Shared.Model
 
 		}
 
+		[Key]
         public int ServiceId { get; set; }
 
+		
 		/// <summary>
         /// Returns type of service.
         /// </summary>
-        public string ServiceTypeId { get; set; }
+        public virtual ServiceType ServiceType { get; set; }
 
     }
 }

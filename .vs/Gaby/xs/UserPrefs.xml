@@ -1,30 +1,28 @@
-﻿<Properties StartupConfiguration="{C31FF2BF-4556-402D-852A-B51BD12AFCC4}|Default">
+﻿<Properties StartupConfiguration="{9A490F85-4221-4FED-8954-F36C07A13E44}|Default">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.Gaby.UI PreferredExecutionTarget="/Applications/Safari.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Gaby.Core/Model/Measurements.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Gaby/Shared/Model/BasicClient.cs">
     <Files>
-      <File FileName="Gaby.Core/Interfaces/IRepository.cs" Line="6" Column="42" />
-      <File FileName="Gaby.Core/Common/HomeAddress.cs" Line="56" Column="35" />
-      <File FileName="Gaby.Core/Model/Member.cs" Line="17" Column="1" />
-      <File FileName="Gaby.Core/Model/Measurements.cs" Line="53" Column="6" />
-      <File FileName="Gaby.Core/Interfaces/IMeasurements.cs" Line="16" Column="1" />
+      <File FileName="Gaby/Server/Infrastructure/GabyDbContext.cs" Line="24" Column="58" />
+      <File FileName="Gaby/Shared/Model/BasicClient.cs" Line="22" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Gaby" expanded="True">
-            <Node name="Gaby.Core" expanded="True">
-              <Node name="Common" expanded="True" />
+            <Node name="Gaby.Client" expanded="True" />
+            <Node name="Gaby.Server" expanded="True">
+              <Node name="Infrastructure" expanded="True" />
+            </Node>
+            <Node name="Gaby.Shared" expanded="True">
               <Node name="Interfaces" expanded="True" />
               <Node name="Model" expanded="True">
-                <Node name="Measurements.cs" selected="True" />
+                <Node name="BasicClient.cs" selected="True" />
               </Node>
             </Node>
-            <Node name="Gaby.Infrastructure" expanded="True" />
-            <Node name="Gaby.Services" expanded="True" />
-            <Node name="Gaby.UI" expanded="True" />
           </Node>
         </State>
       </Pad>
@@ -33,7 +31,7 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Gaby.Server PreferredExecutionTarget="/Applications/Safari.app" />
 </Properties>

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Gaby.Shared.Interfaces;
 
 namespace Gaby.Shared.Model
@@ -9,9 +11,14 @@ namespace Gaby.Shared.Model
     public class Measurements : IClient, IMeasurements
     {
 
+        [Key]
         public int ClientId { get; set; }
 
+        [Key]
         public int MeasurementsId { get; set; }
+
+        [ForeignKey("ClientId")]
+        public MemberClient MemberClient { get; set; }
 
         /// <summary>
         /// Returns client height.
