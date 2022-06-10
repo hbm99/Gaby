@@ -1,4 +1,5 @@
 ﻿using Gaby.Shared.Model;
+using Gaby.Shared.Utils;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gaby.Server.Infrastructure
@@ -15,8 +16,7 @@ namespace Gaby.Server.Infrastructure
             // Configuring multiple PK
 
             modelBuilder.Entity<EquipmentRepair>()
-                .HasKey(equipmentRepair => new { equipmentRepair.MaintenanceEmployee, equipmentRepair.Equipment,
-                        equipmentRepair.ReparationDate });
+                .HasKey(equipmentRepair => new { equipmentRepair.MantenanceEmployeeId, equipmentRepair.EquipmentId });
 
 
             modelBuilder.Entity<Offer_Service>()
@@ -31,8 +31,13 @@ namespace Gaby.Server.Infrastructure
             modelBuilder.Entity<LessonTurn_Client>()
                 .HasKey(lessonTurnClient => new { lessonTurnClient.ClientId, lessonTurnClient.ServiceId,
                         lessonTurnClient.Schedule, lessonTurnClient.EmployeeId });
+            //Declara tipo como parte de la tabla
+            modelBuilder.Entity<MemberClient>().OwnsOne(p => p.Address);
+            //Llave principal de pago
+            modelBuilder.Entity<Payment>()
+               .HasKey(payment => new {payment.Amount, payment.PaymentDate });// esto no pincha de llave 
+            base.OnModelCreating(modelBuilder);
 
-            
         }
 
         public DbSet<BasicClient> Clients { get; set; }

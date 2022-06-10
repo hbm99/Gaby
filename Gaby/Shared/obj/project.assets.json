@@ -8,24 +8,26 @@
     "net6.0": []
   },
   "packageFolders": {
-    "/Users/hanselblanco/.nuget/packages/": {}
+    "C:\\Users\\lachy\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj",
+      "projectUniqueName": "C:\\Users\\lachy\\Documents\\GitHub\\Gaby\\Gaby\\Shared\\Gaby.Shared.csproj",
       "projectName": "Gaby.Shared",
-      "projectPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj",
-      "packagesPath": "/Users/hanselblanco/.nuget/packages/",
-      "outputPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Shared/obj/",
+      "projectPath": "C:\\Users\\lachy\\Documents\\GitHub\\Gaby\\Gaby\\Shared\\Gaby.Shared.csproj",
+      "packagesPath": "C:\\Users\\lachy\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\lachy\\Documents\\GitHub\\Gaby\\Gaby\\Shared\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/hanselblanco/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\lachy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -58,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -12,7 +12,8 @@ namespace Gaby.Shared.Model
 
         public decimal Amount { get; set; }
 
-        public ICollection<Tuple<PaymentType, decimal >> AmountPerType { get; set; }
+        //Requiere nueva tabla o no entiendo el contexto
+       // public ICollection<Tuple<PaymentType, decimal >> AmountPerType { get; set; }
 
     }
 }

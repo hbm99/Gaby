@@ -18,7 +18,8 @@ namespace Gaby.Shared.Model
         /// <summary>
         /// Returns the date of the expense.
         /// </summary>
-        public DateOnly ExpenseDate { get; set; }
+        
+        //public DateOnly ExpenseDate { get; set; }
 
 
         [Required]

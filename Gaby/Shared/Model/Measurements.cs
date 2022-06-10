@@ -21,7 +21,7 @@ namespace Gaby.Shared.Model
         /// <summary>
         /// Returns measurements date.
         /// </summary>
-        public DateOnly MeasurementsDate { get; set; }
+        //public DateOnly MeasurementsDate { get; set; }
 
         /// <summary>
         /// Returns client height.

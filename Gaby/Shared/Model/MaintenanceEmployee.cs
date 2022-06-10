@@ -11,6 +11,8 @@ namespace Gaby.Shared.Model
         /// <summary>
         /// Returns the repairs that the employee has done.
         /// </summary>
+
+        public string MantenanceEmployeeId { get => base.EmployeeId; }
         public ICollection<EquipmentRepair>? Repairs { get; set; }
 
         public decimal BasicSalary { get; set; }

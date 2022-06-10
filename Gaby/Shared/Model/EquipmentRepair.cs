@@ -7,7 +7,8 @@ namespace Gaby.Shared.Model
 	public class EquipmentRepair
 	{
         [ForeignKey("EmployeeId")]
-        [InverseProperty("EquipmentRepairs")]
+        public string MantenanceEmployeeId { get; set; }
+        [InverseProperty("Repairs")]
         /// <summary>
         /// Refers to the employee who did the repair.
         /// </summary>
@@ -15,7 +16,8 @@ namespace Gaby.Shared.Model
 
 
         [ForeignKey("EquipmentId")]
-        [InverseProperty("EquipmentRepairs")]
+        public int EquipmentId { get; set; }
+        [InverseProperty("Repairs")]
         /// <summary>
         /// Refers to the equipment repaired.
         /// </summary>
@@ -25,7 +27,7 @@ namespace Gaby.Shared.Model
         /// <summary>
         /// Returns the date of the equipment repair.
         /// </summary>
-        public DateOnly ReparationDate { get; set; }
+        //public DateOnly ReparationDate { get; set; }
     }
 }
 

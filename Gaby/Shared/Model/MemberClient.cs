@@ -20,7 +20,7 @@ namespace Gaby.Shared.Model
         /// <summary>
         /// Returns member's schedule.
         /// </summary>
-        public Tuple<TimeOnly, TimeOnly>? Schedule { get; set; }
+        //public Tuple<TimeOnly, TimeOnly>? Schedule { get; set; }
 
         /// <summary>
         /// Returns if the client is an active member (has time available until next payment).
