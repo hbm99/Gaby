@@ -22,3 +22,15 @@
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Shared/obj/Debug/net6.0/refint/Gaby.Shared.dll
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Shared/obj/Debug/net6.0/Gaby.Shared.pdb
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Shared/obj/Debug/net6.0/ref/Gaby.Shared.dll
+C:\Users\lachy\Documents\GitHub\Gaby\Gaby\Shared\bin\Debug\net6.0\Gaby.Shared.deps.json
+C:\Users\lachy\Documents\GitHub\Gaby\Gaby\Shared\bin\Debug\net6.0\Gaby.Shared.dll
+C:\Users\lachy\Documents\GitHub\Gaby\Gaby\Shared\bin\Debug\net6.0\Gaby.Shared.pdb
+C:\Users\lachy\Documents\GitHub\Gaby\Gaby\Shared\obj\Debug\net6.0\Gaby.Shared.csproj.AssemblyReference.cache
+C:\Users\lachy\Documents\GitHub\Gaby\Gaby\Shared\obj\Debug\net6.0\Gaby.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lachy\Documents\GitHub\Gaby\Gaby\Shared\obj\Debug\net6.0\Gaby.Shared.AssemblyInfoInputs.cache
+C:\Users\lachy\Documents\GitHub\Gaby\Gaby\Shared\obj\Debug\net6.0\Gaby.Shared.AssemblyInfo.cs
+C:\Users\lachy\Documents\GitHub\Gaby\Gaby\Shared\obj\Debug\net6.0\Gaby.Shared.csproj.CoreCompileInputs.cache
+C:\Users\lachy\Documents\GitHub\Gaby\Gaby\Shared\obj\Debug\net6.0\Gaby.Shared.dll
+C:\Users\lachy\Documents\GitHub\Gaby\Gaby\Shared\obj\Debug\net6.0\refint\Gaby.Shared.dll
+C:\Users\lachy\Documents\GitHub\Gaby\Gaby\Shared\obj\Debug\net6.0\Gaby.Shared.pdb
+C:\Users\lachy\Documents\GitHub\Gaby\Gaby\Shared\obj\Debug\net6.0\ref\Gaby.Shared.dll

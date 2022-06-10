@@ -1,33 +1,35 @@
 {
   "format": 1,
   "restore": {
-    "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Gaby.Client.csproj": {}
+    "C:\\Users\\lachy\\Documents\\GitHub\\Gaby\\Gaby\\Client\\Gaby.Client.csproj": {}
   },
   "projects": {
-    "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Gaby.Client.csproj": {
+    "C:\\Users\\lachy\\Documents\\GitHub\\Gaby\\Gaby\\Client\\Gaby.Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Gaby.Client.csproj",
+        "projectUniqueName": "C:\\Users\\lachy\\Documents\\GitHub\\Gaby\\Gaby\\Client\\Gaby.Client.csproj",
         "projectName": "Gaby.Client",
-        "projectPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Gaby.Client.csproj",
-        "packagesPath": "/Users/hanselblanco/.nuget/packages/",
-        "outputPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/obj/",
+        "projectPath": "C:\\Users\\lachy\\Documents\\GitHub\\Gaby\\Gaby\\Client\\Gaby.Client.csproj",
+        "packagesPath": "C:\\Users\\lachy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lachy\\Documents\\GitHub\\Gaby\\Gaby\\Client\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/hanselblanco/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\lachy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj": {
-                "projectPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj"
+              "C:\\Users\\lachy\\Documents\\GitHub\\Gaby\\Gaby\\Shared\\Gaby.Shared.csproj": {
+                "projectPath": "C:\\Users\\lachy\\Documents\\GitHub\\Gaby\\Gaby\\Shared\\Gaby.Shared.csproj"
               }
             }
           }
@@ -73,7 +75,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-              "version": "[6.0.5, 6.0.5]"
+              "version": "[6.0.3, 6.0.3]"
             }
           ],
           "frameworkReferences": {
@@ -81,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
@@ -90,22 +92,24 @@
         }
       }
     },
-    "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj": {
+    "C:\\Users\\lachy\\Documents\\GitHub\\Gaby\\Gaby\\Shared\\Gaby.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj",
+        "projectUniqueName": "C:\\Users\\lachy\\Documents\\GitHub\\Gaby\\Gaby\\Shared\\Gaby.Shared.csproj",
         "projectName": "Gaby.Shared",
-        "projectPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj",
-        "packagesPath": "/Users/hanselblanco/.nuget/packages/",
-        "outputPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Shared/obj/",
+        "projectPath": "C:\\Users\\lachy\\Documents\\GitHub\\Gaby\\Gaby\\Shared\\Gaby.Shared.csproj",
+        "packagesPath": "C:\\Users\\lachy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lachy\\Documents\\GitHub\\Gaby\\Gaby\\Shared\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/hanselblanco/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\lachy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -123,6 +127,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -138,7 +148,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
