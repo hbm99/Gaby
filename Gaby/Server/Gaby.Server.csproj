@@ -37,6 +37,5 @@
 
   <ItemGroup>
     <Folder Include="Services\" />
-    <Folder Include="Infrastructure\" />
   </ItemGroup>
 </Project>

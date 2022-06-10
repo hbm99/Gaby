@@ -15,6 +15,10 @@
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-ff+PbIVunuYwtTBsmbmdSZ\/VpZrr7Jwh3MzQDeFTNQ8=",
       "Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll": "sha256-ckwbaERYVRqKqGhJHS5gA1KPsZxhX0Fe70E4AfAc2Og=",
       "Microsoft.AspNetCore.Metadata.dll": "sha256-qPWVrbWXmW6YIYXloJKVtDQ3yDqHpuWagvneU3Y+cnQ=",
+      "Microsoft.EntityFrameworkCore.dll": "sha256-txVBpwNrwVaE1VheItLR1v\/sEke8aAGBMLDJfpB1NK4=",
+      "Microsoft.EntityFrameworkCore.Abstractions.dll": "sha256-FiFpjk5tHLifS042fKRFQFB8cjp3RY2t1vM6YJizM4E=",
+      "Microsoft.Extensions.Caching.Abstractions.dll": "sha256-WLcZIKlgct2nj4hpaBvZXfHorQG9DH9B\/FZ2IKePG2I=",
+      "Microsoft.Extensions.Caching.Memory.dll": "sha256-aOJetx2rPupAGsXg2NCRL5p+\/xdzMyUSbmn24txWfQw=",
       "Microsoft.Extensions.Configuration.dll": "sha256-c8yYhfrOBLEnOBglLTu9peXSbJDwFpuT4UQiXSv28Og=",
       "Microsoft.Extensions.Configuration.Abstractions.dll": "sha256-5Otet+KKVUjNkE\/hqcNWmt75H1K2VNuKPFagpRd6Ces=",
       "Microsoft.Extensions.Configuration.Binder.dll": "sha256-wNKhG3Ovx8jqxbscz2AALlsTLfI6GL2dyDhe63mSsoM=",
@@ -199,15 +203,15 @@
       "mscorlib.dll": "sha256-tSv6NEbBsHuM5P3AUJGybafS0hxrXlzDmmcyG2eGk3I=",
       "netstandard.dll": "sha256-klcvWVyHimPfDxg6W1A076EKpCB5ySxjtc7sxJEsGgE=",
       "System.Private.CoreLib.dll": "sha256-Y8kdbfPQ0YoYLGbOgzRmoVsnuMYNlA1hvLvDWFTtzrk=",
-      "Gaby.Shared.dll": "sha256-gZLN1+0YAWWFbrnrpZ1PSkwRSbb87rA3NdwjZOnOlDY=",
-      "Gaby.Client.dll": "sha256-f0ZJPe3exrmVuRhWE82psYyToIaG6D9UPsoGEtAVe0E="
+      "Gaby.Shared.dll": "sha256-CbakySJB7CFSDU832TW4rkQySX0ZRm\/GefTzYdSZiz8=",
+      "Gaby.Client.dll": "sha256-9nrPqUDPaglPl9j9mYB+zc+69ll43MXBnxgOvLdNku0="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "Gaby.Shared.pdb": "sha256-hvRpyP64V+ffhqLnCOp0RW2DIRXFf9AcfN6ecaQ986M=",
-      "Gaby.Client.pdb": "sha256-hmBoAP7D+UJyDinCJepkY+tq1LJKKthDEjqPLgA+Oyo="
+      "Gaby.Shared.pdb": "sha256-TsDthnEnXfhl8p+Ygxys65BcxkBwOb6Egu+\/DFo5\/2s=",
+      "Gaby.Client.pdb": "sha256-nH2mtVL2nqRMumai2gTNhbQ+SN7zjG931IEpkCM2cCI="
     },
     "runtime": {
       "dotnet.6.0.3.nvwiom9qdt.js": "sha256-pRmcHKZN4T\/YbX9dj6ITT4sNtkJ9w07OLcwl4645nPg=",

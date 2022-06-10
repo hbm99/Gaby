@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Gaby.Server.Migrations.GabyDb
 {
-    public partial class InitialGaby : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -76,11 +76,11 @@ namespace Gaby.Server.Migrations.GabyDb
                 name: "InscriptionDates",
                 columns: table => new
                 {
-                    DateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_InscriptionDates", x => x.DateTime);
+                    table.PrimaryKey("PK_InscriptionDates", x => x.Date);
                 });
 
             migrationBuilder.CreateTable(
@@ -130,6 +130,8 @@ namespace Gaby.Server.Migrations.GabyDb
                 columns: table => new
                 {
                     ClientId = table.Column<int>(type: "int", nullable: false),
+                    CheckInTime = table.Column<TimeSpan>(type: "time", nullable: true),
+                    CheckOutTime = table.Column<TimeSpan>(type: "time", nullable: true),
                     Active = table.Column<bool>(type: "bit", nullable: false),
                     Address_MainSt = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Address_SecondarySt1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -210,6 +212,7 @@ namespace Gaby.Server.Migrations.GabyDb
                     ExpenseId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ExpenseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ExpenseTypeName = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
@@ -227,17 +230,17 @@ namespace Gaby.Server.Migrations.GabyDb
                 name: "InscriptionDateOffer",
                 columns: table => new
                 {
-                    InscriptionDatesDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    InscriptionDatesDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     OffersOfferId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_InscriptionDateOffer", x => new { x.InscriptionDatesDateTime, x.OffersOfferId });
+                    table.PrimaryKey("PK_InscriptionDateOffer", x => new { x.InscriptionDatesDate, x.OffersOfferId });
                     table.ForeignKey(
-                        name: "FK_InscriptionDateOffer_InscriptionDates_InscriptionDatesDateTime",
-                        column: x => x.InscriptionDatesDateTime,
+                        name: "FK_InscriptionDateOffer_InscriptionDates_InscriptionDatesDate",
+                        column: x => x.InscriptionDatesDate,
                         principalTable: "InscriptionDates",
-                        principalColumn: "DateTime",
+                        principalColumn: "Date",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_InscriptionDateOffer_Offers_OffersOfferId",
@@ -270,17 +273,17 @@ namespace Gaby.Server.Migrations.GabyDb
                 name: "InscriptionDateMemberClient",
                 columns: table => new
                 {
-                    InscriptionDatesDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    InscriptionDatesDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MembersClientId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_InscriptionDateMemberClient", x => new { x.InscriptionDatesDateTime, x.MembersClientId });
+                    table.PrimaryKey("PK_InscriptionDateMemberClient", x => new { x.InscriptionDatesDate, x.MembersClientId });
                     table.ForeignKey(
-                        name: "FK_InscriptionDateMemberClient_InscriptionDates_InscriptionDatesDateTime",
-                        column: x => x.InscriptionDatesDateTime,
+                        name: "FK_InscriptionDateMemberClient_InscriptionDates_InscriptionDatesDate",
+                        column: x => x.InscriptionDatesDate,
                         principalTable: "InscriptionDates",
-                        principalColumn: "DateTime",
+                        principalColumn: "Date",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_InscriptionDateMemberClient_Members_MembersClientId",
@@ -298,6 +301,7 @@ namespace Gaby.Server.Migrations.GabyDb
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ClientId = table.Column<int>(type: "int", nullable: false),
                     MemberClientClientId = table.Column<int>(type: "int", nullable: false),
+                    MeasurementsDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Height = table.Column<float>(type: "real", nullable: false),
                     ArmSize = table.Column<float>(type: "real", nullable: false),
                     ThighSize = table.Column<float>(type: "real", nullable: false),
@@ -346,13 +350,14 @@ namespace Gaby.Server.Migrations.GabyDb
                 name: "EquipmentRepairs",
                 columns: table => new
                 {
-                    MantenanceEmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     EquipmentId = table.Column<int>(type: "int", nullable: false),
+                    ReparationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MaintenanceEmployeeEmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EquipmentRepairs", x => new { x.MantenanceEmployeeId, x.EquipmentId });
+                    table.PrimaryKey("PK_EquipmentRepairs", x => new { x.EmployeeId, x.EquipmentId, x.ReparationDate });
                     table.ForeignKey(
                         name: "FK_EquipmentRepairs_Equipments_EquipmentId",
                         column: x => x.EquipmentId,
@@ -394,13 +399,15 @@ namespace Gaby.Server.Migrations.GabyDb
                 name: "Payments",
                 columns: table => new
                 {
+                    PaymentId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     PaymentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     ExpenseId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Payments", x => new { x.Amount, x.PaymentDate });
+                    table.PrimaryKey("PK_Payments", x => x.PaymentId);
                     table.ForeignKey(
                         name: "FK_Payments_Expenses_ExpenseId",
                         column: x => x.ExpenseId,
@@ -492,17 +499,16 @@ namespace Gaby.Server.Migrations.GabyDb
                 columns: table => new
                 {
                     PaymentTypeId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    PaymentAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    PaymentDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    PaymentId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PaymentTypes", x => x.PaymentTypeId);
                     table.ForeignKey(
-                        name: "FK_PaymentTypes_Payments_PaymentAmount_PaymentDate",
-                        columns: x => new { x.PaymentAmount, x.PaymentDate },
+                        name: "FK_PaymentTypes_Payments_PaymentId",
+                        column: x => x.PaymentId,
                         principalTable: "Payments",
-                        principalColumns: new[] { "Amount", "PaymentDate" });
+                        principalColumn: "PaymentId");
                 });
 
             migrationBuilder.CreateTable(
@@ -548,6 +554,42 @@ namespace Gaby.Server.Migrations.GabyDb
                         principalColumn: "ServiceId",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "AmountPerType_Payment",
+                columns: table => new
+                {
+                    AmountPerType_PaymentId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PaymentTypeId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    PaymentId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AmountPerType_Payment", x => x.AmountPerType_PaymentId);
+                    table.ForeignKey(
+                        name: "FK_AmountPerType_Payment_Payments_PaymentId",
+                        column: x => x.PaymentId,
+                        principalTable: "Payments",
+                        principalColumn: "PaymentId");
+                    table.ForeignKey(
+                        name: "FK_AmountPerType_Payment_PaymentTypes_PaymentTypeId",
+                        column: x => x.PaymentTypeId,
+                        principalTable: "PaymentTypes",
+                        principalColumn: "PaymentTypeId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AmountPerType_Payment_PaymentId",
+                table: "AmountPerType_Payment",
+                column: "PaymentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AmountPerType_Payment_PaymentTypeId",
+                table: "AmountPerType_Payment",
+                column: "PaymentTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CashInBoxDates_CashInBoxId",
@@ -632,9 +674,9 @@ namespace Gaby.Server.Migrations.GabyDb
                 column: "ExpenseId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PaymentTypes_PaymentAmount_PaymentDate",
+                name: "IX_PaymentTypes_PaymentId",
                 table: "PaymentTypes",
-                columns: new[] { "PaymentAmount", "PaymentDate" });
+                column: "PaymentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Services_ServiceTypeName",
@@ -644,6 +686,9 @@ namespace Gaby.Server.Migrations.GabyDb
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "AmountPerType_Payment");
+
             migrationBuilder.DropTable(
                 name: "CashInBoxDates");
 

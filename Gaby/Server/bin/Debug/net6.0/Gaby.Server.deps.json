@@ -1045,6 +1045,9 @@
         }
       },
       "Gaby.Shared/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "6.0.5"
+        },
         "runtime": {
           "Gaby.Shared.dll": {}
         }

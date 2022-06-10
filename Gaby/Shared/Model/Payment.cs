@@ -3,17 +3,20 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Gaby.Shared.Model
 {
-	public class Payment
-	{
+    public class Payment
+    {
+        [Key]
+        public int PaymentId { get; set; }
+
         [Required]
         public ICollection<PaymentType> PaymentType { get; set; }
 
-        public DateTime PaymentDate { get; set; }
+        public DateOnly PaymentDate { get; set; }
 
         public decimal Amount { get; set; }
 
-        //Requiere nueva tabla o no entiendo el contexto
-       // public ICollection<Tuple<PaymentType, decimal >> AmountPerType { get; set; }
+        public ICollection<AmountPerType_Payment> AmountPerType { get; set; }
+
 
     }
 }

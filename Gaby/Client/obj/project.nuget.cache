@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "sCvFwwr+jWJr80TL+hZVpdOdd3xmMDlRctWJ95GU/NSnu9k8NMuMA5vkxudwe7+EIZO9eUcHPPv78xipna+3vA==",
+  "dgSpecHash": "URmK9KEsUX6vc0CUlbWJnUe/of6IoHiEnkVexzjs6VGKE1HPU/hs8bfQiSfb7WwnS7OP7sYqvA9YquA8ujHLNw==",
   "success": true,
   "projectFilePath": "C:\\Users\\lachy\\Documents\\GitHub\\Gaby\\Gaby\\Client\\Gaby.Client.csproj",
   "expectedPackageFiles": [
@@ -14,6 +14,11 @@
     "C:\\Users\\lachy\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\6.0.5\\microsoft.aspnetcore.components.webassembly.authentication.6.0.5.nupkg.sha512",
     "C:\\Users\\lachy\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.devserver\\6.0.5\\microsoft.aspnetcore.components.webassembly.devserver.6.0.5.nupkg.sha512",
     "C:\\Users\\lachy\\.nuget\\packages\\microsoft.aspnetcore.metadata\\6.0.5\\microsoft.aspnetcore.metadata.6.0.5.nupkg.sha512",
+    "C:\\Users\\lachy\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.5\\microsoft.entityframeworkcore.6.0.5.nupkg.sha512",
+    "C:\\Users\\lachy\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.5\\microsoft.entityframeworkcore.abstractions.6.0.5.nupkg.sha512",
+    "C:\\Users\\lachy\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.5\\microsoft.entityframeworkcore.analyzers.6.0.5.nupkg.sha512",
+    "C:\\Users\\lachy\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\6.0.0\\microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\lachy\\.nuget\\packages\\microsoft.extensions.caching.memory\\6.0.1\\microsoft.extensions.caching.memory.6.0.1.nupkg.sha512",
     "C:\\Users\\lachy\\.nuget\\packages\\microsoft.extensions.configuration\\6.0.0\\microsoft.extensions.configuration.6.0.0.nupkg.sha512",
     "C:\\Users\\lachy\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\lachy\\.nuget\\packages\\microsoft.extensions.configuration.binder\\6.0.0\\microsoft.extensions.configuration.binder.6.0.0.nupkg.sha512",
@@ -31,6 +36,7 @@
     "C:\\Users\\lachy\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\lachy\\.nuget\\packages\\microsoft.jsinterop\\6.0.5\\microsoft.jsinterop.6.0.5.nupkg.sha512",
     "C:\\Users\\lachy\\.nuget\\packages\\microsoft.jsinterop.webassembly\\6.0.5\\microsoft.jsinterop.webassembly.6.0.5.nupkg.sha512",
+    "C:\\Users\\lachy\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\lachy\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
     "C:\\Users\\lachy\\.nuget\\packages\\system.io.pipelines\\6.0.3\\system.io.pipelines.6.0.3.nupkg.sha512",
     "C:\\Users\\lachy\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
