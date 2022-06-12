@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lachy\\Documents\\GitHub\\Gaby\\Gaby\\Shared\\Gaby.Shared.csproj": {}
+    "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lachy\\Documents\\GitHub\\Gaby\\Gaby\\Shared\\Gaby.Shared.csproj": {
+    "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lachy\\Documents\\GitHub\\Gaby\\Gaby\\Shared\\Gaby.Shared.csproj",
+        "projectUniqueName": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj",
         "projectName": "Gaby.Shared",
-        "projectPath": "C:\\Users\\lachy\\Documents\\GitHub\\Gaby\\Gaby\\Shared\\Gaby.Shared.csproj",
-        "packagesPath": "C:\\Users\\lachy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lachy\\Documents\\GitHub\\Gaby\\Gaby\\Shared\\obj\\",
+        "projectPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Shared/Gaby.Shared.csproj",
+        "packagesPath": "/Users/hanselblanco/.nuget/packages/",
+        "outputPath": "/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Shared/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\lachy\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/hanselblanco/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -60,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
         }
       }
     }

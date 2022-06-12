@@ -14,10 +14,16 @@
     <None Remove="Interfaces\" />
     <None Remove="Common\" />
     <None Remove="Utils\" />
+    <None Remove="Data\" />
+    <None Remove="Utils\Validators\" />
+    <None Remove="FluentValidation" />
+    <None Remove="FluentValidation.AspNetCore" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
     <Folder Include="Common\" />
+    <Folder Include="Data\" />
+    <Folder Include="Utils\Validators\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.5" />

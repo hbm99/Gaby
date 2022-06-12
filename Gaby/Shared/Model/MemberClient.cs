@@ -21,6 +21,8 @@ namespace Gaby.Shared.Model
         public TimeOnly? CheckInTime { get; set; }
         public TimeOnly? CheckOutTime { get; set; }
 
+        public Gender Gender { get; set; }
+
         /// <summary>
         /// Returns if the client is an active member (has time available until next payment).
         /// </summary>
@@ -50,5 +52,12 @@ namespace Gaby.Shared.Model
         /// Returns inscription dates from offers.
         /// </summary>
         public virtual ICollection<InscriptionDate> InscriptionDates { get; set; }
+    }
+
+    public enum Gender
+    {
+        Male,
+        Female,
+        Other
     }
 }

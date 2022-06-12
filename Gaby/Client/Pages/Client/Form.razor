@@ -1,0 +1,155 @@
+﻿@inject Gaby.Client.Shared.PageHistoryState PageHistoryState
+
+<EditForm Model="@client" OnValidSubmit="@OnValidSubmit">
+    @*<FluentValidator TValidator="PersonValidator" />*@
+    <div class="form-group">
+        <label>Nombre :</label>
+        <div>
+            <InputText @bind-Value="@client.Name" class="form-control col-sm-3" />
+            <ValidationMessage For="@(() => client.Name)" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Teléfono :</label>
+        <div>
+            <InputText @bind-Value="@client.PhoneNumber" class="form-control col-sm-3" />
+            <ValidationMessage For="@(() => client.PhoneNumber)" />
+        </div>
+    </div>
+    <div class="form-group ">
+        <div>
+            <label>Género :</label>
+            <div>
+                <InputSelect @bind-Value="@client.Gender" class="form-control col-sm-3">
+                    <option value="Select">--Select--</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </InputSelect>
+                <ValidationMessage For="@(() => client.Gender)" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group ">
+        <div>
+            <h3>Dirección</h3>
+            <label>Calle principal :</label>
+            <div>
+                <InputText @bind-Value="@client.Address.MainSt" class="form-control col-sm-3" />
+                <ValidationMessage For="@(() => client.Address.MainSt)" />
+            </div>
+            <label>Calle secundaria 1 :</label>
+            <div>
+                <InputText @bind-Value="@client.Address.SecondarySt1" class="form-control col-sm-3" />
+                <ValidationMessage For="@(() => client.Address.SecondarySt1)" />
+            </div>
+            <label>Calle secundaria 2 :</label>
+            <div>
+                <InputText @bind-Value="@client.Address.SecondarySt2" class="form-control col-sm-3" />
+                <ValidationMessage For="@(() => client.Address.SecondarySt2)" />
+            </div>
+            <label>Número :</label>
+            <div>
+                <InputNumber @bind-Value="@client.Address.HouseNumber" class="form-control col-sm-3" />
+                <ValidationMessage For="@(() => client.Address.HouseNumber)" />
+            </div>
+            <label>Comunidad :</label>
+            <div>
+                <InputText @bind-Value="@client.Address.Community" class="form-control col-sm-3" />
+                <ValidationMessage For="@(() => client.Address.Community)" />
+            </div>
+            <label>Municipio :</label>
+            <div>
+                <InputText @bind-Value="@client.Address.Municipality" class="form-control col-sm-3" />
+                <ValidationMessage For="@(() => client.Address.Municipality)" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Padecimientos :</label>
+        <div>
+            <InputText @bind-Value="@client.Ailments" class="form-control col-sm-3" />
+            <ValidationMessage For="@(() => client.Ailments)" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Horario de entrada :</label>
+        <div>
+            <InputNumber @bind-Value="@client.CheckInTime" class="form-control col-sm-3" />
+            <ValidationMessage For="@(() => client.CheckInTime)" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Horario de salida :</label>
+        <div>
+            <InputNumber @bind-Value="@client.CheckOutTime" class="form-control col-sm-3" />
+            <ValidationMessage For="@(() => client.CheckOutTime)" />
+        </div>
+    </div>
+
+    <hr />
+    <h3>Ofertas</h3>
+
+    @*<ValidationMessage For="@(() => client.Offers)" />
+        @foreach (var offer in client.Offers)
+        {
+            <div class="form-row">*@
+    @*aqui va el desplegable de las ofertas*@
+    @*<InputSelect @bind-Value="@client.Gender" class="form-control col-sm-3">
+            <option value="Select">--Select--</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </InputSelect>*@
+    @*<div class="Form-group">
+                <a href="javascript:void(0)" class="btn btn-danger" @onclick="@(()=>OnOfferDelete(client, offer))">X</a>
+            </div>
+            </div>
+            <div class="form-group">
+                <a href="javascript:void(0)" class="btn btn-success" @onclick="@(()=>OnOfferAdd(client, offer))">Añadir oferta</a>
+            </div>
+        }*@
+
+
+    <hr />
+
+    <div class="form-group">
+        <button disabled="@loading" class="btn btn-primary">
+            @if (loading)
+            {
+                <span class="spinner-border spinner-border-sm mr-1"></span>
+            }
+            @ButtonText
+        </button>
+        @if (PageHistoryState.CanGoBack())
+        {
+            <NavLink href="@PageHistoryState.GetGoBackPage()" class="btn btn-link">Cancel</NavLink>
+        }
+        else
+        {
+            <NavLink href="/client/1" class="btn btn-link">Back</NavLink>
+        }
+    </div>
+
+</EditForm>
+
+@code {
+    [Parameter]
+    public MemberClient client { get; set; }
+    [Parameter]
+    public string ButtonText { get; set; } = "Guardar";
+    [Parameter]
+    public bool loading { get; set; } = false;
+    [Parameter]
+    public EventCallback OnValidSubmit { get; set; }
+
+    public void OnOfferDelete(MemberClient client, Offer offer)
+    {
+        client.Offers.Remove(offer);
+    }
+
+    public void OnOfferAdd(MemberClient client, Offer offer)
+    {
+        client.Offers.Add(offer);
+    }
+}

@@ -1,28 +1,55 @@
 ﻿<Properties StartupConfiguration="{9A490F85-4221-4FED-8954-F36C07A13E44}|Default">
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Gaby.UI PreferredExecutionTarget="/Applications/Safari.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Gaby/Shared/Model/BasicClient.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Gaby/Client/Pages/Client/Client.razor">
     <Files>
-      <File FileName="Gaby/Server/Infrastructure/GabyDbContext.cs" Line="24" Column="58" />
-      <File FileName="Gaby/Shared/Model/BasicClient.cs" Line="22" Column="1" />
+      <File FileName="Gaby/Client/Pages/Client/Form.razor" Line="12" Column="29" IsPinned="True" />
+      <File FileName="Gaby/Client/Pages/Client/AddClient.razor" Line="16" Column="1" />
+      <File FileName="Gaby/Client/Pages/Authentication.razor" Line="3" Column="26" />
+      <File FileName="Gaby/Client/Shared/MainLayout.razor" Line="1" Column="1" />
+      <File FileName="Gaby/Client/Shared/NavMenu.razor" Line="16" Column="15" />
+      <File FileName="Gaby/Client/Shared/RedirectToLogin.razor" Line="1" Column="27" />
+      <File FileName="Gaby/Client/Shared/LoginDisplay.razor" Line="1" Column="53" />
+      <File FileName="Gaby/Client/Shared/StringConverter.cs" Line="1" Column="1" />
+      <File FileName="Gaby/Server/Properties/launchSettings.json" Line="1" Column="1" />
+      <File FileName="Gaby/Server/Models/ApplicationUser.cs" Line="9" Column="1" />
+      <File FileName="Gaby/Server/Controllers/OidcConfigurationController.cs" Line="26" Column="1" />
+      <File FileName="Gaby/Server/Areas/Identity/Pages/Shared/_LoginPartial.cshtml" Line="1" Column="1" />
+      <File FileName="Gaby/Server/Data/ApplicationDbContext.cs" Line="18" Column="1" />
+      <File FileName="Gaby/Server/Program.cs" Line="57" Column="1" />
+      <File FileName="Gaby/Shared/Data/PagedResultBase.cs" Line="1" Column="1" />
+      <File FileName="Gaby/Server/Migrations/20220610080457_InitialApp.Designer.cs" Line="3" Column="19" />
+      <File FileName="Gaby/Server/Migrations/ApplicationDbContextModelSnapshot.cs" Line="1" Column="1" />
+      <File FileName="Gaby/Client/App.razor" Line="8" Column="25" />
+      <File FileName="Gaby/Client/Pages/Index.razor" Line="1" Column="1" />
+      <File FileName="Gaby/Client/Pages/Client/Client.razor" Line="11" Column="1" />
+      <File FileName="Gaby/Client/Program.cs" Line="1" Column="1" />
+      <File FileName="Gaby/Client/Services/Client/IUserService.cs" Line="6" Column="31" />
+      <File FileName="Gaby/Client/Shared/Login.cs" Line="8" Column="19" />
+      <File FileName="Gaby/Client/Shared/UserService.cs" Line="10" Column="6" />
+      <File FileName="Gaby/Client/Services/ILocalStorage.cs" Line="4" Column="22" />
+      <File FileName="Gaby/Client/Services/Client/ClientService.cs" Line="1" Column="1" />
+      <File FileName="Gaby/Client/Services/Client/IClientService.cs" Line="8" Column="3" />
+      <File FileName="Gaby/Client/Services/IHttpService.cs" Line="1" Column="31" />
+      <File FileName="Gaby/Client/Services/IAlertService.cs" Line="1" Column="1" />
+      <File FileName="Gaby/Client/Shared/HttpService.cs" Line="1" Column="1" />
+      <File FileName="Gaby/Client/Shared/Pager.razor" Line="4" Column="32" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Gaby" expanded="True">
-            <Node name="Gaby.Client" expanded="True" />
-            <Node name="Gaby.Server" expanded="True">
-              <Node name="Infrastructure" expanded="True" />
-            </Node>
-            <Node name="Gaby.Shared" expanded="True">
-              <Node name="Interfaces" expanded="True" />
-              <Node name="Model" expanded="True">
-                <Node name="BasicClient.cs" selected="True" />
+            <Node name="Gaby.Client" expanded="True">
+              <Node name="Pages" expanded="True">
+                <Node name="Client" expanded="True">
+                  <Node name="Client.razor" selected="True" />
+                </Node>
               </Node>
+              <Node name="Services" expanded="True">
+                <Node name="Client" expanded="True" />
+              </Node>
+              <Node name="Shared" expanded="True" />
             </Node>
+            <Node name="Gaby.Server" expanded="True" />
+            <Node name="Gaby.Shared" expanded="True" />
           </Node>
         </State>
       </Pad>
@@ -31,7 +58,12 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Gaby.UI PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.Gaby.Server PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
 </Properties>

@@ -6,7 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Gaby' " />
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Gaby' ">
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.5" PrivateAssets="all" />
@@ -18,4 +20,34 @@
     <ProjectReference Include="..\Shared\Gaby.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Pages\Client\" />
+    <None Remove="Pages\Offer\" />
+    <None Remove="Pages\Service\" />
+    <None Remove="Pages\LessonTurn\" />
+    <None Remove="Pages\Worker\" />
+    <None Remove="Pages\Equipment\" />
+    <None Remove="Pages\Administration\" />
+    <None Remove="Services\" />
+    <None Remove="Services\Client\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\Client\" />
+    <Folder Include="Pages\Offer\" />
+    <Folder Include="Pages\GymService\" />
+    <Folder Include="Pages\LessonTurn\" />
+    <Folder Include="Pages\Employee\" />
+    <Folder Include="Pages\Equipment\" />
+    <Folder Include="Pages\Administration\" />
+    <Folder Include="Services\" />
+    <Folder Include="Services\Client\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Pages\Client\Form.razor" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pages\Client\Form.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+  </ItemGroup>
 </Project>
