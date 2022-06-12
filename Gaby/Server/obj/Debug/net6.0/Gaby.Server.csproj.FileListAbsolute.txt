@@ -351,6 +351,7 @@ C:/Users/lachy/Documents/GitHub/Gaby/Gaby/Server/bin/Debug/net6.0/app.db
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby_NETSDK1082_error/Gaby/Server/obj/Debug/net6.0/Gaby.Server.pdb
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby_NETSDK1082_error/Gaby/Server/obj/Debug/net6.0/Gaby.Server.genruntimeconfig.cache
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby_NETSDK1082_error/Gaby/Server/obj/Debug/net6.0/ref/Gaby.Server.dll
+/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/Gaby.Client.staticwebassets.runtime.json
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/appsettings.Development.json
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/appsettings.json
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/BlazorDebugProxy/BrowserDebugHost.dll
@@ -359,9 +360,8 @@ C:/Users/lachy/Documents/GitHub/Gaby/Gaby/Server/bin/Debug/net6.0/app.db
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/BlazorDebugProxy/Microsoft.CodeAnalysis.CSharp.dll
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/BlazorDebugProxy/Microsoft.CodeAnalysis.dll
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/BlazorDebugProxy/Newtonsoft.Json.dll
-/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/app.db
-/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/Gaby.Client.staticwebassets.runtime.json
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/Gaby.Server.staticwebassets.runtime.json
+/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/app.db
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/Gaby.Server
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/Gaby.Server.deps.json
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/Gaby.Server.runtimeconfig.json

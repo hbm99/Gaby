@@ -2535,10 +2535,15 @@ C:/Users/lachy/Documents/GitHub/Gaby/Gaby/Client/obj/Debug/net6.0/build-gz/jA5Em
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby_NETSDK1082_error/Gaby/Client/obj/Debug/net6.0/refint/Gaby.Client.dll
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby_NETSDK1082_error/Gaby/Client/obj/Debug/net6.0/Gaby.Client.pdb
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby_NETSDK1082_error/Gaby/Client/obj/Debug/net6.0/ref/Gaby.Client.dll
+/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/blazor.boot.json
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/blazor.webassembly.js
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/dotnet.6.0.5.huu749vc12.js
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/dotnet.timezones.blat
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/dotnet.wasm
+/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/Gaby.Client.dll
+/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/Gaby.Client.pdb
+/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/Gaby.Shared.dll
+/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/Gaby.Shared.pdb
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/icudt_CJK.dat
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/icudt_EFIGS.dat
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/icudt_no_CJK.dat
@@ -2752,6 +2757,7 @@ C:/Users/lachy/Documents/GitHub/Gaby/Gaby/Client/obj/Debug/net6.0/build-gz/jA5Em
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/Microsoft.Extensions.Configuration.Json.dll.gz
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/Microsoft.Extensions.FileProviders.Abstractions.dll.gz
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/System.Xml.XmlSerializer.dll.gz
+/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/Gaby.Client.pdb.gz
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/System.IO.FileSystem.Watcher.dll.gz
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/Microsoft.Extensions.Http.dll.gz
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/System.Xml.XDocument.dll.gz
@@ -2826,6 +2832,7 @@ C:/Users/lachy/Documents/GitHub/Gaby/Gaby/Client/obj/Debug/net6.0/build-gz/jA5Em
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/Microsoft.Extensions.Logging.Abstractions.dll.gz
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/System.Reflection.Emit.Lightweight.dll.gz
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/System.Reflection.DispatchProxy.dll.gz
+/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/Gaby.Client.dll.gz
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/Microsoft.VisualBasic.dll.gz
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/System.Security.Cryptography.Csp.dll.gz
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/System.ComponentModel.EventBasedAsync.dll.gz
@@ -2835,6 +2842,7 @@ C:/Users/lachy/Documents/GitHub/Gaby/Gaby/Client/obj/Debug/net6.0/build-gz/jA5Em
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/System.Text.RegularExpressions.dll.gz
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/System.Collections.dll.gz
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/System.IO.UnmanagedMemoryStream.dll.gz
+/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/Gaby.Shared.pdb.gz
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/System.Drawing.Primitives.dll.gz
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/Microsoft.AspNetCore.Authorization.dll.gz
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/System.Threading.ThreadPool.dll.gz
@@ -2842,6 +2850,7 @@ C:/Users/lachy/Documents/GitHub/Gaby/Gaby/Client/obj/Debug/net6.0/build-gz/jA5Em
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/Microsoft.Extensions.FileSystemGlobbing.dll.gz
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/System.Runtime.Serialization.Formatters.dll.gz
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/System.Runtime.Numerics.dll.gz
+/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/Gaby.Shared.dll.gz
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/System.AppContext.dll.gz
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/System.Reflection.dll.gz
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/System.Reflection.Primitives.dll.gz
@@ -2943,15 +2952,6 @@ C:/Users/lachy/Documents/GitHub/Gaby/Gaby/Client/obj/Debug/net6.0/build-gz/jA5Em
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/Microsoft.AspNetCore.Components.Authorization.dll.gz
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/System.Runtime.Extensions.dll.gz
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/System.Net.WebHeaderCollection.dll.gz
-/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/blazor.boot.json
-/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/Gaby.Client.dll
-/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/Gaby.Client.pdb
-/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/Gaby.Shared.dll
-/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/Gaby.Shared.pdb
-/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/Gaby.Client.pdb.gz
-/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/Gaby.Client.dll.gz
-/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/Gaby.Shared.pdb.gz
-/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/wwwroot/_framework/Gaby.Shared.dll.gz
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/Gaby.Client.staticwebassets.runtime.json
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/Gaby.Client.dll
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/bin/Debug/net6.0/Gaby.Client.pdb
