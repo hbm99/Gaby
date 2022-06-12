@@ -153,5 +153,7 @@ namespace Gaby.Server.Infrastructure
 
         public DbSet<AmountPerType_Payment> AmountPerTypes { get; set; }
 
+        public DbSet<User> Users { get; set; }
+
     }
 }

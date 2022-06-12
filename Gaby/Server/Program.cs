@@ -15,7 +15,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDbContext<GabyDbContext>(options =>
     options.UseSqlServer(gabyconnectionString));
 
-//builder.Services.AddScoped<IClientRepository, ClientRepository>();
+
+
+builder.Services.AddScoped<IClientRepository, ClientRepository>();
+//builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 

@@ -22,6 +22,7 @@
     <None Remove="Services\" />
     <None Remove="Infrastructure\" />
     <None Remove="Microsoft.EntityFrameworkCore" />
+    <None Remove="Authorization\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
@@ -37,5 +38,6 @@
 
   <ItemGroup>
     <Folder Include="Services\" />
+    <Folder Include="Authorization\" />
   </ItemGroup>
 </Project>
