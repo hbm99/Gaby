@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "Gaby.Server/1.0.0": {
         "dependencies": {
+          "BCrypt.Net-Next": "4.0.3",
           "Gaby.Client": "1.0.0",
           "Gaby.Shared": "1.0.0",
           "Microsoft.AspNetCore.ApiAuthorization.IdentityServer": "6.0.5",
@@ -15,6 +16,7 @@
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "6.0.5",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.5",
           "Microsoft.AspNetCore.Identity.UI": "6.0.5",
+          "Microsoft.EntityFrameworkCore.InMemory": "6.0.5",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.5",
           "Microsoft.EntityFrameworkCore.Sqlite": "6.0.5",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.5"
@@ -32,6 +34,14 @@
           "lib/netstandard2.0/AutoMapper.dll": {
             "assemblyVersion": "10.0.0.0",
             "fileVersion": "10.0.0.0"
+          }
+        }
+      },
+      "BCrypt.Net-Next/4.0.3": {
+        "runtime": {
+          "lib/net6.0/BCrypt.Net-Next.dll": {
+            "assemblyVersion": "4.0.3.0",
+            "fileVersion": "4.0.3.0"
           }
         }
       },
@@ -425,6 +435,17 @@
         },
         "runtime": {
           "lib/net6.0/Microsoft.EntityFrameworkCore.Design.dll": {
+            "assemblyVersion": "6.0.5.0",
+            "fileVersion": "6.0.522.21804"
+          }
+        }
+      },
+      "Microsoft.EntityFrameworkCore.InMemory/6.0.5": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "6.0.5"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll": {
             "assemblyVersion": "6.0.5.0",
             "fileVersion": "6.0.522.21804"
           }
@@ -1067,6 +1088,13 @@
       "path": "automapper/10.0.0",
       "hashPath": "automapper.10.0.0.nupkg.sha512"
     },
+    "BCrypt.Net-Next/4.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-W+U9WvmZQgi5cX6FS5GDtDoPzUCV4LkBLkywq/kRZhuDwcbavOzcDAr3LXJFqHUi952Yj3LEYoWW0jbEUQChsA==",
+      "path": "bcrypt.net-next/4.0.3",
+      "hashPath": "bcrypt.net-next.4.0.3.nupkg.sha512"
+    },
     "Duende.IdentityServer/5.2.0": {
       "type": "package",
       "serviceable": true,
@@ -1304,6 +1332,13 @@
       "sha512": "sha512-zNjMWJ6MJ/Qm7S6wFBqVgn7DEpilbDMy0xgA7c4Y1yY9/LoaC2pWwWO4ePaYoPCZpLx/eTViWEr5ZXta/vK//Q==",
       "path": "microsoft.entityframeworkcore.design/6.0.5",
       "hashPath": "microsoft.entityframeworkcore.design.6.0.5.nupkg.sha512"
+    },
+    "Microsoft.EntityFrameworkCore.InMemory/6.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EkN5W28f18acApSn7uxglOXI6h98s7ahlh0T4+0TJ+dahO1dqhO1VwNXcjkfwxq1Oz1FZdR9HD0fAWTQjWU1Kw==",
+      "path": "microsoft.entityframeworkcore.inmemory/6.0.5",
+      "hashPath": "microsoft.entityframeworkcore.inmemory.6.0.5.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore.Relational/6.0.5": {
       "type": "package",

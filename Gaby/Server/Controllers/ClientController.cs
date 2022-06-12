@@ -9,11 +9,11 @@ namespace Gaby.Server.Controllers
     [Authorize]
     [ApiController]
     [Route("api/[controller]")]
-    public class PersonController : ControllerBase
+    public class ClientController : ControllerBase
     {
         private readonly IClientRepository _clientRepository;
 
-        public PersonController(IClientRepository clientRepository)
+        public ClientController(IClientRepository clientRepository)
         {
             _clientRepository = clientRepository;
         }

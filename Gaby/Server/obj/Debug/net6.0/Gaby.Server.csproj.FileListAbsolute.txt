@@ -377,6 +377,7 @@ C:/Users/lachy/Documents/GitHub/Gaby/Gaby/Server/bin/Debug/net6.0/app.db
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/Gaby.Server.dll
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/Gaby.Server.pdb
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/AutoMapper.dll
+/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/BCrypt.Net-Next.dll
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/Duende.IdentityServer.dll
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/Duende.IdentityServer.AspNetIdentity.dll
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/Duende.IdentityServer.EntityFramework.dll
@@ -406,6 +407,7 @@ C:/Users/lachy/Documents/GitHub/Gaby/Gaby/Server/bin/Debug/net6.0/app.db
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.dll
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Design.dll
+/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Relational.dll
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Sqlite.dll
 /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Server/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.SqlServer.dll

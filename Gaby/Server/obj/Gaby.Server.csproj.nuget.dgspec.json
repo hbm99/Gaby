@@ -131,6 +131,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
             "Microsoft.AspNetCore.ApiAuthorization.IdentityServer": {
               "target": "Package",
               "version": "[6.0.5, )"
@@ -148,6 +152,10 @@
               "version": "[6.0.5, )"
             },
             "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[6.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
               "version": "[6.0.5, )"
             },
