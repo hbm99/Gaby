@@ -1,61 +1,203 @@
 ﻿@page "/client/createclient"
-@attribute [Microsoft.AspNetCore.Authorization.Authorize]
-@inject IAlertService AlertService
+@*@attribute [Microsoft.AspNetCore.Authorization.Authorize]*@
+@*@inject IAlertService AlertService
 @inject Gaby.Client.Services.Client.IClientService ClientService
 @inject NavigationManager navManager
-@inject Gaby.Client.Shared.PageHistoryState PageHistoryState
+@inject Gaby.Client.Shared.PageHistoryState PageHistoryState*@
 
-<h1>Crear cliente</h1>
+<h3>Creando cliente</h3>
 <br />
 
-<Form ButtonText="Nuevo cliente" client="@client" loading="@loading"
-      OnValidSubmit="@CreateClient" />
+@*<Form ButtonText="Nuevo cliente" client="@client" loading="@loading"
+    OnValidSubmit="@CreateClient" />*@
+
+
+<PageTitle>Clients</PageTitle>
+
+<form>
+    <h4>Ficha</h4>
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label for="inputName1">Nombre :</label>
+            <input @bind="inputName" type="text" class="form-control" id="inputName1" placeholder="Ej: Karel Camilo Manresa León">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputPhone1">Teléfono :</label>
+            <input @bind="inputPhone" type="tel" class="form-control" id="inputPhone1" placeholder="Ej: 58319743" pattern="[5,7]{1}[0-9]{7}">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputAilments">Padecimientos :</label>
+            <input @bind="inputAilments" type="tel" class="form-control" id="inputAilments" placeholder="Ej: Hipertensión">
+        </div>
+        <div>
+            <label for="space1">  </label>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputGender">Género :</label>
+            <select @bind="gender" type="number" id="inputGender" class="form-control">
+                <option selected>--</option>
+                <option>Masculino</option>
+                <option>Femenino</option>
+                <option>Otro</option>
+            </select>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputTimeIn">Horario de entrada :</label>
+            <input @bind="start_time" type="time" class="form-control" id="inputTimeIn">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputTimeOut">Horario de salida :</label>
+            <input @bind="end_time" type="time" class="form-control" id="inputTimeOut">
+        </div>
+    </div>
+    <br />
+    <h4>Dirección</h4>
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label for="inputAddress1">Calle :</label>
+            <input @bind="street" type="text" class="form-control" id="inputAddress1" placeholder="Ej: Vento">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputAddress2">Entrecalle :</label>
+            <input @bind="sec_street1" type="text" class="form-control" id="inputAddress2" placeholder="Ej: Néstor Aranguren">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputAddress2">Entrecalle :</label>
+            <input @bind="sec_street2" type="text" class="form-control" id="inputAddress2" placeholder="Ej: 4ta">
+        </div>
+        <div>
+            <label for="space2">  </label>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="inputAddress3">Número :</label>
+            <input @bind="houseNumber" type="number" class="form-control" id="inputAddress3" placeholder="Ej: 510">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputAddress5">Comunidad :</label>
+            <select @bind="community" id="inputAddress5" class="form-control">
+                <option selected>--</option>
+                <option>Casino Deportivo</option>
+                <option>Otra comunidad</option>
+            </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputAddress4">Municipio :</label>
+            <select @bind="municipality" id="inputAddress4" class="form-control">
+                <option selected>--</option>
+                <option>Cerro</option>
+                <option>Boyeros</option>
+                <option>10 de Octubre</option>
+                <option>Aroyo Naranjo</option>
+                <option>Centro Habana</option>
+                <option>Plaza de la Revolución</option>
+                <option>Habana Vieja</option>
+                <option>Playa</option>
+                <option>Marianao</option>
+                <option>Lisa</option>
+                <option>Regla</option>
+                <option>San Miguel del Padrón</option>
+                <option>Guanabacoa</option>
+                <option>Habana del Este</option>
+                <option>Cotorro</option>
+            </select>
+        </div>
+    </div>
+    <br />
+    <button type="button" class="btn btn-success" @onclick="AddMember">Agregar</button>
+</form>
+
+
 
 @code {
-        bool loading = false;
 
-        MemberClient client = new MemberClient
+    private string inputName = "";
+    private string inputPhone = "";
+    private string inputAilments = "";
+    private string street = "";
+    private string sec_street1 = "";
+    private string sec_street2 = "";
+    private int houseNumber = 0;
+    private string municipality = "";
+    private string community = "";
+    private Gender gender = Gender.Other;
+    private DateTime start_time = default(DateTime);
+    private DateTime end_time = default(DateTime);
+
+    List<MemberClient> clients = new List<MemberClient>();
+
+
+    private void AddMember()
+    {
+        //Agregar al cliente a la BD
+        clients.Add(new MemberClient
         {
-            Name = "",
-            CheckInTime = default(TimeOnly),
-            CheckOutTime = default(TimeOnly),
-            Gender = Gender.Other,
-            PhoneNumber = "",
             Active = true,
+            Ailments = inputAilments,
             Address = new Gaby.Shared.Utils.HomeAddress
             {
-                MainSt = "",
-                SecondarySt1 = "",
-                SecondarySt2 = "",
-                Community = "",
-                Municipality = "",
-                HouseNumber = -1
+                MainSt = street,
+                SecondarySt1 = sec_street1,
+                SecondarySt2 = sec_street2,
+                HouseNumber = houseNumber,
+                Community = community,
+                Municipality = municipality
             },
-            Ailments = "",
-            Offers = new List<Offer>(),
-            InscriptionDates = new List<InscriptionDate>()
+            Name = inputName,
+            PhoneNumber = inputPhone,
+            Gender = gender,
+            CheckInTime = new TimeOnly(start_time.Hour, start_time.Minute),
+            CheckOutTime = new TimeOnly(end_time.Hour, end_time.Minute)
+        });
+
+    }
+}
+
+
+@*@code {
+    bool loading = false;
+
+    MemberClient client = new MemberClient
+    {
+        Name = "",
+        CheckInTime = default(TimeOnly),
+        CheckOutTime = default(TimeOnly),
+        Gender = Gender.Other,
+        PhoneNumber = "",
+        Active = true,
+        Address = new Gaby.Shared.Utils.HomeAddress
+        {
+            MainSt = "",
+            SecondarySt1 = "",
+            SecondarySt2 = "",
+            Community = "",
+            Municipality = "",
+            HouseNumber = -1
+        },
+        Ailments = "",
+        Offers = new List<Offer>(),
+        InscriptionDates = new List<InscriptionDate>()
     };
+
     async Task CreateClient()
     {
         loading = true;
-        try
-        {
-            await ClientService.AddClient(client);
-            AlertService.Success("Client added successfully", keepAfterRouteChange: true);
-            if (PageHistoryState.CanGoBack())
+            try
             {
-                navManager.NavigateTo(PageHistoryState.GetGoBackPage());
+                await ClientService.AddClient(client);
+                AlertService.Success("Client added successfully", keepAfterRouteChange: true);
+                if (PageHistoryState.CanGoBack())
+                {
+                    navManager.NavigateTo(PageHistoryState.GetGoBackPage());
+                }
+                else
+                {
+                    navManager.NavigateTo("/client/1");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                navManager.NavigateTo("/client/1");
+                AlertService.Error(ex.Message);
+                loading = false;
+                StateHasChanged();
             }
-        }
-        catch (Exception ex)
-        {
-            AlertService.Error(ex.Message);
-            loading = false;
-            StateHasChanged();
-        }
-    }
-}
+    }*@
