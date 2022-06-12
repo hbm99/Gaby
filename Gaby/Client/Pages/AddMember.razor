@@ -1,0 +1,85 @@
+﻿@using Gaby.Shared.Model
+
+@page "/addMember"
+
+
+
+<h3>Agregar Cliente Miembro</h3>
+
+<PageTitle>Clients</PageTitle>
+
+<form>
+
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label for="inputName1">Nombres y Apellidos</label>
+            <input @bind="newClient.Name" type="text" class="form-control" id="inputName1" placeholder="Ej: Karel Camilo Manresa Leon">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputPhone1">Telefono</label>
+            <input @bind="newClient.PhoneNumber" type="tel" class="form-control" id="inputPhone1" placeholder="Ej: 58319743 o 78633994" pattern="[5,7]{1}[0-9]{7}">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputAilment">Padecimientos</label>
+            <input @bind="newClient.Ailments" type="tel" class="form-control" id="inputPassword4" placeholder="Ej: Diabetes">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputTime">Horario</label>
+            <input type="time" class="form-control" id="inputTime" placeholder="Ej: Diabetes">
+        </div>
+    </div>
+    <br />
+    <h5>Direccion</h5>
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label for="inputAddress1">Calle</label>
+            <input type="text" class="form-control" id="inputAddress1" placeholder="Ej: Vento">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputAddress2">Entrecalles</label>
+            <input type="text" class="form-control" id="inputAddress2" placeholder="Ej: Nestor Aranguren y 4">
+        </div>
+        <div class="form-group col-md-2">
+            <label for="inputAddress3"># Casa o Edif</label>
+            <input type="number" class="form-control" id="inputAddress3" placeholder="Ej: 510">
+        </div>
+        <div class="form-group col-md-1">
+            <label for="inputAddress4"># Apto</label>
+            <input type="number" class="form-control" id="inputAddress4" placeholder="Ej: 7">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputAddress4">Municipio</label>
+            <select id="inputAddress4" class="form-control">
+                <option selected>Cerro</option>
+                <option>Boyeros</option>
+                <option>10 de Octubre</option>
+                <option>Aroyo Naranjo</option>
+                <option>C Habana</option>
+                <option>Plaza de la Revolucion</option>
+                <option>Habana Vieja</option>
+                <option>Playa</option>
+                <option>Marianao</option>
+                <option>Lisa</option>
+                <option>Regla</option>
+                <option>San Miguel del Padron</option>
+                <option>Guanabacoa</option>
+                <option>Habana del Este</option>
+                <option>Cotorro</option>
+            </select>
+        </div>
+    </div>
+    <br />
+    <button type="button" class="btn btn-success"@onclick="AddClient">Agregar</button>
+    
+</form>
+
+
+
+@code {
+    MemberClient newClient = new MemberClient();
+
+    private void AddClient()
+    {
+        //Agregar al cliente a la BD
+    }
+}
