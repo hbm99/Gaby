@@ -50,5 +50,10 @@ namespace Gaby.Shared.Model
         /// Returns inscription dates from offers.
         /// </summary>
         public virtual ICollection<InscriptionDate> InscriptionDates { get; set; }
+
+        /// <summary>
+        /// Returns if the client is in a deleting process.
+        /// </summary>
+        public bool IsDeleting { get; set; }
     }
 }

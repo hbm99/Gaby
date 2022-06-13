@@ -11,19 +11,19 @@ build_property.EnableTrimAnalyzer = true
 build_property.IncludeAllContentForSelfExtract = 
 build_property.RootNamespace = Gaby.Client
 build_property.RootNamespace = Gaby.Client
-build_property.ProjectDir = C:\Users\karel\source\repos\hbm99\Gaby\Gaby\Client\
+build_property.ProjectDir = C:\Users\karel\Source\Repos\hbm99\Gaby\Gaby\Client\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\karel\source\repos\hbm99\Gaby\Gaby\Client
+build_property.MSBuildProjectDirectory = C:\Users\karel\Source\Repos\hbm99\Gaby\Gaby\Client
 build_property._RazorSourceGeneratorDebug = 
 
 [C:/Users/karel/Source/Repos/hbm99/Gaby/Gaby/Client/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/karel/Source/Repos/hbm99/Gaby/Gaby/Client/Pages/AddMember.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkTWVtYmVyLnJhem9y
+[C:/Users/karel/Source/Repos/hbm99/Gaby/Gaby/Client/Pages/Administration/Administration.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5pc3RyYXRpb25cQWRtaW5pc3RyYXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/karel/Source/Repos/hbm99/Gaby/Gaby/Client/Pages/Authentication.razor]
@@ -40,6 +40,22 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/karel/Source/Repos/hbm99/Gaby/Gaby/Client/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/karel/Source/Repos/hbm99/Gaby/Gaby/Client/Pages/Members/AddMember.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVtYmVyc1xBZGRNZW1iZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/karel/Source/Repos/hbm99/Gaby/Gaby/Client/Pages/Members/EditMember.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVtYmVyc1xFZGl0TWVtYmVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/karel/Source/Repos/hbm99/Gaby/Gaby/Client/Pages/Members/Members.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVtYmVyc1xNZW1iZXJzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/karel/Source/Repos/hbm99/Gaby/Gaby/Client/Pages/Members/ViewMember.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVtYmVyc1xWaWV3TWVtYmVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/karel/Source/Repos/hbm99/Gaby/Gaby/Client/Shared/LoginDisplay.razor]

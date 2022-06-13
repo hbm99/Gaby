@@ -1,6 +1,6 @@
-﻿@using Gaby.Shared.Model
-
-@page "/addMember"
+﻿@page "/addMember"
+@using Gaby.Shared.Model
+@using Gaby.Shared.Utils
 
 
 
@@ -33,11 +33,11 @@
     <div class="row">
         <div class="form-group col-md-4">
             <label for="inputAddress1">Calle</label>
-            <input type="text" class="form-control" id="inputAddress1" placeholder="Ej: Vento">
+            <input @bind="newClientAddress.MainSt" type="text" class="form-control" id="inputAddress1" placeholder="Ej: Vento">
         </div>
         <div class="form-group col-md-4">
             <label for="inputAddress2">Entrecalles</label>
-            <input type="text" class="form-control" id="inputAddress2" placeholder="Ej: Nestor Aranguren y 4">
+            <input @bind="newClientAddress.SecondarySt1" type="text" class="form-control" id="inputAddress2" placeholder="Ej: Nestor Aranguren y 4">
         </div>
         <div class="form-group col-md-2">
             <label for="inputAddress3"># Casa o Edif</label>
@@ -45,11 +45,11 @@
         </div>
         <div class="form-group col-md-1">
             <label for="inputAddress4"># Apto</label>
-            <input type="number" class="form-control" id="inputAddress4" placeholder="Ej: 7">
+            <input @bind="newClientAddress.AptNumber" type="number" class="form-control" id="inputAddress4" placeholder="Ej: 7">
         </div>
         <div class="form-group col-md-4">
             <label for="inputAddress4">Municipio</label>
-            <select id="inputAddress4" class="form-control">
+            <select @bind="newClientAddress.Municipality" id="inputAddress4" class="form-control">
                 <option selected>Cerro</option>
                 <option>Boyeros</option>
                 <option>10 de Octubre</option>
@@ -70,16 +70,22 @@
     </div>
     <br />
     <button type="button" class="btn btn-success"@onclick="AddClient">Agregar</button>
-    
 </form>
 
 
 
 @code {
-    MemberClient newClient = new MemberClient();
+
+    private MemberClient newClient = new MemberClient();
+    HomeAddress newClientAddress = new HomeAddress();
+
+
 
     private void AddClient()
     {
+        newClient.Active = true;
+        
+        newClient.Address = newClientAddress;
         //Agregar al cliente a la BD
     }
 }

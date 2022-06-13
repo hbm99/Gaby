@@ -1,6 +1,6 @@
 ﻿<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">Gaby</a>
+        <a class="navbar-brand" href="">Gimnasio Gaby</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -9,7 +9,7 @@
 
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
     <nav class="flex-column">
-        <div class="nav-item px-3">
+        <!--<div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
                 <span class="oi oi-home" aria-hidden="true"></span> Home
             </NavLink>
@@ -23,10 +23,15 @@
             <NavLink class="nav-link" href="fetchdata">
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
             </NavLink>
+        </div>-->
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="members">
+                <span class="oi oi-people" aria-hidden="true"></span> Clientes Miembros
+            </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="addMember">
-                <span class="oi oi-person" aria-hidden="true"></span> Add Member
+            <NavLink class="nav-link" href="administration">
+                <span class="oi oi-dollar" aria-hidden="true"></span> Administración
             </NavLink>
         </div>
     </nav>

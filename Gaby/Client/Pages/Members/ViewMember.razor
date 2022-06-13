@@ -1,0 +1,42 @@
+﻿@page "/viewMember/{client}"
+@using Gaby.Shared.Model
+@using Test
+
+<h3>Datos</h3>
+
+
+<table class="table col-md-6">
+    <tbody>
+        <tr>
+            <th scope="row">Nombre</th>
+            <td>@Client.Name</td>
+        </tr>
+        <tr>
+            <th scope="row">Teléfono</th>
+            <td>@Client.PhoneNumber</td>
+        </tr>
+        <tr>
+            <th scope="row">Padecimientos</th>
+            <td>@Client.Ailments</td>
+        </tr>
+        <tr>
+            <th scope="row">Está Activo</th>
+            <td>
+                @if (Client.Active)
+                {
+                    <span class="oi oi-check" aria-hidden="true"></span>
+                }
+                else
+                {
+                    <span class="oi oi-x" aria-hidden="true"></span>
+                }
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@code {
+    [Parameter]
+    public MemberClient Client{ get; set; }
+
+}

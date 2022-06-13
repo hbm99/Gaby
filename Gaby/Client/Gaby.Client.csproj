@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Test\Test.csproj" />
     <ProjectReference Include="..\Shared\Gaby.Shared.csproj" />
   </ItemGroup>
 

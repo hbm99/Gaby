@@ -32,31 +32,36 @@ namespace Gaby.Shared.Utils
 		/// <summary>
 		/// Returns the main street.
 		/// </summary>
-		public string MainSt { get; private set; }
+		public string MainSt { get; set; }
 
 		/// <summary>
 		/// Returns a secondary street.
 		/// </summary>
-		public string SecondarySt1 { get; private set; }
+		public string SecondarySt1 { get; set; }
 
 		/// <summary>
 		/// Returns a secondary street.
 		/// </summary>
-		public string SecondarySt2 { get; private set; }
+		public string SecondarySt2 { get; set; }
 
 		/// <summary>
 		/// Returns the house number.
 		/// </summary>
-		public int HouseNumber { get; private set; }
+		public int HouseNumber { get; set; }
+
+		/// <summary>
+		/// Returns the apartment number.
+		/// </summary>
+		public int AptNumber { get; set; }
 
 		/// <summary>
 		/// Returns the community.
 		/// </summary>
-		public string Community { get; private set; }
+		public string Community { get; set; }
 
 		/// <summary>
 		/// Returns the municipality.
 		/// </summary>
-		public string Municipality { get; private set; }
+		public string Municipality { get; set; }
 	}
 }

@@ -1,0 +1,73 @@
+﻿@page "/members"
+@using Gaby.Shared.Model
+@using Test;
+
+<h3>Miembros</h3>
+
+<div class="row mb-3">
+
+    <div class="input-group col-md-5 text-md-right">
+        <input name="MemberSearchInput" type="text" class="form-control" placeholder="Nombre del Miembro" /><!--@bind="this.SearchTerm" @onkeyup="SearchBoxKeyPress"-->
+        <div class="input-group-btn">
+            <button name="MemberSearchButton" class="btn btn-default">
+                <i class="oi oi-magnifying-glass" title="buscar" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="input-group-btn">
+            <button name="MemberSearchClear" class="btn btn-default">
+                <i class="oi oi-x" title="limpiar" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="input-group-btn">
+            <button name="MemberAddButton" class="btn btn-default">
+                <i class="oi oi-plus" title="agregar nuevo miembro" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width:25%">Mombre y Apellidos</th>
+            <th style="width:25%">Telefono</th>
+            <th style="width:15%">Horario de Entrada</th>
+            <th style="width:30%">Horario de Salida</th>
+            <th style="width:5%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (MemberClient client in members)
+        {
+            <tr>
+                <td>@client.Name</td>
+                <td>@client.PhoneNumber</td>
+                <td>@client.CheckInTime</td>
+                <td>@client.CheckOutTime</td>
+                <td style="white-space: nowrap">
+                    <NavLink href="@($"/viewMember/{1}")" class="oi oi-eye text-primary mr-3 nounderline"></NavLink>
+
+                    <NavLink href="editMember" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
+
+                    <button @onclick="@(() => null)" disabled="@client.IsDeleting" class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
+                        <span></span>
+                    </button>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    [Parameter]
+    public string SearchTerm { get; set; } = string.Empty;
+
+    private List<MemberClient> members = FrontTester.FakeMembersSearch();
+    MemberClient member = new MemberClient();
+
+    protected async Task ClearSearch()
+    {
+
+    }
+}
