@@ -1,157 +1,214 @@
-﻿@page "/client/{Page}"
-@inject Services.Client.IClientService ClientService
+﻿@page "/client"
+@*/{Page}"*@
+@*@inject Services.Client.IClientService ClientService
 @inject Services.IUserService UserService
 @inject Microsoft.AspNetCore.Components.NavigationManager UriHelper
-@inject Gaby.Client.Shared.PageHistoryState PageHistoryState
+@inject Gaby.Client.Shared.PageHistoryState PageHistoryState*@
 
 <PageTitle>Client</PageTitle>
 
 <h1>Clientes</h1>
 <br />
 
-
-<div class="row mb-3">
-    <div class="col-md-7">
-        @if (LoggedIn)
-        {
-            <NavLink href="/client/createclient" class="btn btn-sm btn-success mb-2">Añadir Cliente</NavLink>
-        }
-    </div>
-    <div class="input-group col-md-5 text-md-right">
-        <input name="ClientSearchInput" type="text" class="form-control" placeholder="Client Name" @bind="this.SearchTerm" @onkeyup="SearchBoxKeyPress" />
-        <div class="input-group-btn">
-            <button name="ClientSearchButton" class="btn btn-default" @onclick="SearchClick">
-                <i class="oi oi-magnifying-glass" title="search" aria-hidden="true"></i>
-            </button>
-        </div>
-        <div class="input-group-btn">
-            <button name="ClientSearchClear" class="btn btn-default" @onclick="ClearSearch">
-                <i class="oi oi-x" title="clear" aria-hidden="true"></i>
-            </button>
-        </div>
-    </div>
-</div>
-
-
-@if (client == null)
- {
-    <p><em>Loading...</em></p>
- }
-else
-{
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th style="width:25%">Nombre</th>
-                <th style="width:25%">Horario de entrada</th>
-                <th style="width:15%">Género</th>
-                <th style="width:30%">Teléfono</th>
-                <th style="width:5%"></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var client in client.Results)
+<form>
+    <div class="row mb-3">
+        <div class="col-md-7">
+            @*@if (LoggedIn)
                 {
+                    <NavLink href="/client/createclient" class="btn btn-sm btn-success mb-2">Añadir Cliente</NavLink>
+                }*@
+        </div>
+        <div class="input-group col-md-5 text-md-right">
+            <input name="ClientSearchInput" type="text" class="form-control" placeholder="Client Name" @bind="this.SearchTerm" @onkeyup="SearchBoxKeyPress" />
+            <div class="input-group-btn">
+                <button name="ClientSearchButton" class="btn btn-default" @onclick="SearchClick">
+                    <i class="oi oi-magnifying-glass" title="search" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="input-group-btn">
+                <button name="ClientSearchClear" class="btn btn-default" @onclick="ClearSearch">
+                    <i class="oi oi-x" title="clear" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    @*@if (client == null)
+    {
+        <p><em>Loading...</em></p>
+    }*@
+    @*else
+    {*@
+        <table class="table table-striped">
+            <thead>
                 <tr>
-                    <td>@client.Name</td>
-                    <td>@client.CheckInTime</td>
-                    <td>@client.Gender</td>
-                    <td>@client.PhoneNumber</td>
-                    <td style="white-space: nowrap">
-                        <NavLink href="@($"/client/viewclient/{client.ClientId}")" class="oi oi-eye text-primary mr-3 nounderline"></NavLink>
-                        @if (LoggedIn)
-                         {
+                    <th style="width:25%">Nombre</th>
+                    <th style="width:25%">Horario de entrada</th>
+                    <th style="width:15%">Comunidad</th>
+                    <th style="width:30%">Teléfono</th>
+                    <th style="width:5%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var client in clients)
+                    {
+                    <tr>
+                        <td>@client.Name</td>
+                        <td>@client.CheckInTime</td>
+                        <td>@client.Address.Community</td>
+                        <td>@client.PhoneNumber</td>
+                        <td style="white-space: nowrap">
+
+                            <NavLink href="@($"/client/viewclient/{client.ClientId}")" class="oi oi-eye text-primary mr-3 nounderline"></NavLink>
+
                             <NavLink href="@($"/client/updateclient/{client.ClientId}")" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
 
-                            @if (client.Active == false)
+                            <button @onclick="@(() => DeleteClient(client))" disabled="@client.Active" class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
+                                <span></span>
+                            </button>
+
+                            @*<NavLink href="@($"/client/viewclient/{client.ClientId}")" class="oi oi-eye text-primary mr-3 nounderline"></NavLink>*@
+                            @*@if (LoggedIn)
                             {
-                                <button @onclick="@(() => DeleteClient(client))" disabled="@client.Active" class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
-                                    <span class="spinner-border spinner-border-sm"></span>
-                                </button>
-                            }
-                            else
-                            {
-                                <button @onclick="@(() => DeleteClient(client))" disabled="@client.Active" class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
-                                    <span></span>
-                                </button>
-                            }
-                         }
-                    </td>
-                </tr>
+                                <NavLink href="@($"/client/updateclient/{client.ClientId}")" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
 
-                }
-        </tbody>
-    </table>
-    <Pager Result=@client PageChanged=PagerPageChanged />
+                                @if (client.Active == false)
+                                {
+                                    <button @onclick="@(() => DeleteClient(client))" disabled="@client.Active" class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
+                                        <span class="spinner-border spinner-border-sm"></span>
+                                    </button>
+                                }
+                                else
+                                {
+                                    <button @onclick="@(() => DeleteClient(client))" disabled="@client.Active" class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
+                                        <span></span>
+                                    </button>
+                                }
+                            }*@
 
-}
+                        </td>
+                    </tr>
+
+                    }
+            </tbody>
+        </table>
+        @*<Pager Result=@client PageChanged=PagerPageChanged />*@
+
+    @*}*@
+    </form>
 
 
-@code {
-    [Parameter]
-    public string Page { get; set; } = "1";
-    [Parameter]
-    public string SearchTerm { get; set; } = string.Empty;
+    @code {
+        [Parameter]
+        public string Page { get; set; } = "1";
+        [Parameter]
+        public string SearchTerm { get; set; } = string.Empty;
 
-    protected PagedResult<MemberClient> client;
+        //protected PagedResult<MemberClient> client;
 
-    public bool LoggedIn
-    {
-        get { return UserService.User != null; }
-    }
-
-    protected override void OnInitialized()
-    {
-        PageHistoryState.AddPageToHistory(UriHelper.Uri);
-        base.OnInitialized();
-    }
-
-    protected override async Task OnParametersSetAsync()
-    {
-        client = await ClientService.GetClient(null, Page);
-        PageHistoryState.AddPageToHistory(UriHelper.Uri);
-    }
-
-    protected async Task SearchBoxKeyPress(KeyboardEventArgs ev)
-    {
-        if (ev.Key == "Enter")
+        MemberClient[] clients = new MemberClient[]
         {
-            await SearchClick();
+            new MemberClient
+            {
+                Active = true,
+                Ailments = "",
+                Address = new Gaby.Shared.Utils.HomeAddress
+                {
+                    MainSt = "1ra",
+                    SecondarySt1 = "2da",
+                    SecondarySt2 = "3ra",
+                    HouseNumber = 123,
+                    Community = "Hogar, dulce hogar",
+                    Municipality = "Plaza"
+                },
+                Name = "Elvira Laporta",
+                PhoneNumber = "55555555",
+                Gender = Gender.Female,
+                CheckInTime = new TimeOnly(10, 0),
+                CheckOutTime = new TimeOnly(11, 0)
+            },
+            new MemberClient
+            {
+                Active = true,
+                Ailments = "",
+                Address = new Gaby.Shared.Utils.HomeAddress
+                {
+                    MainSt = "1ra",
+                    SecondarySt1 = "2da",
+                    SecondarySt2 = "3ra",
+                    HouseNumber = 125,
+                    Community = "Hogar, dulce hogar",
+                    Municipality = "Plaza"
+                },
+                Name = "Eusebio Pérez",
+                PhoneNumber = "66666666",
+                Gender = Gender.Male,
+                CheckInTime = new TimeOnly(10, 0),
+                CheckOutTime = new TimeOnly(11, 0)
+            }
+        };
+
+
+
+        public bool LoggedIn
+        {
+            get { return true; }
+            //get { return UserService.User != null; }
+        }
+
+        protected override void OnInitialized()
+        {
+            //PageHistoryState.AddPageToHistory(UriHelper.Uri);
+            //base.OnInitialized();
+        }
+
+        protected override async Task OnParametersSetAsync()
+        {
+            //client = await ClientService.GetClient(null, Page);
+            //PageHistoryState.AddPageToHistory(UriHelper.Uri);
+        }
+
+        protected async Task SearchBoxKeyPress(KeyboardEventArgs ev)
+        {
+            //if (ev.Key == "Enter")
+            //{
+            //    await SearchClick();
+            //}
+        }
+
+        protected async Task SearchClick()
+        {
+            //if (string.IsNullOrEmpty(SearchTerm))
+            //{
+            //    client = await ClientService.GetClient(null, Page);
+            //    return;
+            //}
+            //client = await ClientService.GetClient(SearchTerm, Page);
+            //StateHasChanged();
+        }
+
+        protected async Task ClearSearch()
+        {
+            //SearchTerm = string.Empty;
+            //client = await ClientService.GetClient(SearchTerm, Page);
+            //PageHistoryState.AddPageToHistory(UriHelper.Uri);
+            //StateHasChanged();
+        }
+
+        protected void PagerPageChanged(int page)
+        {
+            //UriHelper.NavigateTo("/person/" + page);
+            //PageHistoryState.AddPageToHistory(UriHelper.Uri);
+        }
+
+        private async void DeleteClient(MemberClient _client)
+        {
+            //var __client = _client;
+            //__client.Active = false;
+            //await ClientService.DeleteClient(__client.ClientId);
+            //client = await ClientService.GetClient(null, Page);
+            //StateHasChanged();
         }
     }
-
-    protected async Task SearchClick()
-    {
-        if (string.IsNullOrEmpty(SearchTerm))
-        {
-            client = await ClientService.GetClient(null, Page);
-            return;
-        }
-        client = await ClientService.GetClient(SearchTerm, Page);
-        StateHasChanged();
-    }
-
-    protected async Task ClearSearch()
-    {
-        SearchTerm = string.Empty;
-        client = await ClientService.GetClient(SearchTerm, Page);
-        PageHistoryState.AddPageToHistory(UriHelper.Uri);
-        StateHasChanged();
-    }
-
-    protected void PagerPageChanged(int page)
-    {
-        UriHelper.NavigateTo("/person/" + page);
-        PageHistoryState.AddPageToHistory(UriHelper.Uri);
-    }
-
-    private async void DeleteClient(MemberClient _client)
-    {
-        var __client = _client;
-        __client.Active = false;
-        await ClientService.DeleteClient(__client.ClientId);
-        client = await ClientService.GetClient(null, Page);
-        StateHasChanged();
-    }
-}
 
