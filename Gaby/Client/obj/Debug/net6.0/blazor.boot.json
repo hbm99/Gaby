@@ -204,14 +204,14 @@
       "netstandard.dll": "sha256-qpOz\/RBwhlIYfaE2GDEmjiproxkvSf2b9GeqHxvH+lg=",
       "System.Private.CoreLib.dll": "sha256-sfzSZ3YKC2rpF77TVOKLuPgQag93QXr9U4AUc9d\/LKA=",
       "Gaby.Shared.dll": "sha256-T+2Wk4IwHJ9ir\/KUxw5aCuS8tj5spcNnWnU+VrH54k8=",
-      "Gaby.Client.dll": "sha256-Tn43NQKwMRKq39l\/lMjUZhE+qhqAjtC3CJIw+Zt57o0="
+      "Gaby.Client.dll": "sha256-2CYqxnrUz\/R6+8PO0cyFgqUYNQhERRWhoXHRRt+Fem0="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
       "Gaby.Shared.pdb": "sha256-Asufv2bg0zzxV7cHgV\/krmufhd73CnAl6NE3RiSLidE=",
-      "Gaby.Client.pdb": "sha256-JlEp8BzzTphdksOPdJQLuN\/W7nKoehTHzDyznzYCXSw="
+      "Gaby.Client.pdb": "sha256-mkkYQGSstczTi1XhI9E8r\/EsFVlGGb4UQuxvD9LB\/ac="
     },
     "runtime": {
       "dotnet.6.0.5.huu749vc12.js": "sha256-783uOt0jgblQfP6Yz5TJeuW2xxtl6UHZQPngZtCz79U=",
