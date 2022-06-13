@@ -1,0 +1,140 @@
+﻿@page "/employees"
+@using Gaby.Shared.Model
+@using Test;
+
+<h3>Trabajadores</h3>
+
+<div class="row mb-3">
+
+    <div class="input-group col-md-5 text-md-right">
+        <input name="EmployeeSearchInput" type="text" class="form-control" placeholder="Nombre del Trabajador" /><!--@bind="this.SearchTerm" @onkeyup="SearchBoxKeyPress"-->
+        <div class="input-group-btn">
+            <button name="EmployeeSearchButton" class="btn btn-default">
+                <i class="oi oi-magnifying-glass" title="buscar" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="input-group-btn">
+            <button name="EmployeeSearchClear" class="btn btn-default">
+                <i class="oi oi-x" title="limpiar" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="input-group-btn">
+            <button name="EmployeeAddButton" class="btn btn-default">
+                <i class="oi oi-plus" title="agregar nuevo trabajador" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<h3>Entrenadores</h3>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width:25%">Nombre y Apellidos</th>
+            <th style="width:25%">Salario Básico</th>
+            <th style="width:15%">Salario Extra</th>
+            <th style="width:5%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Coach worker in coach)
+        {
+            <tr>
+                <td>@worker.Name</td>
+                <td>@worker.BasicSalary</td>
+                <td>@worker.ExtraSalary</td>
+                <td style="white-space: nowrap">
+                    <NavLink href="viewEmployee" class="oi oi-eye text-primary mr-3 nounderline"></NavLink>
+
+                    <NavLink href="editMember" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
+
+                    <button @onclick="@(() => null)"  class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
+                        <span></span>
+                    </button>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Mantenimiento</h3>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width:25%">Nombre y Apellidos</th>
+            <th style="width:25%">Salario Básico</th>
+            <th style="width:15%">Salario Extra</th>
+            <th style="width:5%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (MaintenanceEmployee worker in maintenance)
+        {
+            <tr>
+                <td>@worker.Name</td>
+                <td>@worker.BasicSalary</td>
+                <td>@worker.ExtraSalary</td>
+                <td style="white-space: nowrap">
+                    <NavLink href="viewEmployee" class="oi oi-eye text-primary mr-3 nounderline"></NavLink>
+
+                    <NavLink href="editMember" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
+
+                    <button @onclick="@(() => null)"  class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
+                        <span></span>
+                    </button>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Limpieza</h3>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width:25%">Nombre y Apellidos</th>
+            <th style="width:25%">Salario Básico</th>
+            <th style="width:5%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (CleanerEmployee worker in cleaner)
+        {
+            <tr>
+                <td>@worker.Name</td>
+                <td>@worker.BasicSalary</td>
+                <td style="white-space: nowrap">
+                    <NavLink href="viewEmployee" class="oi oi-eye text-primary mr-3 nounderline"></NavLink>
+
+                    <NavLink href="editMember" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
+
+                    <button @onclick="@(() => null)"  class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
+                        <span></span>
+                    </button>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    [Parameter]
+    public string SearchTerm { get; set; } = string.Empty;
+
+    private List<Coach> coach = FrontTester.FakeCoachSearch();
+    private List<MaintenanceEmployee> maintenance = FrontTester.FakeMaintenanceSearch();
+    private List<CleanerEmployee> cleaner = FrontTester.FakeCleanerSearch();
+    MemberClient member = new MemberClient();
+
+    protected async Task ClearSearch()
+    {
+
+    }
+}

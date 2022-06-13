@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gaby.Client", "Gaby\Client\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gaby.Shared", "Gaby\Shared\Gaby.Shared.csproj", "{CF9B553A-3EC0-473A-B5DF-C0B4C31280A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{D0EA99F2-AFFA-471C-A9FF-A9E2A2894E27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{D0EA99F2-AFFA-471C-A9FF-A9E2A2894E27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

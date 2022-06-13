@@ -1,0 +1,92 @@
+﻿@page "/lessons"
+@using Gaby.Shared.Model
+@using Test;
+
+<h3>Turnos de Clases</h3>
+
+<div class="row mb-3">
+
+    <div class="input-group col-md-5 text-md-right">
+        <input name="LessonSearchInput" type="text" class="form-control" placeholder="Nombre des Turno de Clase" /><!--@bind="this.SearchTerm" @onkeyup="SearchBoxKeyPress"-->
+        <div class="input-group-btn">
+            <button name="LessonSearchButton" class="btn btn-default">
+                <i class="oi oi-magnifying-glass" title="buscar" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="input-group-btn">
+            <button name="LessonSearchClear" class="btn btn-default">
+                <i class="oi oi-x" title="limpiar" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="input-group-btn">
+            <button name="LessonAddButton" class="btn btn-default">
+                <i class="oi oi-plus" title="agregar nuevo miembro" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width:25%">Servicio</th>
+            <th style="width:25%">Entrenador</th>
+            <th style="width:15%">Horario</th>
+            <th style="width:30%">Precio</th>
+            <th style="width:5%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (LessonTurn lesson in lessons)
+        {
+            
+            <tr>
+                
+                <td>@lesson.Service.ServiceType.ServiceTypeName</td>
+                <td>@lesson.Coach.Name</td>
+                <td>@lesson.Schedule.Hour : @ParseSchedule(lesson)</td>
+                <td>@lesson.Price</td>
+                <td style="white-space: nowrap">
+                    <NavLink href="@($"/viewMember/{1}")" class="oi oi-eye text-primary mr-3 nounderline"></NavLink>
+
+                    <NavLink href="editMember" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
+
+                    <button @onclick="@(() => null)"  class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
+                        <span></span>
+                    </button>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    [Parameter]
+    public string SearchTerm { get; set; } = string.Empty;
+
+    private List<LessonTurn> lessons = FrontTester.FakeLessonTurnSearch();
+    MemberClient member = new MemberClient();
+
+
+    protected async Task ClearSearch()
+    {
+
+    }
+
+    private string ParseSchedule(LessonTurn lesson)
+    {
+        if (lesson.Schedule.Minute == 0)
+        {
+            return  "00";
+        }
+        else if(lesson.Schedule.Minute < 9)
+        {
+            return  "0" + lesson.Schedule.Minute;
+        }
+        else
+        {
+            return  lesson.Schedule.Minute.ToString();
+        }
+    }
+}

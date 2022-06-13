@@ -38,8 +38,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/karel/source/repos/hbm99/Gaby/Gaby/Client/Pages/Gym Workers/EditEmployee.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3ltIFdvcmtlcnNcRWRpdEVtcGxveWVlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/karel/source/repos/hbm99/Gaby/Gaby/Client/Pages/Gym Workers/Employees.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3ltIFdvcmtlcnNcRW1wbG95ZWVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/karel/source/repos/hbm99/Gaby/Gaby/Client/Pages/Gym Workers/ViewEmployees.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3ltIFdvcmtlcnNcVmlld0VtcGxveWVlcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/karel/source/repos/hbm99/Gaby/Gaby/Client/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/karel/source/repos/hbm99/Gaby/Gaby/Client/Pages/Lessons/Lessons.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGVzc29uc1xMZXNzb25zLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/karel/source/repos/hbm99/Gaby/Gaby/Client/Pages/Members/AddMember.razor]
