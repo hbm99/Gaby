@@ -16,6 +16,7 @@ namespace Gaby.Shared.Model
         /// <summary>
         /// Returns client name.
         /// </summary>
-        public string? Name { get; set; }
+        [Required]
+        public string Name { get; set; }
     }
 }

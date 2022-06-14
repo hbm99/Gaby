@@ -11,81 +11,81 @@ build_property.EnableTrimAnalyzer = true
 build_property.IncludeAllContentForSelfExtract = 
 build_property.RootNamespace = Gaby.Client
 build_property.RootNamespace = Gaby.Client
-build_property.ProjectDir = /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/
+build_property.ProjectDir = C:\Users\lachy\Desktop\IS\Hansel\Gaby\Gaby\Client\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client
+build_property.MSBuildProjectDirectory = C:\Users\lachy\Desktop\IS\Hansel\Gaby\Gaby\Client
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/App.razor]
+[C:/Users/lachy/Desktop/IS/Hansel/Gaby/Gaby/Client/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Pages/Administration/Administration.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRtaW5pc3RyYXRpb24vQWRtaW5pc3RyYXRpb24ucmF6b3I=
+[C:/Users/lachy/Desktop/IS/Hansel/Gaby/Gaby/Client/Pages/Administration/Administration.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5pc3RyYXRpb25cQWRtaW5pc3RyYXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Pages/Authentication.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXV0aGVudGljYXRpb24ucmF6b3I=
+[C:/Users/lachy/Desktop/IS/Hansel/Gaby/Gaby/Client/Pages/Authentication.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Pages/Client/AddClient.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2xpZW50L0FkZENsaWVudC5yYXpvcg==
+[C:/Users/lachy/Desktop/IS/Hansel/Gaby/Gaby/Client/Pages/Client/AddClient.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xpZW50XEFkZENsaWVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Pages/Client/Client.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2xpZW50L0NsaWVudC5yYXpvcg==
+[C:/Users/lachy/Desktop/IS/Hansel/Gaby/Gaby/Client/Pages/Client/Client.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xpZW50XENsaWVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Pages/Client/UpdateClient.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2xpZW50L1VwZGF0ZUNsaWVudC5yYXpvcg==
+[C:/Users/lachy/Desktop/IS/Hansel/Gaby/Gaby/Client/Pages/Client/UpdateClient.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xpZW50XFVwZGF0ZUNsaWVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Pages/Employee/Employee.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRW1wbG95ZWUvRW1wbG95ZWUucmF6b3I=
+[C:/Users/lachy/Desktop/IS/Hansel/Gaby/Gaby/Client/Pages/Employee/Employee.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbG95ZWVcRW1wbG95ZWUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Pages/Equipment/Equipment.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXF1aXBtZW50L0VxdWlwbWVudC5yYXpvcg==
+[C:/Users/lachy/Desktop/IS/Hansel/Gaby/Gaby/Client/Pages/Equipment/Equipment.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXF1aXBtZW50XEVxdWlwbWVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Pages/GymService/Service.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvR3ltU2VydmljZS9TZXJ2aWNlLnJhem9y
+[C:/Users/lachy/Desktop/IS/Hansel/Gaby/Gaby/Client/Pages/GymService/Service.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3ltU2VydmljZVxTZXJ2aWNlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Pages/Index.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
+[C:/Users/lachy/Desktop/IS/Hansel/Gaby/Gaby/Client/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Pages/LessonTurn/LessonTurn.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTGVzc29uVHVybi9MZXNzb25UdXJuLnJhem9y
+[C:/Users/lachy/Desktop/IS/Hansel/Gaby/Gaby/Client/Pages/LessonTurn/LessonTurn.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGVzc29uVHVyblxMZXNzb25UdXJuLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Pages/Offer/Offer.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvT2ZmZXIvT2ZmZXIucmF6b3I=
+[C:/Users/lachy/Desktop/IS/Hansel/Gaby/Gaby/Client/Pages/Offer/Offer.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT2ZmZXJcT2ZmZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Shared/LoginDisplay.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0xvZ2luRGlzcGxheS5yYXpvcg==
+[C:/Users/lachy/Desktop/IS/Hansel/Gaby/Gaby/Client/Shared/LoginDisplay.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXExvZ2luRGlzcGxheS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Shared/Pager.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1BhZ2VyLnJhem9y
+[C:/Users/lachy/Desktop/IS/Hansel/Gaby/Gaby/Client/Shared/Pager.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFBhZ2VyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Shared/RedirectToLogin.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1JlZGlyZWN0VG9Mb2dpbi5yYXpvcg==
+[C:/Users/lachy/Desktop/IS/Hansel/Gaby/Gaby/Client/Shared/RedirectToLogin.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFJlZGlyZWN0VG9Mb2dpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/_Imports.razor]
+[C:/Users/lachy/Desktop/IS/Hansel/Gaby/Gaby/Client/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Shared/MainLayout.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-yuaxkwmmtc
+[C:/Users/lachy/Desktop/IS/Hansel/Gaby/Gaby/Client/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-h2u3v5s5uj
 
-[/Users/hanselblanco/Documents/School/3ro/1er_semestre/IS/Proyecto_Final/Gaby/Gaby/Client/Shared/NavMenu.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdk1lbnUucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-fsm3pp3ah2
+[C:/Users/lachy/Desktop/IS/Hansel/Gaby/Gaby/Client/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-51kn9nrtle

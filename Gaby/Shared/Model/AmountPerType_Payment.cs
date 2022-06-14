@@ -16,9 +16,13 @@ namespace Gaby.Shared.Model
 
         [Key]
         public int AmountPerType_PaymentId { get; set; }
-
+        
+        [Required]
         public PaymentType PaymentType { get; set; }
 
         public decimal Amount { get; set; }
+        
+        [Required]
+        public ICollection<Payment> Payments { get; set; }
     }
 }

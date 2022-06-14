@@ -59,6 +59,13 @@ namespace Gaby.Server.Infrastructure
                     lessonTurnClient.Schedule,
                     lessonTurnClient.EmployeeId
                 });
+            modelBuilder.Entity<ClientOffer>()
+                .HasKey(clientOffer => new
+                {
+                    clientOffer.ClientId,
+                    clientOffer.OfferId,
+                    clientOffer.Date
+                });
             modelBuilder.Entity<Measurements>(builder =>
             {
                 // Date is a DateOnly property and date on database
@@ -96,14 +103,14 @@ namespace Gaby.Server.Infrastructure
 
             //HomeAddress property
             modelBuilder.Entity<MemberClient>().OwnsOne(x => x.Address);
-                                
-                
-               
+
+
+
             base.OnModelCreating(modelBuilder);
-          
+
         }
 
-        public DbSet<BasicClient> Clients { get; set; }
+        public DbSet<BasicClient> BasicClients { get; set; }
 
         public DbSet<CashInBox> CashInBoxes { get; set; }
 
@@ -138,7 +145,7 @@ namespace Gaby.Server.Infrastructure
         public DbSet<Measurements> Measurements { get; set; }
 
         public DbSet<MemberClient> MemberClients { get; set; }
-        
+
         public DbSet<Offer> Offers { get; set; }
 
         public DbSet<Offer_Service> Offer_Services { get; set; }
@@ -152,7 +159,6 @@ namespace Gaby.Server.Infrastructure
         public DbSet<ServiceType> ServiceTypes { get; set; }
 
         public DbSet<AmountPerType_Payment> AmountPerTypes { get; set; }
-
         public DbSet<User> Users { get; set; }
 
     }

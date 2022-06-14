@@ -22,6 +22,36 @@ namespace Gaby.Server.Migrations.GabyDb
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("AmountPerType_PaymentPayment", b =>
+                {
+                    b.Property<int>("AmountPerType_PaymentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PaymentsPaymentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AmountPerType_PaymentId", "PaymentsPaymentId");
+
+                    b.HasIndex("PaymentsPaymentId");
+
+                    b.ToTable("AmountPerType_PaymentPayment");
+                });
+
+            modelBuilder.Entity("ExpensePayment", b =>
+                {
+                    b.Property<int>("ExpensesExpenseId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PaymentsPaymentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ExpensesExpenseId", "PaymentsPaymentId");
+
+                    b.HasIndex("PaymentsPaymentId");
+
+                    b.ToTable("ExpensePayment");
+                });
+
             modelBuilder.Entity("Gaby.Shared.Model.AmountPerType_Payment", b =>
                 {
                     b.Property<int>("AmountPerType_PaymentId")
@@ -33,15 +63,11 @@ namespace Gaby.Server.Migrations.GabyDb
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("PaymentId")
-                        .HasColumnType("int");
-
                     b.Property<string>("PaymentTypeId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("AmountPerType_PaymentId");
-
-                    b.HasIndex("PaymentId");
 
                     b.HasIndex("PaymentTypeId");
 
@@ -57,11 +83,12 @@ namespace Gaby.Server.Migrations.GabyDb
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClientId"), 1L, 1);
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ClientId");
 
-                    b.ToTable("Clients");
+                    b.ToTable("BasicClients");
                 });
 
             modelBuilder.Entity("Gaby.Shared.Model.CashInBox", b =>
@@ -95,6 +122,26 @@ namespace Gaby.Server.Migrations.GabyDb
                         .HasFilter("[CashInBoxId] IS NOT NULL");
 
                     b.ToTable("CashInBoxDates");
+                });
+
+            modelBuilder.Entity("Gaby.Shared.Model.ClientOffer", b =>
+                {
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OfferId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ClientId", "OfferId", "Date");
+
+                    b.HasIndex("Date");
+
+                    b.HasIndex("OfferId");
+
+                    b.ToTable("ClientOffer");
                 });
 
             modelBuilder.Entity("Gaby.Shared.Model.Employee", b =>
@@ -390,15 +437,10 @@ namespace Gaby.Server.Migrations.GabyDb
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("ExpenseId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("PaymentDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("PaymentId");
-
-                    b.HasIndex("ExpenseId");
 
                     b.ToTable("Payments");
                 });
@@ -408,12 +450,7 @@ namespace Gaby.Server.Migrations.GabyDb
                     b.Property<string>("PaymentTypeId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("PaymentId")
-                        .HasColumnType("int");
-
                     b.HasKey("PaymentTypeId");
-
-                    b.HasIndex("PaymentId");
 
                     b.ToTable("PaymentTypes");
                 });
@@ -447,49 +484,57 @@ namespace Gaby.Server.Migrations.GabyDb
                     b.ToTable("ServiceTypes");
                 });
 
-            modelBuilder.Entity("InscriptionDateMemberClient", b =>
+            modelBuilder.Entity("Gaby.Shared.Model.User", b =>
                 {
-                    b.Property<DateTime>("InscriptionDatesDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("MembersClientId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.HasKey("InscriptionDatesDate", "MembersClientId");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.HasIndex("MembersClientId");
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("InscriptionDateMemberClient");
+                    b.Property<bool>("IsDeleting")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Token")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("InscriptionDateOffer", b =>
+            modelBuilder.Entity("PaymentPaymentType", b =>
                 {
-                    b.Property<DateTime>("InscriptionDatesDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("PaymentTypeId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("OffersOfferId")
+                    b.Property<int>("PaymentsPaymentId")
                         .HasColumnType("int");
 
-                    b.HasKey("InscriptionDatesDate", "OffersOfferId");
+                    b.HasKey("PaymentTypeId", "PaymentsPaymentId");
 
-                    b.HasIndex("OffersOfferId");
+                    b.HasIndex("PaymentsPaymentId");
 
-                    b.ToTable("InscriptionDateOffer");
-                });
-
-            modelBuilder.Entity("MemberClientOffer", b =>
-                {
-                    b.Property<int>("MembersClientId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OffersOfferId")
-                        .HasColumnType("int");
-
-                    b.HasKey("MembersClientId", "OffersOfferId");
-
-                    b.HasIndex("OffersOfferId");
-
-                    b.ToTable("MemberClientOffer");
+                    b.ToTable("PaymentPaymentType");
                 });
 
             modelBuilder.Entity("Gaby.Shared.Model.CleanerEmployee", b =>
@@ -556,21 +601,52 @@ namespace Gaby.Server.Migrations.GabyDb
                     b.Property<TimeSpan?>("CheckOutTime")
                         .HasColumnType("time");
 
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
                     b.ToTable("Members");
                 });
 
+            modelBuilder.Entity("AmountPerType_PaymentPayment", b =>
+                {
+                    b.HasOne("Gaby.Shared.Model.AmountPerType_Payment", null)
+                        .WithMany()
+                        .HasForeignKey("AmountPerType_PaymentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Gaby.Shared.Model.Payment", null)
+                        .WithMany()
+                        .HasForeignKey("PaymentsPaymentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ExpensePayment", b =>
+                {
+                    b.HasOne("Gaby.Shared.Model.Expense", null)
+                        .WithMany()
+                        .HasForeignKey("ExpensesExpenseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Gaby.Shared.Model.Payment", null)
+                        .WithMany()
+                        .HasForeignKey("PaymentsPaymentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Gaby.Shared.Model.AmountPerType_Payment", b =>
                 {
-                    b.HasOne("Gaby.Shared.Model.Payment", null)
-                        .WithMany("AmountPerType")
-                        .HasForeignKey("PaymentId");
-
                     b.HasOne("Gaby.Shared.Model.PaymentType", "PaymentType")
                         .WithMany()
-                        .HasForeignKey("PaymentTypeId");
+                        .HasForeignKey("PaymentTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("PaymentType");
                 });
@@ -582,6 +658,33 @@ namespace Gaby.Server.Migrations.GabyDb
                         .HasForeignKey("Gaby.Shared.Model.CashInBoxDate", "CashInBoxId");
 
                     b.Navigation("CashInBox");
+                });
+
+            modelBuilder.Entity("Gaby.Shared.Model.ClientOffer", b =>
+                {
+                    b.HasOne("Gaby.Shared.Model.MemberClient", "MemberClient")
+                        .WithMany("ClientOffers")
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Gaby.Shared.Model.InscriptionDate", "InscriptionDate")
+                        .WithMany()
+                        .HasForeignKey("Date")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Gaby.Shared.Model.Offer", "Offer")
+                        .WithMany("ClientOffers")
+                        .HasForeignKey("OfferId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("InscriptionDate");
+
+                    b.Navigation("MemberClient");
+
+                    b.Navigation("Offer");
                 });
 
             modelBuilder.Entity("Gaby.Shared.Model.EquipmentRepair", b =>
@@ -717,20 +820,6 @@ namespace Gaby.Server.Migrations.GabyDb
                     b.Navigation("Service");
                 });
 
-            modelBuilder.Entity("Gaby.Shared.Model.Payment", b =>
-                {
-                    b.HasOne("Gaby.Shared.Model.Expense", null)
-                        .WithMany("Payments")
-                        .HasForeignKey("ExpenseId");
-                });
-
-            modelBuilder.Entity("Gaby.Shared.Model.PaymentType", b =>
-                {
-                    b.HasOne("Gaby.Shared.Model.Payment", null)
-                        .WithMany("PaymentType")
-                        .HasForeignKey("PaymentId");
-                });
-
             modelBuilder.Entity("Gaby.Shared.Model.Service", b =>
                 {
                     b.HasOne("Gaby.Shared.Model.ServiceType", "ServiceType")
@@ -742,47 +831,17 @@ namespace Gaby.Server.Migrations.GabyDb
                     b.Navigation("ServiceType");
                 });
 
-            modelBuilder.Entity("InscriptionDateMemberClient", b =>
+            modelBuilder.Entity("PaymentPaymentType", b =>
                 {
-                    b.HasOne("Gaby.Shared.Model.InscriptionDate", null)
+                    b.HasOne("Gaby.Shared.Model.PaymentType", null)
                         .WithMany()
-                        .HasForeignKey("InscriptionDatesDate")
+                        .HasForeignKey("PaymentTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Gaby.Shared.Model.MemberClient", null)
+                    b.HasOne("Gaby.Shared.Model.Payment", null)
                         .WithMany()
-                        .HasForeignKey("MembersClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("InscriptionDateOffer", b =>
-                {
-                    b.HasOne("Gaby.Shared.Model.InscriptionDate", null)
-                        .WithMany()
-                        .HasForeignKey("InscriptionDatesDate")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Gaby.Shared.Model.Offer", null)
-                        .WithMany()
-                        .HasForeignKey("OffersOfferId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("MemberClientOffer", b =>
-                {
-                    b.HasOne("Gaby.Shared.Model.MemberClient", null)
-                        .WithMany()
-                        .HasForeignKey("MembersClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Gaby.Shared.Model.Offer", null)
-                        .WithMany()
-                        .HasForeignKey("OffersOfferId")
+                        .HasForeignKey("PaymentsPaymentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -891,21 +950,19 @@ namespace Gaby.Server.Migrations.GabyDb
                     b.Navigation("Repairs");
                 });
 
-            modelBuilder.Entity("Gaby.Shared.Model.Expense", b =>
+            modelBuilder.Entity("Gaby.Shared.Model.Offer", b =>
                 {
-                    b.Navigation("Payments");
-                });
-
-            modelBuilder.Entity("Gaby.Shared.Model.Payment", b =>
-                {
-                    b.Navigation("AmountPerType");
-
-                    b.Navigation("PaymentType");
+                    b.Navigation("ClientOffers");
                 });
 
             modelBuilder.Entity("Gaby.Shared.Model.MaintenanceEmployee", b =>
                 {
                     b.Navigation("Repairs");
+                });
+
+            modelBuilder.Entity("Gaby.Shared.Model.MemberClient", b =>
+                {
+                    b.Navigation("ClientOffers");
                 });
 #pragma warning restore 612, 618
         }

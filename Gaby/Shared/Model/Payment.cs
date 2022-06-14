@@ -16,6 +16,7 @@ namespace Gaby.Shared.Model
         public decimal Amount { get; set; }
 
         public ICollection<AmountPerType_Payment> AmountPerType { get; set; }
+        public ICollection<Expense> Expenses { get; set; }
 
 
     }

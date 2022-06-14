@@ -1,18 +1,15 @@
 ﻿<Properties StartupConfiguration="{9A490F85-4221-4FED-8954-F36C07A13E44}|Default">
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.Gaby.UI PreferredExecutionTarget="/Applications/Safari.app" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Gaby/Client/Pages/Offer/Offer.razor">
+  <MonoDevelop.Ide.ItemProperties.Gaby.Server PreferredExecutionTarget="/Applications/Safari.app" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Gaby/Shared/Interfaces/IBasicSalary.cs">
     <Files>
       <File FileName="Gaby/Client/Pages/Client/AddClient.razor" Line="15" Column="39" />
       <File FileName="Gaby/Client/Pages/Client/Client.razor" Line="144" Column="38" />
       <File FileName="Gaby/Client/Pages/Client/UpdateClient.razor" Line="1" Column="1" />
       <File FileName="Gaby/Client/Pages/Client/Form.razor" Line="1" Column="1" />
-      <File FileName="Gaby/Client/Pages/Offer/Offer.razor" Line="32" Column="39" />
+      <File FileName="Gaby/Client/Pages/Offer/Offer.razor" Line="16" Column="18" />
+      <File FileName="Gaby/Shared/Interfaces/IBasicSalary.cs" Line="13" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -20,13 +17,18 @@
           <Node name="Gaby" expanded="True">
             <Node name="Gaby.Client" expanded="True">
               <Node name="Pages" expanded="True">
-                <Node name="Client" expanded="True" />
                 <Node name="Offer" expanded="True" />
               </Node>
             </Node>
             <Node name="Gaby.Server" expanded="True" />
             <Node name="Gaby.Shared" expanded="True">
-              <Node name="Model" expanded="True" />
+              <Node name="Data" expanded="True" />
+              <Node name="Interfaces" expanded="True">
+                <Node name="IBasicSalary.cs" selected="True" />
+              </Node>
+              <Node name="Utils" expanded="True">
+                <Node name="Validators" expanded="True" />
+              </Node>
             </Node>
           </Node>
         </State>
@@ -36,5 +38,9 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.Gaby.Server PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

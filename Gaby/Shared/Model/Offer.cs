@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,11 +11,7 @@ namespace Gaby.Shared.Model
 {
     public class Offer : IOffer
     {
-        public Offer()
-        {
-            Members = new HashSet<MemberClient>();
-            InscriptionDates = new HashSet<InscriptionDate>();
-        }
+       
 
         [Key]
         public int OfferId { get; set; }
@@ -32,12 +29,8 @@ namespace Gaby.Shared.Model
         /// <summary>
         /// Returns members related to offer.
         /// </summary>
-        public virtual ICollection<MemberClient> Members { get; set; }
-
-        /// <summary>
-        /// Returns inscription dates.
-        /// </summary>
-        public virtual ICollection<InscriptionDate> InscriptionDates { get; set; }
+        [InverseProperty("Offer")]
+        public virtual ICollection<ClientOffer> ClientOffers { get; set; }
 
     }
 }

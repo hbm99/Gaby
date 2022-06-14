@@ -13,8 +13,7 @@ namespace Gaby.Shared.Model
     {
         public MemberClient()
         {
-            Offers = new HashSet<Offer>();
-            InscriptionDates = new HashSet<InscriptionDate>();
+            ClientOffers = new HashSet<ClientOffer>();
         }
 
       
@@ -46,12 +45,8 @@ namespace Gaby.Shared.Model
         /// <summary>
         /// Returns offers registered of the member.
         /// </summary>
-        public virtual ICollection<Offer> Offers { get; set; }
-
-        /// <summary>
-        /// Returns inscription dates from offers.
-        /// </summary>
-        public virtual ICollection<InscriptionDate> InscriptionDates { get; set; }
+        [InverseProperty("MemberClient")]
+        public virtual ICollection<ClientOffer> ClientOffers { get; set; }
     }
 
     public enum Gender
