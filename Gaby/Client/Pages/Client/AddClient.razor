@@ -1,10 +1,11 @@
 ﻿@page "/client/createclient"
+@using Gaby.Client.Services.Client
 @*@attribute [Microsoft.AspNetCore.Authorization.Authorize]*@
 @*@inject IAlertService AlertService
 @inject Gaby.Client.Services.Client.IClientService ClientService
 @inject NavigationManager navManager
 @inject Gaby.Client.Shared.PageHistoryState PageHistoryState*@
-
+@inject IClientService clientservice
 <h3>Creando cliente...</h3>
 <br />
 
@@ -19,7 +20,7 @@
     <div class="row">
         <div class="form-group col-md-4">
             <label for="inputName1">Nombre :</label>
-            <input @bind="inputName" type="text" class="form-control" id="inputName1" placeholder="Ej: Elpidio Valdés">
+            <input @bind="client.Name" type="text" class="form-control" id="inputName1" placeholder="Ej: Elpidio Valdés">
         </div>
         <div class="form-group col-md-3">
             <label for="inputPhone1">Teléfono :</label>
@@ -110,7 +111,7 @@
 
 @code {
 
-    private string inputName = "";
+    static string inputName = "";
     private string inputPhone = "";
     private string inputAilments = "";
     private string street = "";
@@ -123,33 +124,55 @@
     private DateTime start_time = default(DateTime);
     private DateTime end_time = default(DateTime);
 
-    List<MemberClient> clients = new List<MemberClient>();
-
-
-    private void AddMember()
+    // List<MemberClient> clients = new List<MemberClient>();
+    MemberClient client = new MemberClient
     {
-        //Agregar al cliente a la BD
-        clients.Add(new MemberClient
+        Name = inputName,
+        //CheckInTime = default(TimeOnly),
+        //CheckOutTime = default(TimeOnly),
+        Gender = Gender.Other,
+        PhoneNumber = "",
+        Active = true,
+        Address = new Gaby.Shared.Utils.HomeAddress
         {
-            Active = true,
-            Ailments = inputAilments,
-            Address = new Gaby.Shared.Utils.HomeAddress
-            {
-                MainSt = street,
-                SecondarySt1 = sec_street1,
-                SecondarySt2 = sec_street2,
-                HouseNumber = houseNumber,
-                Community = community,
-                Municipality = municipality
-            },
-            Name = inputName,
-            PhoneNumber = inputPhone,
-            Gender = gender,
-            CheckInTime = new TimeOnly(start_time.Hour, start_time.Minute),
-            CheckOutTime = new TimeOnly(end_time.Hour, end_time.Minute)
-        });
+            MainSt = "",
+            SecondarySt1 = "",
+            SecondarySt2 = "",
+            Community = "",
+            Municipality = "",
+            HouseNumber = -1
+        },
+        Ailments = "",
 
+    };
+
+     async Task AddMember()
+    {
+        await clientservice.AddClient(client);
     }
+        //Agregar al cliente a la BD
+        //clients.Add(new MemberClient
+        //{
+        //    Active = true,
+        //    Ailments = inputAilments,
+        //    Address = new Gaby.Shared.Utils.HomeAddress
+        //    {
+        //        MainSt = street,
+        //        SecondarySt1 = sec_street1,
+        //        SecondarySt2 = sec_street2,
+        //        HouseNumber = houseNumber,
+        //        Community = community,
+        //        Municipality = municipality
+        //    },
+        //    Name = inputName,
+        //    PhoneNumber = inputPhone,
+        //    Gender = gender,
+        //    CheckInTime = new TimeOnly(start_time.Hour, start_time.Minute),
+        //    CheckOutTime = new TimeOnly(end_time.Hour, end_time.Minute)
+        //});
+        
+
+    
 }
 
 

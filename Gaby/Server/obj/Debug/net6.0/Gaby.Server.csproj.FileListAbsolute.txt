@@ -592,7 +592,6 @@ C:\Users\lachy\Desktop\IS\Hansel\Gaby\Gaby\Server\obj\Debug\net6.0\Gaby.Server.G
 C:\Users\lachy\Desktop\IS\Hansel\Gaby\Gaby\Server\obj\Debug\net6.0\Gaby.Server.AssemblyInfoInputs.cache
 C:\Users\lachy\Desktop\IS\Hansel\Gaby\Gaby\Server\obj\Debug\net6.0\Gaby.Server.AssemblyInfo.cs
 C:\Users\lachy\Desktop\IS\Hansel\Gaby\Gaby\Server\obj\Debug\net6.0\Gaby.Server.csproj.CoreCompileInputs.cache
-C:\Users\lachy\Desktop\IS\Hansel\Gaby\Gaby\Server\obj\Debug\net6.0\Gaby.Server.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\lachy\Desktop\IS\Hansel\Gaby\Gaby\Server\obj\Debug\net6.0\Gaby.Server.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\lachy\Desktop\IS\Hansel\Gaby\Gaby\Server\obj\Debug\net6.0\Gaby.Server.RazorAssemblyInfo.cache
 C:\Users\lachy\Desktop\IS\Hansel\Gaby\Gaby\Server\obj\Debug\net6.0\Gaby.Server.RazorAssemblyInfo.cs

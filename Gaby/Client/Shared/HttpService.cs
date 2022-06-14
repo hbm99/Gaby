@@ -78,16 +78,20 @@ namespace Gaby.Client.Shared
         {
             var request = new HttpRequestMessage(method, uri);
             if (value != null)
-                request.Content = new StringContent(JsonSerializer.Serialize(value), Encoding.UTF8, "application/json");
+            {
+                var send = JsonSerializer.Serialize(value);
+                 request.Content = new StringContent(send, Encoding.UTF8, "application/json");
+            }
             return request;
         }
 
         private async Task sendRequest(HttpRequestMessage request)
         {
-            await addJwtHeader(request);
+            //await addJwtHeader(request);
 
             // send request
             using var response = await _httpClient.SendAsync(request);
+            //using var response = await _httpClient.PostAsync("api/client",request.Content);
 
             // auto logout on 401 response
             if (response.StatusCode == HttpStatusCode.Unauthorized)

@@ -84,15 +84,15 @@ namespace Gaby.Server.Infrastructure
                 builder.Property(x => x.ExpenseDate)
                     .HasConversion<DateOnlyConverter, DateOnlyComparer>();
             });
-            modelBuilder.Entity<MemberClient>(builder =>
-            {
-                // CheckinTime is a TimeOnly property and date on database
-                builder.Property(x => x.CheckInTime)
-                    .HasConversion<TimeOnlyConverter, TimeOnlyComparer>();
-                // CheckOutTime is a TimeOnly property and date on database
-                builder.Property(x => x.CheckOutTime)
-                    .HasConversion<TimeOnlyConverter, TimeOnlyComparer>();
-            });
+            //modelBuilder.Entity<MemberClient>(builder =>
+            //{
+            //    // CheckinTime is a TimeOnly property and date on database
+            //    builder.Property(x => x.CheckInTime)
+            //        .HasConversion<TimeOnlyConverter, TimeOnlyComparer>();
+            //    // CheckOutTime is a TimeOnly property and date on database
+            //    builder.Property(x => x.CheckOutTime)
+            //        .HasConversion<TimeOnlyConverter, TimeOnlyComparer>();
+            //});
             //Tuple property
             modelBuilder.Entity<Payment>(builder =>
             {
