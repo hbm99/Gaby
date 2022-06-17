@@ -1,0 +1,51 @@
+@page "/user/updateuser/{id}"
+@using Microsoft.AspNetCore.Authorization
+@using Gaby.Client.Services.SharedServices
+@using Gaby.Shared.Model
+@attribute [Authorize]
+@inject IAlertService AlertService
+@inject IUserService UserService
+@inject NavigationManager navManager
+@inject PageHistoryState PageHistoryState
+
+<h1>Editar usuario</h1>
+<br/>
+
+<Form ButtonText="Editar usuario" user="@user" loading="@loading"
+            OnValidSubmit="@_UpdateUser" />
+
+@code {
+    bool loading = false;
+    
+    [Parameter]
+    public string Id { get; set; }
+
+    User user = new User();
+    
+    protected async override Task OnParametersSetAsync()
+    {
+       user = await UserService.GetUser(int.Parse(Id));
+    }
+
+    async Task _UpdateUser()
+    {
+        loading = true;
+        try
+        {
+            await UserService.UpdateUser(user);
+            AlertService.Success("User updated successfully", keepAfterRouteChange: true);
+            if (PageHistoryState.CanGoBack()){
+                navManager.NavigateTo(PageHistoryState.GetGoBackPage());
+            }
+            else{
+                navManager.NavigateTo("/user/1");
+            } 
+        }
+        catch (Exception ex)
+        {
+            AlertService.Error(ex.Message);
+            loading = false;
+            StateHasChanged();
+        }
+    }
+}

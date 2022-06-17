@@ -1,0 +1,43 @@
+@page "/user/createuser"
+@using Microsoft.AspNetCore.Authorization
+@using Gaby.Client.Services.SharedServices
+@using Gaby.Shared.Model
+@attribute [Authorize]
+@inject IAlertService AlertService
+@inject IUserService UserService
+@inject NavigationManager navManager
+@inject Gaby.Client.Shared.PageHistoryState PageHistoryState
+
+<h1>Creando usuario</h1>
+<br/>
+
+<FormUser ButtonText="Crear usuario" user="@user" loading="@loading"
+            OnValidSubmit="@CreateUser" />
+
+@code {
+    bool loading = false;
+    
+    User user = new User();
+
+    async Task CreateUser()
+    {
+        loading = true;
+        try
+        {
+            await UserService.AddUser(user);
+            AlertService.Success("Usuario añadido satisfactoriamente", keepAfterRouteChange: true);
+            if (PageHistoryState.CanGoBack()){
+                navManager.NavigateTo(PageHistoryState.GetGoBackPage());
+            }
+            else{
+                navManager.NavigateTo("/user/1");
+            } 
+        }
+        catch (Exception ex)
+        {
+            AlertService.Error(ex.Message);
+            loading = false;
+            StateHasChanged();
+        }
+    }
+}

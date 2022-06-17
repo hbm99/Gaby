@@ -1,0 +1,80 @@
+@page "/client/viewclient/{id}"
+@using Gaby.Client.Services.Client
+@using Gaby.Shared.Model
+@using Gaby.Shared.Utils
+@inject IClientService ClientService
+@inject NavigationManager navManager
+@inject Gaby.Client.Shared.PageHistoryState PageHistoryState
+
+<h1>Vista de cliente</h1>
+<br/>
+
+<table class="table col-md-6">
+    <tbody>
+        <tr>
+            <th scope="row">Nombre</th>
+            <td>@client.Name</td>
+        </tr>
+        <tr>
+            <th scope="row">Género</th>
+            <td>@client.Gender</td>
+        </tr>
+        <tr>
+            <th scope="row">Teléfono</th>
+            <td>@client.PhoneNumber</td>
+        </tr>
+        <tr>
+            <th scope="row">Activo</th>
+            <td>@client.Active</td>
+        </tr>
+        @*<tr>
+            <th scope="row">Dirección</th>
+            <td>@client.Address.ToString()</td>
+        </tr>*@
+        <tr>
+            <th scope="row">Padecimientos</th>
+            <td>@client.Ailments</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="form-group">
+    @if (PageHistoryState.CanGoBack()){
+        <NavLink href="@PageHistoryState.GetGoBackPage()" class="btn btn-link">Atrás</NavLink>
+    }
+    else{
+        <NavLink href="/client/1" class="btn btn-link">Atrás</NavLink>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+
+    MemberClient client = new MemberClient
+    {
+        Name = "",
+    //CheckInTime = default(TimeOnly),
+    //CheckOutTime = default(TimeOnly),
+        Gender = Gender.Other,
+        PhoneNumber = "",
+        Active = true,
+        Address = new HomeAddress
+        {
+            MainSt = "",
+            SecondarySt1 = "",
+            SecondarySt2 = "",
+            Community = "",
+            Municipality = "",
+            HouseNumber = -1
+        },
+        Ailments = ""
+    };
+
+    protected async override Task OnParametersSetAsync()
+    {
+        client = await ClientService.GetClient(int.Parse(Id));
+    }
+
+    
+}

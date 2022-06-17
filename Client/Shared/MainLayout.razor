@@ -1,0 +1,32 @@
+﻿@inherits LayoutComponentBase
+@using Gaby.Client.Services.SharedServices
+@inject IUserService userService
+
+
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4 auth">
+            @if (LoggedIn)
+            {
+                <NavLink href="/user/logout" class="nav-item nav-link">Cerrar sesión</NavLink>
+            }
+            else
+            {
+                <NavLink href="/user/login" class="nav-item nav-link">Iniciar sesión</NavLink>
+            }
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+@code {
+    public bool LoggedIn => userService.User != null;
+}

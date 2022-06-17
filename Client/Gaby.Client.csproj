@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.3" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\Gaby.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\User\Add.razor" />
+    <_ContentIncludedByDefault Remove="Pages\User\Form.razor" />
+    <_ContentIncludedByDefault Remove="Pages\User\List.razor" />
+    <_ContentIncludedByDefault Remove="Pages\User\Login.razor" />
+    <_ContentIncludedByDefault Remove="Pages\User\Logout.razor" />
+    <_ContentIncludedByDefault Remove="Pages\User\Update.razor" />
+    <_ContentIncludedByDefault Remove="Pages\User\View.razor" />
+  </ItemGroup>
+
+</Project>

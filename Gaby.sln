@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gaby.Server", "Server\Gaby.Server.csproj", "{30FC82CA-A102-4E9D-9337-9AE7F613452A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gaby.Client", "Client\Gaby.Client.csproj", "{8F66B98C-49BE-49FB-B894-6FAB1530BAF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gaby.Shared", "Shared\Gaby.Shared.csproj", "{E720E648-10C1-4E07-B3EE-AD159FD65EC3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{30FC82CA-A102-4E9D-9337-9AE7F613452A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30FC82CA-A102-4E9D-9337-9AE7F613452A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30FC82CA-A102-4E9D-9337-9AE7F613452A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30FC82CA-A102-4E9D-9337-9AE7F613452A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F66B98C-49BE-49FB-B894-6FAB1530BAF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F66B98C-49BE-49FB-B894-6FAB1530BAF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F66B98C-49BE-49FB-B894-6FAB1530BAF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F66B98C-49BE-49FB-B894-6FAB1530BAF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E720E648-10C1-4E07-B3EE-AD159FD65EC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E720E648-10C1-4E07-B3EE-AD159FD65EC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E720E648-10C1-4E07-B3EE-AD159FD65EC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E720E648-10C1-4E07-B3EE-AD159FD65EC3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {061FC299-A475-40EC-A14C-3059D1AF32F0}
+	EndGlobalSection
+EndGlobal

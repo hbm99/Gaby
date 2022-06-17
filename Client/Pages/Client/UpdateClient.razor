@@ -1,0 +1,163 @@
+﻿@page "/client/updateclient/{id}"
+@attribute [Microsoft.AspNetCore.Authorization.Authorize]
+@inject IAlertService AlertService
+@inject Gaby.Client.Services.Client.IClientService ClientService
+@inject NavigationManager navManager
+@inject Gaby.Client.Shared.PageHistoryState PageHistoryState
+@using Gaby.Client.Services.SharedServices
+@using Gaby.Shared.Model
+
+<PageTitle>Client Update</PageTitle>
+<h1>Editando cliente...</h1>
+<br />
+
+<form>
+    <h4>Ficha</h4>
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label for="inputName1">Nombre :</label>
+            <input @bind="client.Name" type="text" class="form-control" id="inputName1" placeholder="actual">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputPhone1">Teléfono :</label>
+            <input @bind="client.PhoneNumber" type="tel" class="form-control" id="inputPhone1" placeholder="actual" pattern="[5,7]{1}[0-9]{7}">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputAilments">Padecimientos :</label>
+            <input @bind="client.Ailments" type="tel" class="form-control" id="inputAilments" placeholder="actual">
+        </div>
+        <div>
+            <label for="space1">  </label>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputGender">Género :</label>
+            <select @bind="client.Gender" type="number" id="inputGender" class="form-control">
+                <option selected>--</option>
+                <option>Masculino</option>
+                <option>Femenino</option>
+                <option>Otro</option>
+            </select>
+        </div>
+        @*<div class="form-group col-md-3">
+            <label for="inputTimeIn">Horario de entrada :</label>
+            <input @bind="client.CheckInTime" type="time" class="form-control" id="inputTimeIn">
+        </div>*@
+        @*<div class="form-group col-md-3">
+            <label for="inputTimeOut">Horario de salida :</label>
+            <input @bind="client.CheckOutTime" type="time" class="form-control" id="inputTimeOut">
+        </div>*@
+    </div>
+    <br />
+    <h4>Dirección</h4>
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label for="inputAddress1">Calle :</label>
+            <input @bind="client.Address.MainSt" type="text" class="form-control" id="inputAddress1" placeholder="actual">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputAddress2">Entrecalle :</label>
+            <input @bind="client.Address.SecondarySt1" type="text" class="form-control" id="inputAddress2" placeholder="actual">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputAddress2">Entrecalle :</label>
+            <input @bind="client.Address.SecondarySt2" type="text" class="form-control" id="inputAddress2" placeholder="actual">
+        </div>
+        <div>
+            <label for="space2">  </label>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="inputAddress3">Número :</label>
+            <input @bind="client.Address.HouseNumber" type="number" class="form-control" id="inputAddress3" placeholder="actual">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputAddress5">Comunidad :</label>
+            <select @bind="client.Address.Community" id="inputAddress5" class="form-control">
+                <option selected>--</option>
+                <option>Casino Deportivo</option>
+                <option>Otra comunidad</option>
+            </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputAddress4">Municipio :</label>
+            <select @bind="client.Address.Municipality" id="inputAddress4" class="form-control">
+                <option selected>--</option>
+                <option>Cerro</option>
+                <option>Boyeros</option>
+                <option>10 de Octubre</option>
+                <option>Arroyo Naranjo</option>
+                <option>Centro Habana</option>
+                <option>Plaza de la Revolución</option>
+                <option>Habana Vieja</option>
+                <option>Playa</option>
+                <option>Marianao</option>
+                <option>Lisa</option>
+                <option>Regla</option>
+                <option>San Miguel del Padrón</option>
+                <option>Guanabacoa</option>
+                <option>Habana del Este</option>
+                <option>Cotorro</option>
+            </select>
+        </div>
+    </div>
+    <br />
+    <button type="button" class="btn btn-success" @onclick="_UpdateClient">Agregar</button>
+</form>
+
+@code {
+
+    bool loading = false;
+
+    [Parameter]
+    public string Id { get; set; }
+
+    MemberClient client = new MemberClient
+    {
+        Name = "",
+        //CheckInTime = default(TimeOnly),
+        //CheckOutTime = default(TimeOnly),
+        Gender = Gender.Other,
+        PhoneNumber = "",
+        Active = true,
+        Address = new Gaby.Shared.Utils.HomeAddress
+        {
+            MainSt = "",
+            SecondarySt1 = "",
+            SecondarySt2 = "",
+            Community = "",
+            Municipality = "",
+            HouseNumber = -1
+        },
+        Ailments = ""
+    };
+
+    bool A = true;
+
+    protected async override Task OnParametersSetAsync()
+    {
+        client = await ClientService.GetClient(int.Parse(Id));
+    }
+
+    async Task _UpdateClient()
+    {
+        loading = true;
+        try
+        {
+            await ClientService.UpdateClient(client);
+            //AlertService.Success("Cliente modificado satisfactoriamente", keepAfterRouteChange: true);
+            if (PageHistoryState.CanGoBack())
+            {
+                navManager.NavigateTo(PageHistoryState.GetGoBackPage());
+            }
+            else
+            {
+                navManager.NavigateTo("/client/1");
+            }
+        }
+        catch (Exception ex)
+        {
+            //AlertService.Error(ex.Message);
+            loading = false;
+            StateHasChanged();
+        }
+    }
+}

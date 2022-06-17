@@ -1,0 +1,10 @@
+@page "/user/logout"
+@using Gaby.Client.Services.SharedServices
+@inject IUserService userService
+
+@code {
+    protected override async void OnInitialized()
+    {
+        await userService.Logout();
+    }
+}
