@@ -6,7 +6,7 @@ namespace Gaby.Server.Controllers
 {
     public abstract class GenericController<T, TRepo> : ControllerBase where T : class where TRepo : IGenericRepository<T>  
     {
-        private IGenericRepository<T> repository;
+        protected IGenericRepository<T> repository;
         public GenericController(IGenericRepository<T> genericRepository)
         {
             repository = genericRepository;

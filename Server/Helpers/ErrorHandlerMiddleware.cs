@@ -1,4 +1,4 @@
-namespace Blazorcrud.Server.Helpers;
+namespace Gaby.Server.Helpers;
 
 using Gaby.Server.Helpers;
 using System.Net;

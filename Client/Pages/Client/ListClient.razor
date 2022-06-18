@@ -114,7 +114,7 @@
 
         protected override async Task OnParametersSetAsync()
         {
-            clients = await ClientService.GetClient(null, Page); 
+            clients = await ClientService.GetClients(null, Page); 
             PageHistoryState.AddPageToHistory(UriHelper.Uri);
         }
 
@@ -130,17 +130,17 @@
         { 
             if (string.IsNullOrEmpty(SearchTerm))
             {
-                clients = await ClientService.GetClient(null, Page);
+                clients = await ClientService.GetClients(null, Page);
                 return;
             }
-            clients = await ClientService.GetClient(SearchTerm, Page);
+            clients = await ClientService.GetClients(SearchTerm, Page);
             StateHasChanged();
         }
 
         protected async Task ClearSearch()
         {
             SearchTerm = string.Empty;
-            clients = await ClientService.GetClient(SearchTerm, Page);
+            clients = await ClientService.GetClients(SearchTerm, Page);
             PageHistoryState.AddPageToHistory(UriHelper.Uri);
             StateHasChanged();
         }
@@ -156,7 +156,7 @@
             var __client = _client;
             __client.Active = false;
             await ClientService.DeleteClient(__client.ClientId);
-            clients = await ClientService.GetClient(null, Page);
+            clients = await ClientService.GetClients(null, Page);
             StateHasChanged();
         }
     }

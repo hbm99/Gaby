@@ -1,4 +1,4 @@
-namespace Blazorcrud.Server.Authorization;
+namespace Gaby.Server.Authorization;
 
 using Gaby.Shared.Model;
 using Microsoft.AspNetCore.Mvc;

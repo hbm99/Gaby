@@ -1,11 +1,9 @@
 using Gaby.Server.Infrastructure;
-using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication;
 using Gaby.Server.Infrastructure.Repository;
 using Gaby.Server.Authorization;
-using Blazorcrud.Server.Authorization;
-using Blazorcrud.Server.Helpers;
+using Gaby.Server.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +24,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IJwtUtils, JwtUtils>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
+builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 
 var app = builder.Build();
 

@@ -14,7 +14,7 @@ namespace Gaby.Client.Services.Client
             _httpService = httpService;
         }
 
-        public async Task<PagedResult<MemberClient>> GetClient(string? name, string page)
+        public async Task<PagedResult<MemberClient>> GetClients(string? name, string page)
         {
             return await _httpService.Get<PagedResult<MemberClient>>("api/client" + "?page=" + page + "&name=" + name);
         }
