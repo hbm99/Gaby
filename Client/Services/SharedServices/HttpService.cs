@@ -132,7 +132,7 @@ public class HttpService : IHttpService
         var user = await _localStorageService.GetItem<User>("user");
         var isApiUrl = !request.RequestUri.IsAbsoluteUri;
         if (user != null && isApiUrl)
-            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", user.Token);
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", "token"); //user.Token);
     }
 
     private async Task handleErrors(HttpResponseMessage response)

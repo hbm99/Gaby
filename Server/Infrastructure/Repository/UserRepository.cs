@@ -33,7 +33,7 @@ namespace Gaby.Server.Infrastructure.Repository
             response.LastName = _user.LastName;
             response.FirstName = _user.FirstName;
             response.Username = _user.Username;
-            response.Token = _jwtUtils.GenerateToken(_user);
+            //response.Token = _jwtUtils.GenerateToken(_user);
             return response;
         }
 
