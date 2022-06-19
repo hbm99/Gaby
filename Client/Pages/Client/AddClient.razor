@@ -3,6 +3,7 @@
 @using Gaby.Shared.Model
 @inject PageHistoryState PageHistoryState
 @inject IClientService clientservice
+@inject NavigationManager navManager
 <h3>Creando cliente...</h3>
 <br />
 
@@ -135,6 +136,14 @@
 
      async Task AddMember()
     {
-        await clientservice.AddClient(client);
+         try
+         {
+             await clientservice.AddClient(client); 
+             navManager.NavigateTo(PageHistoryState.CanGoBack() ? PageHistoryState.GetGoBackPage() : "/client/1");
+         }
+         catch (Exception ex)
+         {
+             StateHasChanged();
+         }
     }
 }
