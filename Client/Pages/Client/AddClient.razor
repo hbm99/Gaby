@@ -1,10 +1,6 @@
 ﻿@page "/client/createclient"
 @using Gaby.Client.Services.Client
 @using Gaby.Shared.Model
-@*@attribute [Microsoft.AspNetCore.Authorization.Authorize]*@
-@*@inject IAlertService AlertService
-@inject Gaby.Client.Services.Client.IClientService ClientService
-@inject NavigationManager navManager*@
 @inject PageHistoryState PageHistoryState
 @inject IClientService clientservice
 <h3>Creando cliente...</h3>
@@ -32,7 +28,7 @@
         </div>
         <div class="form-group col-md-4">
             <label for="inputGender">Género :</label>
-            <select @bind="client.Gender" type="number" id="inputGender" class="form-control">
+            <select @bind="client.Gender" id="inputGender" class="form-control">
                 <option selected>--</option>
                 <option>Masculino</option>
                 <option>Femenino</option>
@@ -91,7 +87,7 @@
                     <option>Habana Vieja</option>
                     <option>Playa</option>
                     <option>Marianao</option>
-                    <option>Lisa</option>
+                    <option>La Lisa</option>
                     <option>Regla</option>
                     <option>San Miguel del Padrón</option>
                     <option>Guanabacoa</option>

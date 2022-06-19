@@ -1,0 +1,165 @@
+﻿@page "/gymservice/{Page}"
+
+@using Gaby.Client.Services.GymService
+@using Gaby.Client.Services.SharedServices
+@using Gaby.Shared.Model
+@using Gaby.Shared.Pager
+@inject IGymServiceService gymServiceService
+@inject IUserService userService
+@inject NavigationManager UriHelper
+@inject PageHistoryState PageHistoryState
+
+<PageTitle>GymService</PageTitle>
+
+<h1>Servicios</h1>
+<br />
+
+<form>  
+    @if (services == null)
+    {
+        <p><em>Cargando...</em></p>
+    }
+    else
+    {
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th style="width:20%">Id</th>
+                <th style="width:80%">Tipo de servicio</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var service in services.Results)
+            {
+                <tr>
+                    <td>@service.ServiceId</td>
+                    <td>@service.ServiceType.ServiceTypeName</td>
+                    <td style="white-space: nowrap">
+                        <button @*@onclick="@(() => DeleteGymService(service))"*@  disabled="@false" class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
+                            <span></span>
+                        </button>
+
+                    </td>
+                </tr>
+
+            }
+
+            </tbody>
+        </table>
+    }
+    <br />
+    <br />
+    
+    
+
+    <form class="form-group" method="post">
+        
+        <form>
+          <fieldset>
+            <legend>Nuevo Servicio</legend>
+              <div class="form-group">
+                  <div class="form-group">
+                      <div class="input-group mb-3">
+                          <select  @bind="gymservice.ServiceType.ServiceTypeName" id="inputAddress4" class="form-control" placeholder="Tipo de Servicio" aria-label="Tipo de servicio" aria-describedby="button-addon2">
+                              <option selected>--</option>
+                              <option>Spinning</option>
+                              <option>CardioGap</option>
+                          </select>
+                          <button class="btn btn-primary" type="button" id="button-addon2" @onclick="AddGymService">Agregar</button>
+                      </div>
+                  </div>
+              </div>
+          </fieldset>
+
+        </form>
+    </form>
+</form>
+
+@code {
+
+    [Parameter]
+    public string Page { get; set; } = "1";
+    
+    [Parameter]
+    public string SearchTerm { get; set; } = string.Empty;
+
+    /*string servicetype = "";
+    List<Service> services = new List<Service>();
+    { 
+        new Service(){ ServiceId = 1, ServiceType = new ServiceType(){ServiceTypeName = "spinning"}},
+        new Service(){ ServiceId = 2, ServiceType = new ServiceType(){ServiceTypeName = "cardio"}}
+
+    }*/
+
+
+    Service gymservice = new Service()
+    {
+        ServiceType = new ServiceType() { ServiceTypeName = "" }
+        // Active = true
+    };
+
+    protected PagedResult<Service> services;
+
+    //public bool LoggedIn => userService.User != null;
+
+    protected override void OnInitialized()
+    {
+        PageHistoryState.AddPageToHistory(UriHelper.Uri);
+        base.OnInitialized();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        services = await gymServiceService.GetServices(null, Page); 
+        PageHistoryState.AddPageToHistory(UriHelper.Uri);
+    }
+
+    protected async Task SearchBoxKeyPress(KeyboardEventArgs ev)
+    {
+        if (ev.Key == "Enter")
+        {
+            await SearchClick();
+        }
+    }
+
+    protected async Task SearchClick()
+    { 
+        if (string.IsNullOrEmpty(SearchTerm))
+        {
+            services = await gymServiceService.GetServices(null, Page);
+            return;
+        }
+        services = await gymServiceService.GetServices(SearchTerm, Page);
+        StateHasChanged();
+    }
+
+    protected async Task ClearSearch()
+    {
+        SearchTerm = string.Empty;
+        services = await gymServiceService.GetServices(SearchTerm, Page);
+        PageHistoryState.AddPageToHistory(UriHelper.Uri);
+        StateHasChanged();
+    }
+
+    protected void PagerPageChanged(int page)
+    {
+        UriHelper.NavigateTo("/gymservice/" + page);
+        PageHistoryState.AddPageToHistory(UriHelper.Uri);
+    }
+
+    private async void DeleteGymService(Service service)
+    {
+        var __service = service;
+        //__client.Active = false;
+        await gymServiceService.DeleteService(__service.ServiceId);
+        services = await gymServiceService.GetServices(null, Page);
+        StateHasChanged();
+    }
+    
+    async Task AddGymService()
+    {
+        await gymServiceService.AddService(gymservice);
+    }
+
+}

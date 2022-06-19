@@ -88,7 +88,7 @@ public class HttpService : IHttpService
 
     private async Task sendRequest(HttpRequestMessage request)
     {
-        await addJwtHeader(request);
+        //await addJwtHeader(request);
 
         // send request
         using var response = await _httpClient.SendAsync(request);

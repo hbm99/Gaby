@@ -1,5 +1,6 @@
 using Gaby.Client;
 using Gaby.Client.Services.Client;
+using Gaby.Client.Services.GymService;
 using Gaby.Client.Services.SharedServices;
 using Gaby.Client.Shared;
 using Microsoft.AspNetCore.Components.Web;
@@ -21,6 +22,8 @@ builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddScoped<IHttpService, HttpService>();
 builder.Services.AddScoped<ILocalStorageService, LocalStorageService>();
+
+builder.Services.AddScoped<IGymServiceService, GymServiceService>();
 
 builder.Services.AddScoped(x =>
 {

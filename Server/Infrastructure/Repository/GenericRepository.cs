@@ -68,8 +68,8 @@ namespace Gaby.Server.Infrastructure.Repository
 
         public async Task<T?> Update(T entity)
         {
-            var result = context.Set<T>().Contains<T>(entity);
-            if (result)
+            var result = context.Set<T>().First(p => p == entity);
+            if (result != null)
             {
 
                 // Update existing entity

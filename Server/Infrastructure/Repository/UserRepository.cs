@@ -1,7 +1,5 @@
-﻿using System;
-using Gaby.Server.Authorization;
+﻿using Gaby.Server.Authorization;
 using Gaby.Server.Helpers;
-using Gaby.Server.Infrastructure;
 using Gaby.Shared.Pager;
 using Gaby.Shared.Model;
 using Microsoft.EntityFrameworkCore;
@@ -11,12 +9,12 @@ namespace Gaby.Server.Infrastructure.Repository
     public class UserRepository : IUserRepository
     {
         private readonly GabyDbContext _appDbContext;
-        private IJwtUtils _jwtUtils;
+        //private IJwtUtils _jwtUtils;
 
-        public UserRepository(GabyDbContext appDbContext, IJwtUtils jwtUtils)
+        public UserRepository(GabyDbContext appDbContext) //, IJwtUtils jwtUtils)
         {
             _appDbContext = appDbContext;
-            _jwtUtils = jwtUtils;
+            //_jwtUtils = jwtUtils;
         }
 
         public AuthenticateResponse Authenticate(AuthenticateRequest request)
@@ -58,9 +56,9 @@ namespace Gaby.Server.Infrastructure.Repository
             }
         }
 
-        public async Task<User?> GetUser(int Id)
+        public async Task<User?> GetUser(int id)
         {
-            var result = await _appDbContext.Users.FirstOrDefaultAsync(u => u.Id == Id);
+            var result = await _appDbContext.Users.FirstOrDefaultAsync(u => u.Id == id);
             if (result != null)
             {
                 return result;
@@ -119,9 +117,9 @@ namespace Gaby.Server.Infrastructure.Repository
             return result;
         }
 
-        public async Task<User?> DeleteUser(int Id)
+        public async Task<User?> DeleteUser(int id)
         {
-            var result = await _appDbContext.Users.FirstOrDefaultAsync(u => u.Id == Id);
+            var result = await _appDbContext.Users.FirstOrDefaultAsync(u => u.Id == id);
 
             // cannot delete admin
             if (result.Username == "admin")

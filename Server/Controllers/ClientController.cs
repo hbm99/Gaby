@@ -29,13 +29,13 @@ namespace Gaby.Server.Controllers
         [HttpGet("{id}")]
         public override async Task<ActionResult> GetEntity(int id)
         {
-            return Ok(await base.GetEntity(id));
+            return await base.GetEntity(id);
         }
 
         [HttpPut]
-        public override async Task<ActionResult> UpdateEntity(MemberClient person)
+        public override async Task<ActionResult> UpdateEntity(MemberClient client)
         {
-            return Ok(await base.UpdateEntity(person));
+            return await base.UpdateEntity(client);
         }
 
     }
