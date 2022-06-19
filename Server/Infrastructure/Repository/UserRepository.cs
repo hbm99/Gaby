@@ -22,7 +22,7 @@ namespace Gaby.Server.Infrastructure.Repository
             var _user = _appDbContext.Users.SingleOrDefault(u => u.Username == request.Username);
 
             // validate
-            if (_user == null || !BCrypt.Net.BCrypt.Verify(request.Password, _user.PasswordHash))
+            if (_user == null || request.Password != _user.Password) //|| !BCrypt.Net.BCrypt.Verify(request.Password, _user.PasswordHash))
                 throw new AppException("Username or password is incorrect");
 
             // authentication successful

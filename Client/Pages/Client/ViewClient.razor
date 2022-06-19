@@ -4,7 +4,7 @@
 @using Gaby.Shared.Utils
 @inject IClientService ClientService
 @inject NavigationManager navManager
-@inject Gaby.Client.Shared.PageHistoryState PageHistoryState
+@inject PageHistoryState PageHistoryState
 
 <h1>Vista de cliente</h1>
 <br/>
@@ -27,10 +27,10 @@
             <th scope="row">Activo</th>
             <td>@client.Active</td>
         </tr>
-        @*<tr>
+        <tr>
             <th scope="row">Dirección</th>
             <td>@client.Address.ToString()</td>
-        </tr>*@
+        </tr>
         <tr>
             <th scope="row">Padecimientos</th>
             <td>@client.Ailments</td>
@@ -54,8 +54,8 @@
     MemberClient client = new MemberClient
     {
         Name = "",
-    //CheckInTime = default(TimeOnly),
-    //CheckOutTime = default(TimeOnly),
+        //CheckInTime = default(TimeOnly),
+        //CheckOutTime = default(TimeOnly),
         Gender = Gender.Other,
         PhoneNumber = "",
         Active = true,

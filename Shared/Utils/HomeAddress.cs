@@ -41,7 +41,7 @@ namespace Gaby.Shared.Utils
 
             public override string ToString()
             {
-                return MainSt + SecondarySt1 + SecondarySt2 + '#' +
+                return MainSt + " entre " + SecondarySt1 + " y " + SecondarySt2 + ", # " +
                        HouseNumber + ", " + Community + ", " + Municipality;
             }
     }

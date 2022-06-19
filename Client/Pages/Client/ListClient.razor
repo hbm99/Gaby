@@ -45,53 +45,56 @@
     {
         <table class="table table-striped">
             <thead>
-                <tr>
-                    <th style="width:25%">Nombre</th>
-                    @* <th style="width:25%">Horario de entrada</th> *@
-                    <th style="width:15%">Comunidad</th>
-                    <th style="width:30%">Teléfono</th>
-                    <th style="width:5%"></th>
-                </tr>
+            <tr>
+                <th style="width:25%">Nombre</th>
+                <th style="width:25%">Género</th>
+                <th style="width:15%">Comunidad</th>
+                <th style="width:30%">Teléfono</th>
+                <th style="width:5%"></th>
+            </tr>
             </thead>
             <tbody>
-                @foreach (var client in clients.Results)
-                    {
-                    <tr>
-                        <td>@client.Name</td>
-                        @*<td>@client.CheckInTime</td>*@
-                        <td>@client.Address.Community</td>
-                        <td>@client.PhoneNumber</td>
-                        <td style="white-space: nowrap">
+            @foreach (var client in clients.Results)
+            {
+                <tr>
+                    <td>@client.Name</td>
+                    <td>@client.Gender</td>
+                    <td>@client.Address.Community</td>
+                    <td>@client.PhoneNumber</td>
+                    <td style="white-space: nowrap">
 
-                            <NavLink href="@($"/client/viewclient/{client.ClientId}")" class="oi oi-eye text-primary mr-3 nounderline"></NavLink>
-                            @if (LoggedIn)
+                        <NavLink href="@($"/client/viewclient/{client.ClientId}")" class="oi oi-eye text-primary mr-3 nounderline"></NavLink>
+                        @if (LoggedIn)
+                        {
+                            <NavLink href="@($"/client/updateclient/{client.ClientId}")" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
+
+                            @if (client.Active == false)
                             {
-                                <NavLink href="@($"/client/updateclient/{client.ClientId}")" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
-
-                                @if (client.Active == false)
-                                {
-                                    <button @onclick="@(() => DeleteClient(client))" disabled="@client.Active" class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
-                                        <span class="spinner-border spinner-border-sm"></span>
-                                    </button>
-                                }
-                                else
-                                {
-                                    <button @onclick="@(() => DeleteClient(client))" disabled="@client.Active" class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
-                                        <span></span>
-                                    </button>
-                                }
+                                <button @onclick="@(() => DeleteClient(client))" disabled="@client.Active" class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
+                                    <span class="spinner-border spinner-border-sm"></span>
+                                </button>
                             }
+                            else
+                            {
+                                <button @onclick="@(() => DeleteClient(client))" disabled="@client.Active" class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
+                                    <span></span>
+                                </button>
+                            }
+                        }
 
-                        </td>
-                    </tr>
+                    </td>
+                </tr>
 
-                    }
+            }
             </tbody>
         </table>
         <Pager Result=@clients PageChanged=PagerPageChanged />
-
     }
-    </form>
+</form>
+
+
+
+
 
 @code {
     [Parameter]
@@ -104,60 +107,60 @@
         
     protected PagedResult<MemberClient> clients;
 
-        public bool LoggedIn => userService.User != null;
+    public bool LoggedIn => userService.User != null;
 
-        protected override void OnInitialized()
+    protected override void OnInitialized()
+    {
+        PageHistoryState.AddPageToHistory(UriHelper.Uri);
+        base.OnInitialized();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        clients = await ClientService.GetClients(null, Page); 
+        PageHistoryState.AddPageToHistory(UriHelper.Uri);
+    }
+
+    protected async Task SearchBoxKeyPress(KeyboardEventArgs ev)
+    {
+        if (ev.Key == "Enter")
         {
-            PageHistoryState.AddPageToHistory(UriHelper.Uri);
-            base.OnInitialized();
-        }
-
-        protected override async Task OnParametersSetAsync()
-        {
-            clients = await ClientService.GetClients(null, Page); 
-            PageHistoryState.AddPageToHistory(UriHelper.Uri);
-        }
-
-        protected async Task SearchBoxKeyPress(KeyboardEventArgs ev)
-        {
-            if (ev.Key == "Enter")
-            {
-                await SearchClick();
-            }
-        }
-
-        protected async Task SearchClick()
-        { 
-            if (string.IsNullOrEmpty(SearchTerm))
-            {
-                clients = await ClientService.GetClients(null, Page);
-                return;
-            }
-            clients = await ClientService.GetClients(SearchTerm, Page);
-            StateHasChanged();
-        }
-
-        protected async Task ClearSearch()
-        {
-            SearchTerm = string.Empty;
-            clients = await ClientService.GetClients(SearchTerm, Page);
-            PageHistoryState.AddPageToHistory(UriHelper.Uri);
-            StateHasChanged();
-        }
-
-        protected void PagerPageChanged(int page)
-        {
-            UriHelper.NavigateTo("/client/" + page);
-            PageHistoryState.AddPageToHistory(UriHelper.Uri);
-        }
-
-        private async void DeleteClient(MemberClient _client)
-        {
-            var __client = _client;
-            __client.Active = false;
-            await ClientService.DeleteClient(__client.ClientId);
-            clients = await ClientService.GetClients(null, Page);
-            StateHasChanged();
+            await SearchClick();
         }
     }
+
+    protected async Task SearchClick()
+    { 
+        if (string.IsNullOrEmpty(SearchTerm))
+        {
+            clients = await ClientService.GetClients(null, Page);
+            return;
+        }
+        clients = await ClientService.GetClients(SearchTerm, Page);
+        StateHasChanged();
+    }
+
+    protected async Task ClearSearch()
+    {
+        SearchTerm = string.Empty;
+        clients = await ClientService.GetClients(SearchTerm, Page);
+        PageHistoryState.AddPageToHistory(UriHelper.Uri);
+        StateHasChanged();
+    }
+
+    protected void PagerPageChanged(int page)
+    {
+        UriHelper.NavigateTo("/client/" + page);
+        PageHistoryState.AddPageToHistory(UriHelper.Uri);
+    }
+
+    private async void DeleteClient(MemberClient _client)
+    {
+        var __client = _client;
+        __client.Active = false;
+        await ClientService.DeleteClient(__client.ClientId);
+        clients = await ClientService.GetClients(null, Page);
+        StateHasChanged();
+    }
+}
 

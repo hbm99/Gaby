@@ -31,7 +31,7 @@ namespace Gaby.Server.Infrastructure.Repository
         }
         public PagedResult<T> GetAll([FromQuery] string? name , int page) 
         {
-            int pageSize = 5;
+            int pageSize = 10;
 
             if (name != null)
             {
