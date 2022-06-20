@@ -1,7 +1,73 @@
 ﻿@page "/employee/viewemployee/{id}"
+@using Gaby.Shared.Model
+@using Gaby.Client.Services.Employee
+@inject IEmployeeService EmployeeService
+@inject PageHistoryState PageHistoryState
 
-<h3>ViewEmployee</h3>
+<h4>Empleado</h4>
+<br/>
+
+<table class="table col-md-6">
+    <tbody>
+        <tr>
+            <th scope="row">Nombre</th>
+            <td>@employee.Name</td>
+        </tr>
+        <tr>
+            <th scope="row">Carnet de identidad</th>
+            <td>@employee.EmployeeId</td>
+        </tr>
+        <tr>
+            <th scope="row">Salario Básico :</th>
+            <td>@basicSalary</td>
+        </tr>
+        @if (employee is not CleanerEmployee)
+        {
+            <tr>
+                <th scope="row">Salario Extra :</th>
+                <td>@extraSalary</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="form-group">
+    @if (PageHistoryState.CanGoBack()){
+        <NavLink href="@PageHistoryState.GetGoBackPage()" class="btn btn-link">Atrás</NavLink>
+    }
+    else{
+        <NavLink href="/employee" class="btn btn-link">Atrás</NavLink>
+    }
+</div>
 
 @code {
+    [Parameter]
+    public string Id { get; set; }
+
+    Employee employee = null!;
+    decimal basicSalary;
+    decimal extraSalary;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        employee = await EmployeeService.GetEmployee(Id);
+
+        switch (employee)
+        {
+            case Coach coach:
+                basicSalary = coach.BasicSalary;
+                extraSalary = coach.ExtraSalary;
+                break;
+            case MaintenanceEmployee maintenanceEmployee:
+                basicSalary = maintenanceEmployee.BasicSalary;
+                extraSalary = maintenanceEmployee.ExtraSalary;
+                break;
+            case CleanerEmployee cleanerEmployee:
+                basicSalary = cleanerEmployee.BasicSalary;
+                extraSalary = 0;
+                break;
+        }
+    }
+
     
 }
