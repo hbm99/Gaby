@@ -3,7 +3,7 @@
 @using Gaby.Client.Services.SharedServices
 @using Gaby.Shared.Model
 @using Gaby.Shared.Pager
-@inject IClientService ClientService
+@inject IClientService clientService
 @inject IUserService userService
 @inject NavigationManager UriHelper
 @inject PageHistoryState PageHistoryState
@@ -92,10 +92,6 @@
     }
 </form>
 
-
-
-
-
 @code {
     [Parameter]
     public string Page { get; set; } = "1";
@@ -117,7 +113,7 @@
 
     protected override async Task OnParametersSetAsync()
     {
-        clients = await ClientService.GetClients(null, Page); 
+        clients = await clientService.GetClients(null, Page);
         PageHistoryState.AddPageToHistory(UriHelper.Uri);
     }
 
@@ -133,17 +129,17 @@
     { 
         if (string.IsNullOrEmpty(SearchTerm))
         {
-            clients = await ClientService.GetClients(null, Page);
+            clients = await clientService.GetClients(null, Page);
             return;
         }
-        clients = await ClientService.GetClients(SearchTerm, Page);
+        clients = await clientService.GetClients(SearchTerm, Page);
         StateHasChanged();
     }
 
     protected async Task ClearSearch()
     {
         SearchTerm = string.Empty;
-        clients = await ClientService.GetClients(SearchTerm, Page);
+        clients = await clientService.GetClients(SearchTerm, Page);
         PageHistoryState.AddPageToHistory(UriHelper.Uri);
         StateHasChanged();
     }
@@ -158,8 +154,8 @@
     {
         var __client = _client;
         __client.Active = false;
-        await ClientService.DeleteClient(__client.ClientId);
-        clients = await ClientService.GetClients(null, Page);
+        await clientService.DeleteClient(__client.ClientId);
+        clients = await clientService.GetClients(null, Page);
         StateHasChanged();
     }
 }

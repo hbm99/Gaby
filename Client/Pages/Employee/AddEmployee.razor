@@ -1,0 +1,39 @@
+﻿@page "/employee/createemployee"
+
+<h4>Agregar Empleado</h4>
+
+<form>
+    <h4>Ficha</h4>
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label for="inputFunction">Especialidad :</label>
+            <select type="number" id="inputFunction" class="form-control">
+                <option selected>--</option>
+                <option>Entrenador</option>
+                <option>Limpieza</option>
+                <option>Mantenimiento</option>
+            </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputName1">Nombre y apellidos :</label>
+            <input  type="text" class="form-control" id="inputName1" placeholder="Ej: Camilo Manresa León">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputBasicSalary1">Salario Básico (Opcional) :</label>
+            <input  type="number" class="form-control" id="inputBasicSalary1" placeholder="Ej: 2500" >
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputExtraSalary">Salario Extra (Opcional) :</label>
+            <input  type="number" class="form-control" id="inputExtraSalary" placeholder="Ej: 1500">
+        </div>
+        <div>
+            <label for="space1">  </label>
+        </div>
+        
+    </div>
+    <button type="button" class="btn btn-success" >Agregar</button>
+</form>
+
+@code {
+    
+}

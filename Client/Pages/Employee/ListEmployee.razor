@@ -1,0 +1,196 @@
+﻿@page "/employee"
+@using Gaby.Shared.Model
+@using Gaby.Client.Services.SharedServices
+@using Gaby.Client.Services.Employee
+@inject CoachService coachService
+@inject CleanerEmployeeService cleanerEmployeeService
+@inject MaintenanceEmployeeService maintenanceEmployeeService
+@inject IEmployeeService employeeService
+@inject NavigationManager UriHelper
+@inject IUserService userService
+
+<h4>Empleados</h4>
+
+<div class="row mb-3">
+
+    <div class="input-group col-md-5 text-md-right">
+        <input name="EmployeeSearchInput" type="text" class="form-control" placeholder="Nombre" @bind="SearchTerm" @onkeyup="SearchBoxKeyPress" />
+        <div class="input-group-btn">
+            <button name="EmployeeSearchButton" class="btn btn-default" @onclick="SearchClick" >
+                <i class="oi oi-magnifying-glass" title="buscar" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="input-group-btn">
+            <button name="EmployeeSearchClear" class="btn btn-default" @onclick="ClearSearch">
+                <i class="oi oi-x" title="limpiar" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="input-group-btn">
+            @if (LoggedIn)
+            {
+                <button name="EmployeeAddButton" class="btn btn-default" @onclick="AddEmployee">
+                    <i class="oi oi-plus" title="agregar nuevo trabajador" aria-hidden="true"></i>
+                    @* <NavLink href="/employee/createemployee"></NavLink> *@
+                </button>
+            }
+        </div>
+    </div>
+</div>
+
+
+<h5>Entrenadores</h5>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width:25%">Nombre y Apellidos</th>
+            <th style="width:25%">Salario Básico</th>
+            <th style="width:15%">Salario Extra</th>
+            <th style="width:5%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Coach worker in coaches)
+        {
+            <tr>
+                <td>@worker.Name</td>
+                <td>@worker.BasicSalary</td>
+                <td>@worker.ExtraSalary</td>
+                <td style="white-space: nowrap">
+                    <NavLink href="@($"/employee/viewemployee/{worker.EmployeeId}")" class="oi oi-eye text-primary mr-3 nounderline"></NavLink>
+
+                    <NavLink href="@($"/employee/editemployee/{worker.EmployeeId}")" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
+
+                    <button @onclick="@(() => DeleteEmployee(worker))"  class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
+                        <span></span>
+                    </button>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h5>Trabajadores de mantenimiento</h5>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width:25%">Nombre y Apellidos</th>
+            <th style="width:25%">Salario Básico</th>
+            <th style="width:15%">Salario Extra</th>
+            <th style="width:5%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (MaintenanceEmployee worker in maintenanceEmployees)
+        {
+            <tr>
+                <td>@worker.Name</td>
+                <td>@worker.BasicSalary</td>
+                <td>@worker.ExtraSalary</td>
+                <td style="white-space: nowrap">
+                    <NavLink href="@($"/employee/viewemployee/{worker.EmployeeId}")" class="oi oi-eye text-primary mr-3 nounderline"></NavLink>
+
+                    <NavLink href="@($"/employee/editemployee/{worker.EmployeeId}")" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
+
+                    <button @onclick="@(() => DeleteEmployee(worker))"  class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
+                        <span></span>
+                    </button>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h5>Trabajadores de limpieza</h5>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width:25%">Nombre y Apellidos</th>
+            <th style="width:25%">Salario Básico</th>
+            <th style="width:5%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (CleanerEmployee worker in cleanerEmployees)
+        {
+            <tr>
+                <td>@worker.Name</td>
+                <td>@worker.BasicSalary</td>
+                <td style="white-space: nowrap">
+                    <NavLink href="@($"/employee/viewemployee/{worker.EmployeeId}")" class="oi oi-eye text-primary mr-3 nounderline"></NavLink>
+
+                    <NavLink  href="@($"/employee/editemployee/{worker.EmployeeId}")" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
+
+                    <button @onclick="@(() => DeleteEmployee(worker))"  class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
+                        <span></span>
+                    </button>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    [Parameter]
+    public string SearchTerm { get; set; } = string.Empty;
+    
+    public bool LoggedIn => userService.User != null;
+    
+    IList<Employee> coaches;
+    IList<Employee> maintenanceEmployees;
+    IList<Employee> cleanerEmployees;
+    IList<Employee> employees;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        coaches = await coachService.GetEmployees(null);
+        maintenanceEmployees = await maintenanceEmployeeService.GetEmployees(null);
+        cleanerEmployees = await cleanerEmployeeService.GetEmployees(null);
+        employees = await employeeService.GetEmployees(null);
+    }
+    
+    protected void AddEmployee()
+    {
+        UriHelper.NavigateTo("/employee/createemployee");
+    }
+    
+    private async void DeleteEmployee(Employee employee)
+    {
+        var _employee = employee;
+        // _employee.IsDeleting = true;
+        await employeeService.DeleteEmployee(_employee.EmployeeId);
+        employees = await employeeService.GetEmployees(null);
+        StateHasChanged();
+    }
+    
+    protected async Task SearchBoxKeyPress(KeyboardEventArgs ev)
+    {
+        if (ev.Key == "Enter")
+        {
+            await SearchClick();
+        }
+    }
+    
+    protected async Task SearchClick()
+    { 
+        if (string.IsNullOrEmpty(SearchTerm))
+        {
+            employees = await employeeService.GetEmployees(null);
+            return;
+        }
+        employees = await employeeService.GetEmployees(SearchTerm);
+        StateHasChanged();
+    }
+    
+    protected async Task ClearSearch()
+    {
+        SearchTerm = string.Empty;
+        employees = await employeeService.GetEmployees(SearchTerm);
+        StateHasChanged();
+    }
+}
