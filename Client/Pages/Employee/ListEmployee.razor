@@ -2,12 +2,12 @@
 @using Gaby.Shared.Model
 @using Gaby.Client.Services.SharedServices
 @using Gaby.Client.Services.Employee
-@inject CoachService coachService
-@inject CleanerEmployeeService cleanerEmployeeService
-@inject MaintenanceEmployeeService maintenanceEmployeeService
-@inject IEmployeeService employeeService
+@inject ICoachService CoachService
+@inject ICleanerEmployeeService CleanerEmployeeService
+@inject IMaintenanceEmployeeService MaintenanceEmployeeService
+@inject IEmployeeService EmployeeService
 @inject NavigationManager UriHelper
-@inject IUserService userService
+@inject IUserService UserService
 
 <h4>Empleados</h4>
 
@@ -139,7 +139,7 @@
     [Parameter]
     public string SearchTerm { get; set; } = string.Empty;
     
-    public bool LoggedIn => userService.User != null;
+    public bool LoggedIn => UserService.User != null;
     
     IList<Employee> coaches;
     IList<Employee> maintenanceEmployees;
@@ -148,10 +148,10 @@
 
     protected override async Task OnParametersSetAsync()
     {
-        coaches = await coachService.GetEmployees(null);
-        maintenanceEmployees = await maintenanceEmployeeService.GetEmployees(null);
-        cleanerEmployees = await cleanerEmployeeService.GetEmployees(null);
-        employees = await employeeService.GetEmployees(null);
+        coaches = await CoachService.GetEmployees(null);
+        maintenanceEmployees = await MaintenanceEmployeeService.GetEmployees(null);
+        cleanerEmployees = await CleanerEmployeeService.GetEmployees(null);
+        employees = await EmployeeService.GetEmployees(null);
     }
     
     protected void AddEmployee()
@@ -163,8 +163,8 @@
     {
         var _employee = employee;
         // _employee.IsDeleting = true;
-        await employeeService.DeleteEmployee(_employee.EmployeeId);
-        employees = await employeeService.GetEmployees(null);
+        await EmployeeService.DeleteEmployee(_employee.EmployeeId);
+        employees = await EmployeeService.GetEmployees(null);
         StateHasChanged();
     }
     
@@ -180,17 +180,17 @@
     { 
         if (string.IsNullOrEmpty(SearchTerm))
         {
-            employees = await employeeService.GetEmployees(null);
+            employees = await EmployeeService.GetEmployees(null);
             return;
         }
-        employees = await employeeService.GetEmployees(SearchTerm);
+        employees = await EmployeeService.GetEmployees(SearchTerm);
         StateHasChanged();
     }
     
     protected async Task ClearSearch()
     {
         SearchTerm = string.Empty;
-        employees = await employeeService.GetEmployees(SearchTerm);
+        employees = await EmployeeService.GetEmployees(SearchTerm);
         StateHasChanged();
     }
 }

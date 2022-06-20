@@ -3,7 +3,7 @@ using Gaby.Shared.Model;
 
 namespace Gaby.Client.Services.Employee;
 
-public class CleanerEmployeeService : EmployeeService
+public class CleanerEmployeeService : EmployeeService, ICleanerEmployeeService
 {
     public CleanerEmployeeService(IHttpService httpService) : base(httpService)
     {

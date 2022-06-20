@@ -3,7 +3,7 @@ using Gaby.Shared.Model;
 
 namespace Gaby.Client.Services.Employee;
 
-public class CoachService : EmployeeService
+public class CoachService : EmployeeService, ICoachService
 {
     public CoachService(IHttpService httpService) : base(httpService)
     {

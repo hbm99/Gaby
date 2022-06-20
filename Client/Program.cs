@@ -28,9 +28,9 @@ builder.Services.AddScoped<IGymServiceService, GymServiceService>();
 
 // for ListEmployee.razor
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
-builder.Services.AddScoped<IEmployeeService, CoachService>();
-builder.Services.AddScoped<IEmployeeService, CleanerEmployeeService>();
-builder.Services.AddScoped<IEmployeeService, MaintenanceEmployeeService>();
+builder.Services.AddScoped<ICoachService, CoachService>();
+builder.Services.AddScoped<ICleanerEmployeeService, CleanerEmployeeService>();
+builder.Services.AddScoped<IMaintenanceEmployeeService, MaintenanceEmployeeService>();
 
 
 builder.Services.AddScoped(x =>
