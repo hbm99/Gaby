@@ -1,19 +1,21 @@
 ﻿@page "/equipment/{Page}"
 
 @using Gaby.Client.Services.Equipment
+@using Gaby.Client.Services.SharedServices
 @using Gaby.Shared.Model
 @using Gaby.Shared.Pager
 
 @inject NavigationManager UriHelper
 @inject PageHistoryState PageHistoryState
-@inject IEquipmentService equipmentService
+@inject IEquipmentService EquipmentService
+@inject IUserService UserService
 
-<h1>Equipos</h1>
+<h4>Equipos</h4>
 
 <div class="row mb-3">
 
     <div class="input-group col-md-5 text-md-right">
-        <input name="EquipmentSearchInput" type="text" class="form-control" placeholder="Nombre del Equipo" /><!--@bind="this.SearchTerm" @onkeyup="SearchBoxKeyPress"-->
+        <input name="EquipmentSearchInput" type="text" class="form-control" placeholder="Nombre del equipo" /><!--@bind="this.SearchTerm" @onkeyup="SearchBoxKeyPress"-->
         <div class="input-group-btn">
             <button name="EquipmentSearchButton" class="btn btn-default">
                 <i class="oi oi-magnifying-glass" title="buscar" aria-hidden="true"></i>
@@ -24,12 +26,14 @@
                 <i class="oi oi-x" title="limpiar" aria-hidden="true"></i>
             </button>
         </div>
-        <div class="input-group-btn">
-            <button name="EquipmentAddButton" class="btn btn-default" @onclick="AddNewEquipment">
-                <i class="oi oi-plus" title="agregar nuevo equipo" aria-hidden="true"></i>
-            </button>
-        </div>
     </div>
+</div>
+
+<div class="input-group-btn">
+    @if (LoggedIn)
+    {
+        <NavLink @onclick="AddNewEquipment" class="btn btn-sm btn-success mb-2">Añadir tipo de equipo</NavLink>
+    }
 </div>
 
 <table class="table table-striped">
@@ -49,7 +53,7 @@
                 <td>@eqt.Count</td>
                 <td>@SumExpenses(eqt)</td>
                 <td style="white-space: nowrap">
-                    <NavLink href="@($"/equipment/viewequipment/{eqt.EquipmentId}")" class="oi oi-eye text-primary mr-3 nounderline"></NavLink>
+                    <NavLink href="@($"/equipment/viewequipment/{eqt.EquipmentId}")" class="oi oi-eye text-blue-700 mr-3 nounderline"></NavLink>
 
                     <NavLink href="@($"/equipment/updateequipment/{eqt.EquipmentId}")" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
 
@@ -68,8 +72,10 @@
     public string Page { get; set; } = "1";
     [Parameter]
     public string SearchTerm { get; set; } = string.Empty;
+    
+    public bool LoggedIn => UserService.User != null;
 
-    protected PagedResult<Equipment> equipments = new PagedResult<Equipment>();
+    PagedResult<Equipment> equipments = new();
 
     protected override void OnInitialized()
     {
@@ -79,7 +85,7 @@
 
     protected override async Task OnParametersSetAsync()
     {
-        equipments = await equipmentService.GetEquipments(null, Page);
+        equipments = await EquipmentService.GetEquipments(null, Page);
         PageHistoryState.AddPageToHistory(UriHelper.Uri);
     }
 
@@ -87,10 +93,11 @@
     {
         UriHelper.NavigateTo("/equipment/addEquipment");
     }
+    
     private async void DeleteEquipment(Equipment _equipment)
     {
         var __equipment = _equipment;
-        await equipmentService.DeleteEquipment(__equipment.EquipmentId);
+        await EquipmentService.DeleteEquipment(__equipment.EquipmentId);
         //equipments = await equipmentService.GetEquipments(null, Page);
         //StateHasChanged();
     }

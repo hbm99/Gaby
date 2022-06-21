@@ -4,13 +4,12 @@
 @using Gaby.Client.Services.Equipment;
 
 @inject PageHistoryState PageHistoryState
-@inject IEquipmentService equipmentService
-@inject NavigationManager navManager
+@inject IEquipmentService EquipmentService
+@inject NavigationManager NavManager
 
 <h3> Agregar Equipo</h3>
 
 <form>
-    <h4>Ficha</h4>
     <div class="row">
         <div class="form-group col-md-4">
             <label for="inputName1">Tipo de Equipo</label>
@@ -35,8 +34,8 @@
     {
          try
          {
-             await equipmentService.AddEquipment(equipment); 
-             navManager.NavigateTo(PageHistoryState.CanGoBack() ? PageHistoryState.GetGoBackPage() : "/equipment/1");
+             await EquipmentService.AddEquipment(equipment); 
+             NavManager.NavigateTo(PageHistoryState.CanGoBack() ? PageHistoryState.GetGoBackPage() : "/equipment/1");
          }
          catch (Exception ex)
          {
