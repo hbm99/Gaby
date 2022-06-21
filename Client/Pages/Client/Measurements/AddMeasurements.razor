@@ -1,6 +1,10 @@
 @page "/client/updateclient/{id}/addmeasurements"
 @using Microsoft.AspNetCore.Components
+@using Gaby.Client.Services.Measurements
 @using Gaby.Shared.Model
+@using Gaby.Client.Services.Client
+@inject IMeasurementsService MeasurementsService
+@inject IClientService ClientService
 
 
 <h3>Nuevas medidas</h3>
@@ -86,7 +90,22 @@
     
     async Task AddClientMeasurements()
     {
-       // await measurementservice.AddClient(measurements);
+        try
+        {
+            await MeasurementsService.AddMeasurements(measurements); 
+            // navManager.NavigateTo(PageHistoryState.CanGoBack() ? PageHistoryState.GetGoBackPage() : "/client/1");
+        }
+        catch (Exception ex)
+        {
+            StateHasChanged();
+        }
+    }
+    
+    protected override async Task OnParametersSetAsync()
+    {
+        MemberClient client = await ClientService.GetClient(int.Parse(Id));
+        measurements.ClientId = int.Parse(Id);
+        measurements.MemberClient = client;
     }
     
 }

@@ -52,11 +52,14 @@
             {
                 navManager.NavigateTo(returnUrl);
             }
-                else{
-                if (PageHistoryState.CanGoBack()){
+            else
+            {
+                if (PageHistoryState.CanGoBack())
+                {
                     navManager.NavigateTo(PageHistoryState.GetGoBackPage());
                 }
-                else{
+                else
+                {
                     navManager.NavigateTo("/user/1");
                 }
             }
