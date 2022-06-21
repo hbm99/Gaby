@@ -38,6 +38,10 @@
 </table>
 
 <div class="form-group">
+    <NavLink href="@($"/client/viewclient/{Id}/viewmeasurements")" class="btn btn-sm btn-success mb-2">Ver medidas</NavLink>
+</div>
+
+<div class="form-group">
     @if (PageHistoryState.CanGoBack()){
         <NavLink href="@PageHistoryState.GetGoBackPage()" class="btn btn-link">Atrás</NavLink>
     }

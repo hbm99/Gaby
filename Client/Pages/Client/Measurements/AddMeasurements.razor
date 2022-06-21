@@ -1,0 +1,92 @@
+@page "/client/updateclient/{id}/addmeasurements"
+@using Microsoft.AspNetCore.Components
+@using Gaby.Shared.Model
+
+
+<h3>Nuevas medidas</h3>
+<br />
+
+<PageTitle>Measurements Addition</PageTitle>
+
+<form>
+    <h4>Ficha</h4>
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label for="inputHeight">Estatura :</label>
+            <input @bind="measurements.Height" type="number" min="0" step="0.01" class="form-control" id="inputHeight" >
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputWeight">Peso: :</label>
+            <input @bind="measurements.Weight" type="number" min=" 0" step="0.01" class="form-control" id="inputWeight">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputArmSize">Brazo Derecho :</label>
+            <input @bind="measurements.ArmSize" type="number" min="0" step="0.01" class="form-control" id="inputArmSize">
+        </div>
+        <div>
+            <label for="space1">  </label>
+        </div>
+        
+        <div class="form-group col-md-4">
+            <label for="inputCalfSize">Gemelo:</label>
+            <input @bind="measurements.CalfSize" type="number" min=" 0" step="0.01" class="form-control" id="inputCalfSize">
+        </div>
+        
+        <div class="form-group col-md-4">
+            <label for="inputChestSize">Pecho: </label>
+            <input @bind="measurements.ChestSize" type="number" min=" 0" step="0.01" class="form-control" id="inputChestSize">
+        </div>
+        
+        <div class="form-group col-md-4">
+            <label for="inputHipSize">Caderas:</label>
+            <input @bind="measurements.HipSize" type="number" min=" 0" step="0.01" class="form-control" id="inputHeapSize">
+        </div>
+        
+        <div>
+            <label for="space2">  </label>
+        </div>
+        
+        
+        <div class="form-group col-md-4">
+            <label for="inputThighSize">Muslo Derecho :</label>
+            <input @bind="measurements.ThighSize" type="number" min=" 0" step="0.01" class="form-control" id="inputThighSize">
+        </div>
+        
+        <div class="form-group col-md-4">
+            <label for="inputWaistSize">Cintura:</label>
+            <input @bind="measurements.WaistSize" type="number" min="0" step="0.01" class="form-control" id="inputWaistSize">
+        </div>
+        
+    </div>
+        <br />
+    <button type="button" class="btn btn-success" @onclick="AddClientMeasurements">Agregar</button>
+    
+</form>
+
+
+@code {
+    
+    [Parameter]
+    public string Id { get; set; }
+    
+    public static DateTime Today { get; }
+    
+    Measurements measurements = new Measurements
+    {
+        Height = 0,
+        ArmSize = 0,
+        ThighSize=0,
+        ChestSize = 0,
+        CalfSize = 0,
+        HipSize = 0,
+        WaistSize=0,
+        Weight=0,
+        MeasurementsDate = new DateOnly(Today.Date.Year, Today.Date.Month, Today.Date.Day)
+    };
+    
+    async Task AddClientMeasurements()
+    {
+       // await measurementservice.AddClient(measurements);
+    }
+    
+}

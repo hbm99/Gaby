@@ -1,0 +1,106 @@
+@page "/client/viewclient/{id}/viewmeasurements"
+@using Gaby.Client.Services.Measurements
+@using Gaby.Client.Services.SharedServices
+@using Gaby.Shared.Model
+@inject IMeasurementsService MeasurementsService
+@inject IUserService UserService
+
+
+<h4>Medidas</h4>
+
+<br/>
+
+<form>
+    <div class="row mb-3">
+        <div class="col-md-7">
+            @if (LoggedIn)
+            {
+                <NavLink href="@($"/client/updateclient/{Id}/addmeasurements")" class="btn btn-sm btn-success mb-2">Añadir medidas</NavLink>
+            }
+        </div>
+    </div>
+
+
+    @if (measurements == null)
+    {
+        <p><em>Cargando...</em></p>
+    }
+    else
+    {
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th style="width:20%">Fecha</th>
+                <th style="width:10%">Estatura</th>
+                <th style="width:10%">Brazo</th>
+                <th style="width:10%">Muslo</th>
+                <th style="width:10%">Pecho</th>
+                <th style="width:10%">Gemelo</th>
+                <th style="width:10%">Cadera</th>
+                <th style="width:10%">Cintura</th>
+                <th style="width:10%">Peso</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var m in measurements)
+            {
+                <tr>
+                    <td>@m.MeasurementsDate</td>
+                    <td>@m.Height</td>
+                    <td>@m.ArmSize</td>
+                    <td>@m.ThighSize</td>
+                    <td>@m.ChestSize</td>
+                    <td>@m.CalfSize</td>
+                    <td>@m.HipSize</td>
+                    <td>@m.WaistSize</td>
+                    <td>@m.Weight</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+
+    }
+</form>
+
+
+@code {
+    
+    [Parameter]
+    public string Id { get; set; }
+
+    public bool LoggedIn => UserService.User != null;
+
+    IList<Measurements> measurements = new List<Measurements>()
+    {
+        new Measurements
+        {
+            MeasurementsId = 1, ClientId = 1,
+            MeasurementsDate = new DateOnly(2022, 7, 1), Height = 1.6f, ArmSize = 50,
+            ThighSize = 30, CalfSize = 45, HipSize = 45, WaistSize = 67, Weight = 50
+        },
+        new Measurements
+        {
+            MeasurementsId = 2, ClientId = 1,
+            MeasurementsDate = new DateOnly(2022, 2, 1), Height = 2.4f, ArmSize = 78,
+            ThighSize = 77, CalfSize = 94, HipSize = 46, WaistSize = 65, Weight = 55
+        },
+        new Measurements
+        {
+            MeasurementsId = 3, ClientId = 1,
+            MeasurementsDate = new DateOnly(2022, 5, 1), Height = 2.4f, ArmSize = 78,
+            ThighSize = 77, CalfSize = 94, HipSize = 46, WaistSize = 65, Weight = 60
+        }
+    };
+
+    /*protected override async Task OnParametersSetAsync()
+    {
+    //measurements = await MeasurementsService.GetMeasurements(int.Parse(ClientId),"1"/*, Page#3#); 
+        //PageHistoryState.AddPageToHistory(UriHelper.Uri);
+    }
+
+    protected override void OnInitialized()
+    {
+        //PageHistoryState.AddPageToHistory(UriHelper.Uri);
+        //base.OnInitialized();
+    }*/
+}

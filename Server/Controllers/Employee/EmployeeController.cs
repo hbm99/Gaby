@@ -24,15 +24,15 @@ public class EmployeeController : GenericController<Gaby.Shared.Model.Employee, 
         return base.GetQuery(name);
     }*/
 
-    [HttpGet("{id}")]
+    /*[HttpGet("{id}")]
     public override async Task<ActionResult> GetEntity(int id) //change to receive string
     {
         return await base.GetEntity(id);
-    }
+    }*/
 
-    /*[HttpPut]
+    [HttpPut]
     public override async Task<ActionResult> UpdateEntity(Gaby.Shared.Model.Employee employee)
     {
         return await base.UpdateEntity(employee);
-    }*/
+    }
 }

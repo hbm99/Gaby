@@ -23,6 +23,10 @@
     <_ContentIncludedByDefault Remove="Pages\User\Logout.razor" />
     <_ContentIncludedByDefault Remove="Pages\User\Update.razor" />
     <_ContentIncludedByDefault Remove="Pages\User\View.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Measurements\AddMeasurements.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Measurements\ListMeasurements.razor" />
+    <_ContentIncludedByDefault Remove="Services\Client\Measurements\AddMeasurements.razor" />
+    <_ContentIncludedByDefault Remove="Services\Client\Measurements\ListMeasurements.razor" />
   </ItemGroup>
 
 </Project>
