@@ -1,0 +1,66 @@
+﻿@page "/equipment/updateequipment/{id}"
+
+@using Gaby.Shared.Model
+
+@inject Gaby.Client.Services.Equipment.IEquipmentService equipmentService
+@inject NavigationManager navManager
+@inject Gaby.Client.Shared.PageHistoryState PageHistoryState
+
+<h3>Edicion del equipo</h3>
+
+<form>
+    <h4>Ficha</h4>
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label for="inputName1">Tipo de Equipo</label>
+            <input @bind="equipment.Name" type="text" class="form-control" id="inputName1" placeholder="Ej: Elíptica">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputBasicSalary1">Cantidad:</label>
+            <input @bind="equipment.Count" type="number" class="form-control" id="inputBasicSalary1" placeholder="Ej: 5">
+        </div>
+        <div>
+            <label for="space1">  </label>
+        </div>
+
+    </div>
+    <button type="button" class="btn btn-success" @onclick="_UpdateClient" >Editar</button>
+</form>
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+
+    bool loading = false;
+
+    Equipment equipment = new Equipment();
+
+    protected async override Task OnParametersSetAsync()
+    {
+        equipment = await equipmentService.GetEquipment(int.Parse(Id));
+    }
+
+    async Task _UpdateClient()
+    {
+        loading = true;
+        try
+        {
+            await equipmentService.UpdateEquipment(equipment);
+            //AlertService.Success("Cliente modificado satisfactoriamente", keepAfterRouteChange: true);
+            if (PageHistoryState.CanGoBack())
+            {
+                navManager.NavigateTo(PageHistoryState.GetGoBackPage());
+            }
+            else
+            {
+                navManager.NavigateTo("/equipment/1");
+            }
+        }
+        catch (Exception ex)
+        {
+            //AlertService.Error(ex.Message);
+            loading = false;
+            StateHasChanged();
+        }
+    }
+}

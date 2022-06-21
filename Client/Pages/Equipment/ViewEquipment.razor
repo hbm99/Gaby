@@ -1,0 +1,72 @@
+﻿@page "/equipment/viewequipment/{id}"
+
+@using Gaby.Shared.Model
+
+@inject NavigationManager navManager
+@inject Gaby.Client.Shared.PageHistoryState PageHistoryState
+@inject Gaby.Client.Services.Equipment.IEquipmentService equipmentService
+
+<h1>@equipment.Name Cantidad:@equipment.Count</h1>
+
+<h3>Gastos</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width:25%">Tipo de Gasto</th>
+            <th style="width:25%">Cantidad</th>
+            <th style="width:15%">Fecha</th>
+            <th style="width:5%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (equipment.Expenses != null)
+        {
+            foreach (EquipmentExpense expense in equipment.Expenses)
+            {
+                <tr>
+                    <td>@expense.ExpenseType.ExpenseTypeName</td>
+                    <td>@expense.Amount</td>
+                    <td>@expense.ExpenseDate</td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+
+<h3>Reparaciones</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width:25%">Empleado que la efectuó</th>
+            <th style="width:25%">Fecha</th>
+            <th style="width:5%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (equipment.Repairs != null)
+        {
+            foreach (EquipmentRepair repair in equipment.Repairs)
+            {
+                <tr>
+                    <td>@repair.MaintenanceEmployee.Name</td>
+                    <td>@repair.ReparationDate</td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+
+
+    Equipment equipment = new Equipment();
+
+    protected async override Task OnParametersSetAsync()
+    {
+        equipment = await equipmentService.GetEquipment(int.Parse(Id));
+    }
+}

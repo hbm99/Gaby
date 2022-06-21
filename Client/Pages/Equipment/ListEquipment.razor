@@ -1,0 +1,111 @@
+﻿@page "/equipment/{Page}"
+
+@using Gaby.Client.Services.Equipment
+@using Gaby.Shared.Model
+@using Gaby.Shared.Pager
+
+@inject NavigationManager UriHelper
+@inject PageHistoryState PageHistoryState
+@inject IEquipmentService equipmentService
+
+<h1>Equipos</h1>
+
+<div class="row mb-3">
+
+    <div class="input-group col-md-5 text-md-right">
+        <input name="EquipmentSearchInput" type="text" class="form-control" placeholder="Nombre del Equipo" /><!--@bind="this.SearchTerm" @onkeyup="SearchBoxKeyPress"-->
+        <div class="input-group-btn">
+            <button name="EquipmentSearchButton" class="btn btn-default">
+                <i class="oi oi-magnifying-glass" title="buscar" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="input-group-btn">
+            <button name="EquipmentSearchClear" class="btn btn-default">
+                <i class="oi oi-x" title="limpiar" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="input-group-btn">
+            <button name="EquipmentAddButton" class="btn btn-default" @onclick="AddNewEquipment">
+                <i class="oi oi-plus" title="agregar nuevo equipo" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width:25%">Equipo</th>
+            <th style="width:25%">Cantidad</th>
+            <th style="width:15%">Total de Gastos</th>
+            <th style="width:5%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Equipment eqt in equipments.Results)
+        {
+            <tr>
+                <td>@eqt.Name</td>
+                <td>@eqt.Count</td>
+                <td>@SumExpenses(eqt)</td>
+                <td style="white-space: nowrap">
+                    <NavLink href="@($"/equipment/viewequipment/{eqt.EquipmentId}")" class="oi oi-eye text-primary mr-3 nounderline"></NavLink>
+
+                    <NavLink href="@($"/equipment/updateequipment/{eqt.EquipmentId}")" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
+
+                    <button @onclick="@(() => DeleteEquipment(eqt))" class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
+                        <span></span>
+                    </button>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    [Parameter]
+    public string Page { get; set; } = "1";
+    [Parameter]
+    public string SearchTerm { get; set; } = string.Empty;
+
+    protected PagedResult<Equipment> equipments = new PagedResult<Equipment>();
+
+    protected override void OnInitialized()
+    {
+        PageHistoryState.AddPageToHistory(UriHelper.Uri);
+        base.OnInitialized();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        equipments = await equipmentService.GetEquipments(null, Page);
+        PageHistoryState.AddPageToHistory(UriHelper.Uri);
+    }
+
+    protected void AddNewEquipment()
+    {
+        UriHelper.NavigateTo("/equipment/addEquipment");
+    }
+    private async void DeleteEquipment(Equipment _equipment)
+    {
+        var __equipment = _equipment;
+        await equipmentService.DeleteEquipment(__equipment.EquipmentId);
+        //equipments = await equipmentService.GetEquipments(null, Page);
+        //StateHasChanged();
+    }
+
+    private decimal SumExpenses(Equipment eqp)
+    {
+        decimal result = 0;
+        if (eqp.Expenses != null)
+        {
+            foreach (EquipmentExpense eqe in eqp.Expenses)
+            {
+                result += eqe.Amount;
+            }
+
+        }
+        return result;
+    }
+}

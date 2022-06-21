@@ -2,6 +2,7 @@ using Gaby.Client;
 using Gaby.Client.Services.Client;
 using Gaby.Client.Services.Measurements;
 using Gaby.Client.Services.Employee;
+using Gaby.Client.Services.Equipment;
 using Gaby.Client.Services.GymService;
 using Gaby.Client.Services.SharedServices;
 using Gaby.Client.Shared;
@@ -29,6 +30,8 @@ builder.Services.AddScoped<ILocalStorageService, LocalStorageService>();
 
 builder.Services.AddScoped<IGymServiceService, GymServiceService>();
 
+// for ListEquipment.razor
+builder.Services.AddScoped<IEquipmentService, EquipmentService>();
 
 // for ListEmployee.razor
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
