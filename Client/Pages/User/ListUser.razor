@@ -17,7 +17,7 @@
         }
     </div>
     <div class="input-group col-md-5 text-md-right">
-        <input name="UserSearchInput" type="text" class="form-control" placeholder="Nombre de usuario" @bind="this.SearchTerm" @onkeyup="SearchBoxKeyPress"/>
+        <input name="UserSearchInput" type="text" class="form-control" placeholder="Nombre de usuario" @bind="SearchTerm" @onkeyup="SearchBoxKeyPress"/>
         <div class="input-group-btn">
             <button name="UserSearchButton" class="btn btn-default" @onclick="SearchClick">
                 <i class="oi oi-magnifying-glass" title="search" aria-hidden="true"></i>
@@ -54,7 +54,7 @@ else
                     <td>@user.LastName</td>
                     <td>@user.Username</td>
                     <td style="white-space: nowrap">
-                        <NavLink href="@($"/user/viewuser/{user.Id}")" class="oi oi-eye text-primary mr-3 nounderline"></NavLink>
+                        <NavLink href="@($"/user/viewuser/{user.Id}")" class="oi oi-eye text-blue-700 mr-3 nounderline"></NavLink>
                         @if (LoggedIn && user.Username != "admin")
                         {
                             <NavLink href="@($"/user/updateuser/{user.Id}")" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>

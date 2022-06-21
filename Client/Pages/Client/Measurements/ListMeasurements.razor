@@ -60,6 +60,58 @@
         </table>
 
     }
+    
+    <h4>Cambio de medidas en el tiempo</h4>
+        <div class="container">
+            @*<RadzenCard Class="mt-4 w-100 mb-4 d-flex align-items-center" >
+                <RadzenLabel Text="Color scheme:" Style="margin-right: 8px; vertical-align: middle;" />
+                <RadzenDropDown Data="@colorSchemes" @bind-Value="@colorScheme" />
+            </RadzenCard>*@
+            <div class="row my-5">
+                <div class="col-sm-12 col-lg-8">
+                    <RadzenChart ColorScheme="@colorScheme">
+                        @for(var month = 1; month <= 12; month++)
+                        {
+                            var currentMonthMeasurements = data.Where(d=> d.Month==month).ToList();
+                            
+                            <RadzenColumnSeries Data="@currentMonthMeasurements" CategoryProperty="MeasurementsField" Title="@month.ToString()" ValueProperty="Size" />
+                        }
+                        <RadzenColumnOptions Margin="0" />
+                        <RadzenValueAxis  Min="0" Formatter="@FormatAsCm"/>
+                    </RadzenChart>
+                </div>
+                @*<div class="col-sm-12 col-lg-4">
+                    <RadzenChart ColorScheme="@colorScheme">
+                        <RadzenPieSeries Data="@revenue.Where(r => r.Year == 2020)" Title="Revenue" CategoryProperty="Quarter" ValueProperty="Revenue" />
+                    </RadzenChart>
+                </div>*@
+            </div>
+            @*<h3>Custom colors and styling</h3>
+            <div class="row my-5">
+                <div class="col-sm-12">
+                    <RadzenChart>
+                        <RadzenAreaSeries Stroke="rgb(236,72,127)" StrokeWidth="2" Fill="rgba(236,72,127,.5)" Data="@revenue.Where(r => r.Year == 2020)" CategoryProperty="Quarter" ValueProperty="Revenue">
+                            <ChildContent>
+                                <RadzenMarkers MarkerType="MarkerType.Circle" Fill="#fff" Stroke="rgba(236,72,127)" StrokeWidth="2" Size="8" />
+                            </ChildContent>
+                            <TooltipTemplate Context="data">
+                                Revenue for <span>@data.Quarter</span> 2020: <strong>@data.Revenue.ToString("C0", CultureInfo.CreateSpecificCulture("en-US"))</strong>
+                            </TooltipTemplate>
+                        </RadzenAreaSeries>
+                        <RadzenCategoryAxis>
+                            <RadzenGridLines Visible="true" Stroke="#ccc" LineType="LineType.Dashed" />
+                        </RadzenCategoryAxis>
+                        <RadzenValueAxis>
+                            <RadzenGridLines Visible="true" />
+                        </RadzenValueAxis>
+                        <RadzenChartTooltipOptions Style="border: 1px solid rgb(236,72,127); background: #eee; color: #000;" />
+                        <RadzenLegend Visible="false" />
+                    </RadzenChart>
+                </div>
+            </div>*@
+        </div>
+    
+    
 </form>
 
 
@@ -75,23 +127,98 @@
         new Measurements
         {
             MeasurementsId = 1, ClientId = 1,
-            MeasurementsDate = new DateOnly(2022, 7, 1), Height = 1.6f, ArmSize = 50,
-            ThighSize = 30, CalfSize = 45, HipSize = 45, WaistSize = 67, Weight = 50
+            MeasurementsDate = new DateOnly(2022, 7, 1), Height = 178, ArmSize = 50,
+            ThighSize = 30, CalfSize = 45, HipSize = 45, WaistSize = 67, Weight = 50, ChestSize = 92
         },
         new Measurements
         {
             MeasurementsId = 2, ClientId = 1,
-            MeasurementsDate = new DateOnly(2022, 2, 1), Height = 2.4f, ArmSize = 78,
-            ThighSize = 77, CalfSize = 94, HipSize = 46, WaistSize = 65, Weight = 55
+            MeasurementsDate = new DateOnly(2022, 2, 1), Height = 179, ArmSize = 78,
+            ThighSize = 77, CalfSize = 94, HipSize = 46, WaistSize = 65, Weight = 55, ChestSize = 95
         },
         new Measurements
         {
             MeasurementsId = 3, ClientId = 1,
-            MeasurementsDate = new DateOnly(2022, 5, 1), Height = 2.4f, ArmSize = 78,
-            ThighSize = 77, CalfSize = 94, HipSize = 46, WaistSize = 65, Weight = 60
+            MeasurementsDate = new DateOnly(2022, 5, 1), Height = 180, ArmSize = 78,
+            ThighSize = 77, CalfSize = 94, HipSize = 46, WaistSize = 65, Weight = 60, ChestSize = 100
         }
     };
 
+    
+    IEnumerable<ColorScheme> colorSchemes = Enum.GetValues(typeof(ColorScheme)).Cast<ColorScheme>();
+    ColorScheme colorScheme = ColorScheme.Palette;
+    
+    
+    List<string> measurementsFields  = new() { "Height", "ArmSize", "ThightSize", "ChestSize",
+        "CalfSize", "HipSize", "WaistSize", "Weight"   };
+
+    
+
+    string FormatAsCm(object value)
+    {
+        return ((double)value).ToString();
+    }
+
+    IList<DataItem> data = new List<DataItem>();
+
+    protected override void OnInitialized()
+    {
+
+        foreach (var m in measurements)
+        {
+            data.Add(new DataItem
+            {  
+                Month = m.MeasurementsDate.Month,
+                MeasurementsField = "Estatura",
+                Size = m.Height
+            });
+            data.Add(new DataItem
+            {  
+                Month = m.MeasurementsDate.Month,
+                MeasurementsField = "Brazo",
+                Size = m.ArmSize
+            });
+            data.Add(new DataItem
+            {  
+                Month = m.MeasurementsDate.Month,
+                MeasurementsField = "Muslo",
+                Size = m.ThighSize
+            });
+            data.Add(new DataItem
+            {  
+                Month = m.MeasurementsDate.Month,
+                MeasurementsField = "Pecho",
+                Size = m.ChestSize
+            });
+            data.Add(new DataItem
+            {  
+                Month = m.MeasurementsDate.Month,
+                MeasurementsField = "Gemelo",
+                Size = m.CalfSize
+            });
+            data.Add(new DataItem
+            {  
+                Month = m.MeasurementsDate.Month,
+                MeasurementsField = "Cintura",
+                Size = m.HipSize
+            });
+            data.Add(new DataItem
+            {  
+                Month = m.MeasurementsDate.Month,
+                MeasurementsField = "Cadera",
+                Size = m.WaistSize
+            });
+        }
+    }
+    
+    class DataItem
+    {
+        public int Month { get; set; }
+        public string MeasurementsField { get; set; }
+        public double Size { get; set; }
+    }
+    
+    
     /*protected override async Task OnParametersSetAsync()
     {
     //measurements = await MeasurementsService.GetMeasurements(int.Parse(ClientId),"1"/*, Page#3#); 

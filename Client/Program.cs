@@ -7,6 +7,8 @@ using Gaby.Client.Services.SharedServices;
 using Gaby.Client.Shared;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Radzen.Blazor;
+using Radzen.Blazor.Rendering;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -35,6 +37,11 @@ builder.Services.AddScoped<ICleanerEmployeeService, CleanerEmployeeService>();
 builder.Services.AddScoped<IMaintenanceEmployeeService, MaintenanceEmployeeService>();
 
 builder.Services.AddScoped<IMeasurementsService, MeasurementsService>();
+
+//for radzen components
+builder.Services.AddScoped<ChartTooltip>();
+builder.Services.AddScoped<RadzenChartTooltipOptions>();
+builder.Services.AddScoped<RadzenChart>();
 
 
 builder.Services.AddScoped(x =>
