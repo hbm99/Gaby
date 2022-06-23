@@ -11,7 +11,7 @@ public class MeasurementsController : ControllerBase // : GenericController<Meas
     IMeasurementsRepository repository;
     public MeasurementsController(IMeasurementsRepository measurementsRepository)
     {
-        measurementsRepository = repository;
+        repository = measurementsRepository;
     }
 
     [HttpPost]
