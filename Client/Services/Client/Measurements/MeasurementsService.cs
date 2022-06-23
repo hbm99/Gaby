@@ -24,6 +24,6 @@ public class MeasurementsService : IMeasurementsService
 
     public async Task AddMeasurements(Gaby.Shared.Model.Measurements measurements)
     {
-        await _httpService.Post("api/measurements", measurements);
+        await _httpService.Post($"api/measurements", measurements);
     }
 }

@@ -2,7 +2,6 @@
 using Gaby.Shared.Interfaces;
 using Gaby.Shared.Pager;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Gaby.Server.Infrastructure.Repository
 {
