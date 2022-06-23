@@ -6,10 +6,6 @@ namespace Gaby.Shared.Model
 {
 	public class LessonTurn_Client : IClient, IEmployee, IService
 	{
-		public LessonTurn_Client()
-		{
-
-		}
 
 		[ForeignKey("ClientId")]
         public int ClientId { get; set; }

@@ -8,11 +8,13 @@ namespace Gaby.Shared.Model
     public class MaintenanceEmployee: Employee, IBasicSalary, IExtraSalary
 	{
 
+        
+
+        public string MantenanceEmployeeId { get => base.EmployeeId; }
+        
         /// <summary>
         /// Returns the repairs that the employee has done.
         /// </summary>
-
-        public string MantenanceEmployeeId { get => base.EmployeeId; }
         public ICollection<EquipmentRepair>? Repairs { get; set; }
 
         public decimal BasicSalary { get; set; }

@@ -4,6 +4,7 @@ using Gaby.Server.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gaby.Server.Migrations
 {
     [DbContext(typeof(GabyDbContext))]
-    partial class GabyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220623024235_New")]
+    partial class New
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -358,20 +360,17 @@ namespace Gaby.Server.Migrations
                     b.Property<float>("ChestSize")
                         .HasColumnType("real");
 
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
+
                     b.Property<float>("Height")
                         .HasColumnType("real");
 
                     b.Property<float>("HipSize")
                         .HasColumnType("real");
 
-                    b.Property<int>("MeasurementsDateDay")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MeasurementsDateMonth")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MeasurementsDateYear")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("MeasurementsDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("MemberClientClientId")
                         .HasColumnType("int");
@@ -388,8 +387,6 @@ namespace Gaby.Server.Migrations
                     b.HasKey("MeasurementsId");
 
                     b.HasIndex("MemberClientClientId");
-
-                    b.HasIndex("MeasurementsDateDay", "MeasurementsDateMonth", "MeasurementsDateYear");
 
                     b.ToTable("Measurements");
                 });
@@ -528,35 +525,6 @@ namespace Gaby.Server.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Gaby.Shared.Utils.BasicDate", b =>
-                {
-                    b.Property<int>("Day")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Month")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Year")
-                        .HasColumnType("int");
-
-                    b.HasKey("Day", "Month", "Year");
-
-                    b.ToTable("BasicDate");
-                });
-
-            modelBuilder.Entity("Gaby.Shared.Utils.BasicTime", b =>
-                {
-                    b.Property<int>("Hour")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Minute")
-                        .HasColumnType("int");
-
-                    b.HasKey("Hour", "Minute");
-
-                    b.ToTable("BasicTime");
-                });
-
             modelBuilder.Entity("PaymentPaymentType", b =>
                 {
                     b.Property<string>("PaymentTypeId")
@@ -630,27 +598,11 @@ namespace Gaby.Server.Migrations
                     b.Property<string>("Ailments")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CheckInTimeHour")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CheckInTimeMinute")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CheckOutTimeHour")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CheckOutTimeMinute")
-                        .HasColumnType("int");
-
                     b.Property<int>("Gender")
                         .HasColumnType("int");
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
-
-                    b.HasIndex("CheckInTimeHour", "CheckInTimeMinute");
-
-                    b.HasIndex("CheckOutTimeHour", "CheckOutTimeMinute");
 
                     b.ToTable("Members");
                 });
@@ -843,14 +795,6 @@ namespace Gaby.Server.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Gaby.Shared.Utils.BasicDate", "MeasurementsDate")
-                        .WithMany()
-                        .HasForeignKey("MeasurementsDateDay", "MeasurementsDateMonth", "MeasurementsDateYear")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("MeasurementsDate");
-
                     b.Navigation("MemberClient");
                 });
 
@@ -951,14 +895,6 @@ namespace Gaby.Server.Migrations
                         .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
-                    b.HasOne("Gaby.Shared.Utils.BasicTime", "CheckInTime")
-                        .WithMany()
-                        .HasForeignKey("CheckInTimeHour", "CheckInTimeMinute");
-
-                    b.HasOne("Gaby.Shared.Utils.BasicTime", "CheckOutTime")
-                        .WithMany()
-                        .HasForeignKey("CheckOutTimeHour", "CheckOutTimeMinute");
-
                     b.OwnsOne("Gaby.Shared.Utils.HomeAddress", "Address", b1 =>
                         {
                             b1.Property<int>("MemberClientClientId")
@@ -996,10 +932,6 @@ namespace Gaby.Server.Migrations
                         });
 
                     b.Navigation("Address");
-
-                    b.Navigation("CheckInTime");
-
-                    b.Navigation("CheckOutTime");
                 });
 
             modelBuilder.Entity("Gaby.Shared.Model.CashInBox", b =>

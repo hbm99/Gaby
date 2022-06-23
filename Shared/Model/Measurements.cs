@@ -2,26 +2,24 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Gaby.Shared.Interfaces;
+using Gaby.Shared.Utils;
 
 namespace Gaby.Shared.Model
 {
     /// <summary>
     /// Body measurements.
     /// </summary>
-    public class Measurements : IClient, IMeasurements
+    public class Measurements : IMeasurements
     {
         [Key]
         public int MeasurementsId { get; set; }
-
-        [ForeignKey("ClientId")]
-        public int ClientId { get; set; }
 
         public MemberClient MemberClient { get; set; }
 
         /// <summary>
         /// Returns measurements date.
         /// </summary>
-        public DateOnly MeasurementsDate { get; set; }
+        public BasicDate MeasurementsDate { get; set; }
 
         /// <summary>
         /// Returns client height.

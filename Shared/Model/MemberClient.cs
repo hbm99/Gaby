@@ -17,8 +17,9 @@ namespace Gaby.Shared.Model
         }
 
       
-        //public TimeOnly? CheckInTime { get; set; }
-        //public TimeOnly? CheckOutTime { get; set; }
+        public BasicTime? CheckInTime { get; set; }
+        
+        public BasicTime? CheckOutTime { get; set; }
 
         public Gender Gender { get; set; }
 

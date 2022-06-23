@@ -7,13 +7,7 @@ namespace Gaby.Shared.Model
 {
 	public class Offer_Service : IService, IOffer
 	{
-		public Offer_Service()
-		{
-
-		}
-
-        
-        [Required]
+		[Required]
         [ForeignKey("ServiceId")]
         public int ServiceId { get; set; }
 

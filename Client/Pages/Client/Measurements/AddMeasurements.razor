@@ -3,6 +3,7 @@
 @using Gaby.Client.Services.Measurements
 @using Gaby.Shared.Model
 @using Gaby.Client.Services.Client
+@using Gaby.Shared.Utils
 @inject IMeasurementsService MeasurementsService
 @inject IClientService ClientService
 @inject NavigationManager NavManager
@@ -87,7 +88,7 @@
         HipSize = 0,
         WaistSize=0,
         Weight=0,
-        MeasurementsDate = new DateOnly(Today.Date.Year, Today.Date.Month, Today.Date.Day)
+        MeasurementsDate = new BasicDate{Year = Today.Date.Year, Month = Today.Date.Month, Day = Today.Date.Day}
     };
     
     async Task AddClientMeasurements()
@@ -106,7 +107,7 @@
     protected override async Task OnParametersSetAsync()
     {
         MemberClient client = await ClientService.GetClient(int.Parse(Id));
-        measurements.ClientId = int.Parse(Id);
+        measurements.MemberClient = client;
     }
     
 }

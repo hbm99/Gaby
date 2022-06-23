@@ -7,19 +7,14 @@ namespace Gaby.Shared.Model
 {
 	public class Service : IService
 	{
-		public Service()
-		{
-
-		}
-
 		[Key]
         public int ServiceId { get; set; }
 
-		[Required]
-		/// <summary>
+        /// <summary>
         /// Returns type of service.
         /// </summary>
-        public virtual ServiceType ServiceType { get; set; }
+		[Required]
+		public virtual ServiceType ServiceType { get; set; }
 
     }
 }

@@ -66,12 +66,12 @@ namespace Gaby.Server.Infrastructure
                     clientOffer.OfferId,
                     clientOffer.Date
                 });
-            modelBuilder.Entity<Measurements>(builder =>
+            /*modelBuilder.Entity<Measurements>(builder =>
             {
                 // Date is a DateOnly property and date on database
                 builder.Property(x => x.MeasurementsDate)
                     .HasConversion<DateOnlyConverter, DateOnlyComparer>();
-            });
+            });*/
             modelBuilder.Entity<InscriptionDate>(builder =>
             {
                 // Date is a DateOnly property and date on database
@@ -105,6 +105,20 @@ namespace Gaby.Server.Infrastructure
             modelBuilder.Entity<MemberClient>().OwnsOne(x => x.Address);
 
 
+            modelBuilder.Entity<BasicDate>()
+                .HasKey(basicDate => new
+                {
+                    basicDate.Day,
+                    basicDate.Month,
+                    basicDate.Year
+                });
+            
+            modelBuilder.Entity<BasicTime>()
+                .HasKey(basicTime => new
+                {
+                    basicTime.Hour,
+                    basicTime.Minute
+                });
 
             base.OnModelCreating(modelBuilder);
 

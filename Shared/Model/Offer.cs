@@ -11,8 +11,6 @@ namespace Gaby.Shared.Model
 {
     public class Offer : IOffer, INamed
     {
-       
-
         [Key]
         public int OfferId { get; set; }
 

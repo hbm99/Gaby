@@ -6,10 +6,10 @@ namespace Gaby.Shared.Model
 {
     public class ServiceType
     {
-        [Key]
         /// <summary>
         /// Returns service type name.
         /// </summary>
+        [Key]
         public string ServiceTypeName { get; set; }
     }
 }

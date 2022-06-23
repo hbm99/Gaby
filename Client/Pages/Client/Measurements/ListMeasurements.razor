@@ -2,6 +2,7 @@
 @using Gaby.Client.Services.Measurements
 @using Gaby.Client.Services.SharedServices
 @using Gaby.Shared.Model
+@using Gaby.Shared.Utils
 @inject IMeasurementsService MeasurementsService
 @inject IUserService UserService
 
@@ -126,20 +127,20 @@
     {
         new Measurements
         {
-            MeasurementsId = 1, ClientId = 1,
-            MeasurementsDate = new DateOnly(2022, 7, 1), Height = 178, ArmSize = 50,
+            MeasurementsId = 1,
+            MeasurementsDate = new BasicDate{ Year = 2022, Month = 7, Day = 1}, Height = 178, ArmSize = 50,
             ThighSize = 30, CalfSize = 45, HipSize = 45, WaistSize = 67, Weight = 50, ChestSize = 92
         },
         new Measurements
         {
-            MeasurementsId = 2, ClientId = 1,
-            MeasurementsDate = new DateOnly(2022, 2, 1), Height = 179, ArmSize = 78,
+            MeasurementsId = 2,
+            MeasurementsDate = new BasicDate{ Year = 2022, Month = 2, Day = 1}, Height = 179, ArmSize = 78,
             ThighSize = 77, CalfSize = 94, HipSize = 46, WaistSize = 65, Weight = 55, ChestSize = 95
         },
         new Measurements
         {
-            MeasurementsId = 3, ClientId = 1,
-            MeasurementsDate = new DateOnly(2022, 5, 1), Height = 180, ArmSize = 78,
+            MeasurementsId = 3,
+            MeasurementsDate = new BasicDate{ Year = 2022, Month = 5, Day = 1}, Height = 180, ArmSize = 78,
             ThighSize = 77, CalfSize = 94, HipSize = 46, WaistSize = 65, Weight = 60, ChestSize = 100
         }
     };
