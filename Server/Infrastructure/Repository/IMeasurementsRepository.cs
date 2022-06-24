@@ -8,7 +8,7 @@ namespace Gaby.Server.Infrastructure.Repository;
 public interface IMeasurementsRepository
 {
     Task<Measurements> GetById(int id);
-    PagedResult<Measurements> GetAll([FromQuery] string? name, int page);
+    ICollection<Measurements> GetAll([FromQuery] int? id);
     IEnumerable<Measurements> Find(Expression<Func<Measurements, bool>> expression);
     Task<Measurements> Add(Measurements entity);
     Task<IEnumerable<Measurements>> AddRange(IEnumerable<Measurements> entities);

@@ -75,20 +75,18 @@
     
     [Parameter]
     public string Id { get; set; }
-    
-    public static DateTime Today { get; }
-    
+
     Measurements measurements = new Measurements
     {
         Height = 0,
         ArmSize = 0,
-        ThighSize=0,
+        ThighSize = 0,
         ChestSize = 0,
         CalfSize = 0,
         HipSize = 0,
-        WaistSize=0,
-        Weight=0,
-        MeasurementsDate = new BasicDate{Year = Today.Date.Year, Month = Today.Date.Month, Day = Today.Date.Day}
+        WaistSize = 0,
+        Weight = 0,
+        MeasurementsDate = new BasicDate { Year = DateTime.Today.Year, Month = DateTime.Today.Month, Day = DateTime.Today.Day }
     };
     
     async Task AddClientMeasurements()

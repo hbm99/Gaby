@@ -19,4 +19,10 @@ public class MeasurementsController : ControllerBase // : GenericController<Meas
     {
         return Ok(await repository.Add(entity)); //return base.AddEntity(entity);
     }
+
+    [HttpGet]
+    public ActionResult GetQuery([FromQuery] int? clientId)
+    {
+        return Ok(repository.GetAll(clientId));
+    }
 }

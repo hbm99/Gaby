@@ -12,9 +12,10 @@ public class MeasurementsService : IMeasurementsService
     {
         _httpService = httpService;
     }
-    public Task<PagedResult<Gaby.Shared.Model.Measurements>> GetMeasurements(int? name, string page)
+    public async Task<ICollection<Gaby.Shared.Model.Measurements>> GetMeasurements(int clientId)
     {
-        throw new NotImplementedException();
+        return await _httpService.Get<ICollection<Gaby.Shared.Model.Measurements>>("api/measurements" + "?clientId=" +
+            clientId);
     }
 
     public Task DeleteMeasurements(int id)

@@ -4,6 +4,7 @@ using Gaby.Server.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gaby.Server.Migrations
 {
     [DbContext(typeof(GabyDbContext))]
-    partial class GabyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220624130520_Removing_date_time_tables")]
+    partial class Removing_date_time_tables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -380,7 +382,7 @@ namespace Gaby.Server.Migrations
 
                     b.HasIndex("MemberClientClientId");
 
-                    b.ToTable("ManyMeasurements");
+                    b.ToTable("Measurements");
                 });
 
             modelBuilder.Entity("Gaby.Shared.Model.Offer", b =>
@@ -787,31 +789,6 @@ namespace Gaby.Server.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("Gaby.Shared.Utils.BasicDate", "MeasurementsDate", b1 =>
-                        {
-                            b1.Property<int>("MeasurementsId")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("Day")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("Month")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("Year")
-                                .HasColumnType("int");
-
-                            b1.HasKey("MeasurementsId");
-
-                            b1.ToTable("ManyMeasurements");
-
-                            b1.WithOwner()
-                                .HasForeignKey("MeasurementsId");
-                        });
-
-                    b.Navigation("MeasurementsDate")
-                        .IsRequired();
-
                     b.Navigation("MemberClient");
                 });
 
@@ -912,44 +889,6 @@ namespace Gaby.Server.Migrations
                         .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
-                    b.OwnsOne("Gaby.Shared.Utils.BasicTime", "CheckInTime", b1 =>
-                        {
-                            b1.Property<int>("MemberClientClientId")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("Hour")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("Minute")
-                                .HasColumnType("int");
-
-                            b1.HasKey("MemberClientClientId");
-
-                            b1.ToTable("Members");
-
-                            b1.WithOwner()
-                                .HasForeignKey("MemberClientClientId");
-                        });
-
-                    b.OwnsOne("Gaby.Shared.Utils.BasicTime", "CheckOutTime", b1 =>
-                        {
-                            b1.Property<int>("MemberClientClientId")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("Hour")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("Minute")
-                                .HasColumnType("int");
-
-                            b1.HasKey("MemberClientClientId");
-
-                            b1.ToTable("Members");
-
-                            b1.WithOwner()
-                                .HasForeignKey("MemberClientClientId");
-                        });
-
                     b.OwnsOne("Gaby.Shared.Utils.HomeAddress", "Address", b1 =>
                         {
                             b1.Property<int>("MemberClientClientId")
@@ -987,10 +926,6 @@ namespace Gaby.Server.Migrations
                         });
 
                     b.Navigation("Address");
-
-                    b.Navigation("CheckInTime");
-
-                    b.Navigation("CheckOutTime");
                 });
 
             modelBuilder.Entity("Gaby.Shared.Model.CashInBox", b =>

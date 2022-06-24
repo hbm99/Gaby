@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Gaby.Shared.Utils;
 
 public class BasicDate
@@ -8,8 +10,8 @@ public class BasicDate
 
     public int Year { get; set; }
     
-    /*public override string ToString()
+    public override string ToString()
     {
         return Day + "/" + Month + "/" + Year;
-    }*/
+    }
 }

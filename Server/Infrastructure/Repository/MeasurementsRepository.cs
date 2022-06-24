@@ -17,9 +17,10 @@ public class MeasurementsRepository : IMeasurementsRepository
         throw new NotImplementedException();
     }
 
-    public PagedResult<Measurements> GetAll(string? name, int page)
+    public ICollection<Measurements> GetAll(int? id)
     {
-        throw new NotImplementedException();
+        return context.Set<Measurements>()
+            .Where(m => m.MemberClient.ClientId.Equals(id)).ToList();
     }
 
     public IEnumerable<Measurements> Find(Expression<Func<Measurements, bool>> expression)
@@ -29,6 +30,10 @@ public class MeasurementsRepository : IMeasurementsRepository
 
     public async Task<Measurements> Add(Measurements entity)
     {
+        var client = context.MemberClients
+            .FirstOrDefault(c => c.ClientId == entity.MemberClient.ClientId);
+        entity.MemberClient = client;
+        
         var result = await context.Set<Measurements>().AddAsync(entity);
         await context.SaveChangesAsync();
         return result.Entity;

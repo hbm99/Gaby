@@ -13,6 +13,11 @@ namespace Gaby.Server.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
+            /*modelBuilder.Ignore<BasicDate>();
+
+            modelBuilder.Ignore<BasicTime>();*/
+            
             // Configuring multiple PK
 
             modelBuilder.Entity<EquipmentRepair>(builder =>
@@ -104,21 +109,30 @@ namespace Gaby.Server.Infrastructure
             //HomeAddress property
             modelBuilder.Entity<MemberClient>().OwnsOne(x => x.Address);
 
+            modelBuilder.Entity<MemberClient>().OwnsOne(x => x.CheckInTime);
 
-            modelBuilder.Entity<BasicDate>()
+            modelBuilder.Entity<MemberClient>().OwnsOne(x => x.CheckOutTime);
+
+            // //BasicDate property
+            // modelBuilder.Entity<Measurements>().OwnsOne(x => x.MeasurementsDate);
+
+            modelBuilder.Entity<Measurements>().OwnsOne(x => x.MeasurementsDate);
+            
+
+            /*modelBuilder.Entity<BasicDate>()
                 .HasKey(basicDate => new
                 {
                     basicDate.Day,
                     basicDate.Month,
                     basicDate.Year
-                });
+                });*/
             
-            modelBuilder.Entity<BasicTime>()
+            /*modelBuilder.Entity<BasicTime>()
                 .HasKey(basicTime => new
                 {
                     basicTime.Hour,
                     basicTime.Minute
-                });
+                });*/
 
             base.OnModelCreating(modelBuilder);
 
@@ -156,7 +170,7 @@ namespace Gaby.Server.Infrastructure
 
         public DbSet<MaintenanceEmployee> MaintenanceEmployees { get; set; }
 
-        public DbSet<Measurements> Measurements { get; set; }
+        public DbSet<Measurements> ManyMeasurements { get; set; }
 
         public DbSet<MemberClient> MemberClients { get; set; }
 

@@ -5,6 +5,8 @@
 @using Gaby.Shared.Utils
 @inject IMeasurementsService MeasurementsService
 @inject IUserService UserService
+@inject PageHistoryState PageHistoryState
+@inject NavigationManager UriHelper
 
 
 <h4>Medidas</h4>
@@ -62,12 +64,12 @@
 
     }
     
-    <h4>Cambio de medidas en el tiempo</h4>
+    @*<h4>Cambio de medidas en el tiempo</h4>
         <div class="container">
-            @*<RadzenCard Class="mt-4 w-100 mb-4 d-flex align-items-center" >
+            $1$<RadzenCard Class="mt-4 w-100 mb-4 d-flex align-items-center" >
                 <RadzenLabel Text="Color scheme:" Style="margin-right: 8px; vertical-align: middle;" />
                 <RadzenDropDown Data="@colorSchemes" @bind-Value="@colorScheme" />
-            </RadzenCard>*@
+            </RadzenCard>#1#
             <div class="row my-5">
                 <div class="col-sm-12 col-lg-8">
                     <RadzenChart ColorScheme="@colorScheme">
@@ -81,13 +83,13 @@
                         <RadzenValueAxis  Min="0" Formatter="@FormatAsCm"/>
                     </RadzenChart>
                 </div>
-                @*<div class="col-sm-12 col-lg-4">
+                $1$<div class="col-sm-12 col-lg-4">
                     <RadzenChart ColorScheme="@colorScheme">
                         <RadzenPieSeries Data="@revenue.Where(r => r.Year == 2020)" Title="Revenue" CategoryProperty="Quarter" ValueProperty="Revenue" />
                     </RadzenChart>
-                </div>*@
+                </div>#1#
             </div>
-            @*<h3>Custom colors and styling</h3>
+            $1$<h3>Custom colors and styling</h3>
             <div class="row my-5">
                 <div class="col-sm-12">
                     <RadzenChart>
@@ -109,8 +111,8 @@
                         <RadzenLegend Visible="false" />
                     </RadzenChart>
                 </div>
-            </div>*@
-        </div>
+            </div>#1#
+        </div>*@
     
     
 </form>
@@ -123,8 +125,8 @@
 
     public bool LoggedIn => UserService.User != null;
 
-    IList<Measurements> measurements = new List<Measurements>()
-    {
+    ICollection<Measurements> measurements;// = new List<Measurements>()
+    /*{
         new Measurements
         {
             MeasurementsId = 1,
@@ -143,15 +145,18 @@
             MeasurementsDate = new BasicDate{ Year = 2022, Month = 5, Day = 1}, Height = 180, ArmSize = 78,
             ThighSize = 77, CalfSize = 94, HipSize = 46, WaistSize = 65, Weight = 60, ChestSize = 100
         }
-    };
+    };*/
 
     
     IEnumerable<ColorScheme> colorSchemes = Enum.GetValues(typeof(ColorScheme)).Cast<ColorScheme>();
     ColorScheme colorScheme = ColorScheme.Palette;
-    
-    
-    List<string> measurementsFields  = new() { "Height", "ArmSize", "ThightSize", "ChestSize",
-        "CalfSize", "HipSize", "WaistSize", "Weight"   };
+
+
+    List<string> measurementsFields = new()
+    {
+        "Height", "ArmSize", "ThightSize", "ChestSize",
+        "CalfSize", "HipSize", "WaistSize", "Weight"
+    };
 
     
 
@@ -164,7 +169,21 @@
 
     protected override void OnInitialized()
     {
-
+        PageHistoryState.AddPageToHistory(UriHelper.Uri);
+        base.OnInitialized();
+    }
+    
+    class DataItem
+    {
+        public int Month { get; set; }
+        public string MeasurementsField { get; set; }
+        public double Size { get; set; }
+    }
+    
+    
+    protected override async Task OnParametersSetAsync()
+    {
+        measurements = await MeasurementsService.GetMeasurements(int.Parse(Id));
         foreach (var m in measurements)
         {
             data.Add(new DataItem
@@ -210,25 +229,6 @@
                 Size = m.WaistSize
             });
         }
+        PageHistoryState.AddPageToHistory(UriHelper.Uri);
     }
-    
-    class DataItem
-    {
-        public int Month { get; set; }
-        public string MeasurementsField { get; set; }
-        public double Size { get; set; }
-    }
-    
-    
-    /*protected override async Task OnParametersSetAsync()
-    {
-    //measurements = await MeasurementsService.GetMeasurements(int.Parse(ClientId),"1"/*, Page#3#); 
-        //PageHistoryState.AddPageToHistory(UriHelper.Uri);
-    }
-
-    protected override void OnInitialized()
-    {
-        //PageHistoryState.AddPageToHistory(UriHelper.Uri);
-        //base.OnInitialized();
-    }*/
 }

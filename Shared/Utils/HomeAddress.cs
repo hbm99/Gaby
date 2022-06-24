@@ -39,11 +39,11 @@ namespace Gaby.Shared.Utils
             /// </summary>
             public string Municipality { get; set; }
 
-            /*public override string ToString()
+            public override string ToString()
             {
                 return MainSt + " entre " + SecondarySt1 + " y " + SecondarySt2 + ", # " +
                        HouseNumber + ", " + Community + ", " + Municipality;
-            }*/
+            }
     }
     
 }

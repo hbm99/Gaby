@@ -6,8 +6,8 @@ public class BasicTime
 
     public int Minute { get; set; }
 
-    /*public override string ToString()
+    public override string ToString()
     {
         return Hour + ":" + Minute;
-    }*/
+    }
 }

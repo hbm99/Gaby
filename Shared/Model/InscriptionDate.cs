@@ -11,10 +11,11 @@ namespace Gaby.Shared.Model
     {
 
 
-        [Key]
+        
         /// <summary>
         /// Returns inscription moment.
         /// </summary>
+        [Key]
         public DateOnly Date { get; set; }
 
     }
