@@ -2,7 +2,6 @@
 @using Gaby.Client.Services.Measurements
 @using Gaby.Client.Services.SharedServices
 @using Gaby.Shared.Model
-@using Gaby.Shared.Utils
 @inject IMeasurementsService MeasurementsService
 @inject IUserService UserService
 @inject PageHistoryState PageHistoryState
@@ -62,58 +61,62 @@
             </tbody>
         </table>
 
-    }
-    
-    @*<h4>Cambio de medidas en el tiempo</h4>
-        <div class="container">
-            $1$<RadzenCard Class="mt-4 w-100 mb-4 d-flex align-items-center" >
-                <RadzenLabel Text="Color scheme:" Style="margin-right: 8px; vertical-align: middle;" />
-                <RadzenDropDown Data="@colorSchemes" @bind-Value="@colorScheme" />
-            </RadzenCard>#1#
-            <div class="row my-5">
-                <div class="col-sm-12 col-lg-8">
-                    <RadzenChart ColorScheme="@colorScheme">
-                        @for(var month = 1; month <= 12; month++)
-                        {
-                            var currentMonthMeasurements = data.Where(d=> d.Month==month).ToList();
-                            
-                            <RadzenColumnSeries Data="@currentMonthMeasurements" CategoryProperty="MeasurementsField" Title="@month.ToString()" ValueProperty="Size" />
-                        }
-                        <RadzenColumnOptions Margin="0" />
-                        <RadzenValueAxis  Min="0" Formatter="@FormatAsCm"/>
-                    </RadzenChart>
+        @if (measurements.Count > 0)
+        {
+            <h4>Cambio de medidas en el tiempo</h4>
+            <div class="container">
+                @*
+                    <RadzenCard Class="mt-4 w-100 mb-4 d-flex align-items-center" >
+                        <RadzenLabel Text="Color scheme:" Style="margin-right: 8px; vertical-align: middle;" />
+                        <RadzenDropDown Data="@colorSchemes" @bind-Value="@colorScheme" />
+                    </RadzenCard>
+                    *@
+                <div class="row my-5">
+                    <div class="col-sm-12 col-lg-8">
+                        <RadzenChart ColorScheme="@colorScheme">
+                            @for (var month = 1; month <= 12; month++)
+                            {
+                                var currentMonthMeasurements = data.Where(d => d.Month == month).ToList();
+
+                                <RadzenColumnSeries Data="@currentMonthMeasurements" CategoryProperty="MeasurementsField" Title="@month.ToString()" ValueProperty="Size"/>
+                            }
+                            <RadzenColumnOptions Margin="0"/>
+                            <RadzenValueAxis Min="0" Formatter="@FormatAsCm"/>
+                        </RadzenChart>
+                    </div>
+                    @*$2$<div class="col-sm-12 col-lg-4">
+                            <RadzenChart ColorScheme="@colorScheme">
+                                <RadzenPieSeries Data="@revenue.Where(r => r.Year == 2020)" Title="Revenue" CategoryProperty="Quarter" ValueProperty="Revenue" />
+                            </RadzenChart>
+                        </div>#2#*@
                 </div>
-                $1$<div class="col-sm-12 col-lg-4">
-                    <RadzenChart ColorScheme="@colorScheme">
-                        <RadzenPieSeries Data="@revenue.Where(r => r.Year == 2020)" Title="Revenue" CategoryProperty="Quarter" ValueProperty="Revenue" />
-                    </RadzenChart>
-                </div>#1#
+                @*<h3>Custom colors and styling</h3>
+                    <div class="row my-5">
+                        <div class="col-sm-12">
+                            <RadzenChart>
+                                <RadzenAreaSeries Stroke="rgb(236,72,127)" StrokeWidth="2" Fill="rgba(236,72,127,.5)" Data="@revenue.Where(r => r.Year == 2020)" CategoryProperty="Quarter" ValueProperty="Revenue">
+                                    <ChildContent>
+                                        <RadzenMarkers MarkerType="MarkerType.Circle" Fill="#fff" Stroke="rgba(236,72,127)" StrokeWidth="2" Size="8" />
+                                    </ChildContent>
+                                    <TooltipTemplate Context="data">
+                                        Revenue for <span>@data.Quarter</span> 2020: <strong>@data.Revenue.ToString("C0", CultureInfo.CreateSpecificCulture("en-US"))</strong>
+                                    </TooltipTemplate>
+                                </RadzenAreaSeries>
+                                <RadzenCategoryAxis>
+                                    <RadzenGridLines Visible="true" Stroke="#ccc" LineType="LineType.Dashed" />
+                                </RadzenCategoryAxis>
+                                <RadzenValueAxis>
+                                    <RadzenGridLines Visible="true" />
+                                </RadzenValueAxis>
+                                <RadzenChartTooltipOptions Style="border: 1px solid rgb(236,72,127); background: #eee; color: #000;" />
+                                <RadzenLegend Visible="false" />
+                            </RadzenChart>
+                        </div>
+                    </div>*@
             </div>
-            $1$<h3>Custom colors and styling</h3>
-            <div class="row my-5">
-                <div class="col-sm-12">
-                    <RadzenChart>
-                        <RadzenAreaSeries Stroke="rgb(236,72,127)" StrokeWidth="2" Fill="rgba(236,72,127,.5)" Data="@revenue.Where(r => r.Year == 2020)" CategoryProperty="Quarter" ValueProperty="Revenue">
-                            <ChildContent>
-                                <RadzenMarkers MarkerType="MarkerType.Circle" Fill="#fff" Stroke="rgba(236,72,127)" StrokeWidth="2" Size="8" />
-                            </ChildContent>
-                            <TooltipTemplate Context="data">
-                                Revenue for <span>@data.Quarter</span> 2020: <strong>@data.Revenue.ToString("C0", CultureInfo.CreateSpecificCulture("en-US"))</strong>
-                            </TooltipTemplate>
-                        </RadzenAreaSeries>
-                        <RadzenCategoryAxis>
-                            <RadzenGridLines Visible="true" Stroke="#ccc" LineType="LineType.Dashed" />
-                        </RadzenCategoryAxis>
-                        <RadzenValueAxis>
-                            <RadzenGridLines Visible="true" />
-                        </RadzenValueAxis>
-                        <RadzenChartTooltipOptions Style="border: 1px solid rgb(236,72,127); background: #eee; color: #000;" />
-                        <RadzenLegend Visible="false" />
-                    </RadzenChart>
-                </div>
-            </div>#1#
-        </div>*@
-    
+        }
+        
+    }
     
 </form>
 
