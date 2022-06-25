@@ -4,6 +4,7 @@ using Gaby.Server.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gaby.Server.Migrations
 {
     [DbContext(typeof(GabyDbContext))]
-    partial class GabyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220625152453_Adding_service_employee_active_prop")]
+    partial class Adding_service_employee_active_prop
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

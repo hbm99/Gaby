@@ -4,12 +4,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Gaby.Shared.Interfaces;
 using Gaby.Shared.Utils;
 
 namespace Gaby.Shared.Model
 {
     [Table("Members")]
-    public class MemberClient : BasicClient
+    public class MemberClient : BasicClient, IRemovable
     {
         public MemberClient()
         {
@@ -21,11 +22,8 @@ namespace Gaby.Shared.Model
         public BasicTime? CheckOutTime { get; set; }
 
         public string Gender { get; set; }
-
-        /// <summary>
-        /// Returns if the client is an active member (has time available until next payment).
-        /// </summary>
-        public bool Active { get; set; }
+        
+        public bool Active { get; set; } = true;
 
         /// <summary>
         /// Returns address.

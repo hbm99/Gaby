@@ -29,9 +29,9 @@ namespace Gaby.Client.Services.Equipment
         {
             await _httpService.Post($"api/equipment", equipment);
         }
-        public async Task DeleteEquipment(int id)
+        public async Task DeleteEquipment(Gaby.Shared.Model.Equipment equipment)
         {
-            await _httpService.Delete($"api/equipment/{id}");
+            await _httpService.Put($"api/equipment", equipment);
         }
         public async Task UpdateEquipment(Gaby.Shared.Model.Equipment equipment)
         {

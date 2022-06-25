@@ -5,7 +5,7 @@ using Gaby.Shared.Interfaces;
 
 namespace Gaby.Shared.Model
 {
-	public class Service : IService
+	public class Service : IService, IRemovable
 	{
 		[Key]
         public int ServiceId { get; set; }
@@ -16,6 +16,7 @@ namespace Gaby.Shared.Model
 		[Required]
 		public virtual ServiceType ServiceType { get; set; }
 
-    }
+        public bool Active { get; set; } = true;
+	}
 }
 

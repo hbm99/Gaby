@@ -23,7 +23,7 @@ namespace Gaby.Server.Controllers
         [HttpGet]
         public override ActionResult GetQuery([FromQuery] string? name, int page)
         {
-            return base.GetQuery( name, page);
+            return base.GetQuery(name, page);
         }
 
         [HttpGet("{id}")]

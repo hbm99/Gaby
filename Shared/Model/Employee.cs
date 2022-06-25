@@ -4,7 +4,7 @@ using Gaby.Shared.Interfaces;
 
 namespace Gaby.Shared.Model
 {
-    public abstract class Employee : IEmployee, INamed
+    public abstract class Employee : IEmployee, INamed, IRemovable
     {
         [Key]
         public string EmployeeId { get; set; }
@@ -14,5 +14,6 @@ namespace Gaby.Shared.Model
         /// </summary>
         public string Name { get; set; }
 
+        public bool Active { get; set; } = true;
     }
 }

@@ -9,7 +9,7 @@ namespace Gaby.Client.Services.Equipment
         Task<Gaby.Shared.Model.Equipment> GetEquipment(int id);
         Task AddEquipment(Gaby.Shared.Model.Equipment equipment);
         Task AddEquipmentRange(IEnumerable<Gaby.Shared.Model.Equipment> equipment);
-        Task DeleteEquipment(int id);
+        Task DeleteEquipment(Gaby.Shared.Model.Equipment equipment);
         Task UpdateEquipment(Gaby.Shared.Model.Equipment equipment);
     }
 }

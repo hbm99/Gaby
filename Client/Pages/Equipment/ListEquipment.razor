@@ -29,23 +29,29 @@
     </div>
 </div>
 
-<div class="input-group-btn">
+<div class="col-md-7">
     @if (LoggedIn)
     {
-        <NavLink @onclick="AddNewEquipment" class="btn btn-sm btn-success mb-2">Añadir tipo de equipo</NavLink>
+        <NavLink @onclick="AddNewEquipment" class="btn btn-sm btn-success mb-2">Añadir equipo</NavLink>
     }
 </div>
 
-<table class="table table-striped">
-    <thead>
+@if (equipments == null)
+{
+    <p><em>Cargando...</em></p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
         <tr>
             <th style="width:25%">Equipo</th>
             <th style="width:25%">Cantidad</th>
             <th style="width:15%">Total de Gastos</th>
             <th style="width:5%"></th>
         </tr>
-    </thead>
-    <tbody>
+        </thead>
+        <tbody>
         @foreach (Equipment eqt in equipments.Results)
         {
             <tr>
@@ -54,18 +60,22 @@
                 <td>@SumExpenses(eqt)</td>
                 <td style="white-space: nowrap">
                     <NavLink href="@($"/equipment/viewequipment/{eqt.EquipmentId}")" class="oi oi-eye text-blue-700 mr-3 nounderline"></NavLink>
+                
+                    @if (LoggedIn)
+                    {
+                        <NavLink href="@($"/equipment/updateequipment/{eqt.EquipmentId}")" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
 
-                    <NavLink href="@($"/equipment/updateequipment/{eqt.EquipmentId}")" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
-
-                    <button @onclick="@(() => DeleteEquipment(eqt))" class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
-                        <span></span>
-                    </button>
-
+                        <button @onclick="@(() => DeleteEquipment(eqt))" class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
+                            <span></span>
+                        </button>
+                    }
+                
                 </td>
             </tr>
         }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+}
 
 @code {
     [Parameter]
@@ -75,7 +85,7 @@
     
     public bool LoggedIn => UserService.User != null;
 
-    PagedResult<Equipment> equipments = new();
+    PagedResult<Equipment> equipments;
 
     protected override void OnInitialized()
     {
@@ -97,9 +107,10 @@
     private async void DeleteEquipment(Equipment _equipment)
     {
         var __equipment = _equipment;
-        await EquipmentService.DeleteEquipment(__equipment.EquipmentId);
-        //equipments = await equipmentService.GetEquipments(null, Page);
-        //StateHasChanged();
+        __equipment.Active = false;
+        await EquipmentService.DeleteEquipment(__equipment);
+        equipments = await EquipmentService.GetEquipments(null, Page);
+        StateHasChanged();
     }
 
     private decimal SumExpenses(Equipment eqp)

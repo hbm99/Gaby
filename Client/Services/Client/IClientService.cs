@@ -9,7 +9,7 @@ namespace Gaby.Client.Services.Client
         Task<PagedResult<MemberClient>> GetClients(string? name, string page);
         Task<MemberClient> GetClient(int id);
 
-        Task DeleteClient(int id);
+        Task DeleteClient(MemberClient client);
 
         Task AddClient(MemberClient person);
         Task AddClientRange(IEnumerable<MemberClient> members);

@@ -1,11 +1,12 @@
 ﻿using System.Linq.Expressions;
+using System.Reflection;
 using Gaby.Shared.Interfaces;
 using Gaby.Shared.Pager;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gaby.Server.Infrastructure.Repository
 {
-    public  class GenericRepository<T> : IGenericRepository<T> where T : class, INamed
+    public  class GenericRepository<T> : IGenericRepository<T> where T : class, INamed, IRemovable
     {
         protected readonly GabyDbContext context;
         public GenericRepository(GabyDbContext context)
@@ -35,17 +36,25 @@ namespace Gaby.Server.Infrastructure.Repository
             if (name != null)
             {
                 return context.Set<T>()
-                    .Where(p => p.Name.Contains(name))
+                    .Where(p => p.Name.Contains(name) && p.Active)
                     .GetPaged(page, pageSize);
-                    
-                    
             }
             else
             {
                 return context.Set<T>()
+                    .Where(p => p.Active)
                     .GetPaged(page, pageSize);
             }
         }
+
+        /*private bool IsActive(T removableEntity)
+        {
+            var prop = removableEntity.GetType().GetProperty("Active", BindingFlags.Instance);
+            if (prop == null)
+                return true;
+            return (bool)prop.GetValue(removableEntity);
+
+        }*/
 
         public async Task<T> GetById(int id)
         {

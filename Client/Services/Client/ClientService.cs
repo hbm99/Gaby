@@ -24,9 +24,9 @@ namespace Gaby.Client.Services.Client
             return await _httpService.Get<MemberClient>($"api/client/{id}");
         }
 
-        public async Task DeleteClient(int id)
+        public async Task DeleteClient(MemberClient client)
         {
-            await _httpService.Delete($"api/client/{id}");
+            await _httpService.Put($"api/client", client);
         }
 
         public async Task AddClient(MemberClient client)
