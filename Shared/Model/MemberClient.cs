@@ -15,13 +15,12 @@ namespace Gaby.Shared.Model
         {
             ClientOffers = new HashSet<ClientOffer>();
         }
-
-      
+        
         public BasicTime? CheckInTime { get; set; }
         
         public BasicTime? CheckOutTime { get; set; }
 
-        public Gender Gender { get; set; }
+        public string Gender { get; set; }
 
         /// <summary>
         /// Returns if the client is an active member (has time available until next payment).
@@ -48,12 +47,14 @@ namespace Gaby.Shared.Model
         /// </summary>
         [InverseProperty("MemberClient")]
         public virtual ICollection<ClientOffer> ClientOffers { get; set; }
-    }
-
-    public enum Gender
-    {
-        Male,
-        Female,
-        Other
+        
+        /*
+        /// <summary>
+        /// Returns measurements registered of the member.
+        /// </summary>
+        [InverseProperty("MemberClient")]
+        public virtual ICollection<Measurements>? ManyMeasurements { get; set; }*/
+        
+        
     }
 }

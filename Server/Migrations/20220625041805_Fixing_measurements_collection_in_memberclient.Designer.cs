@@ -4,6 +4,7 @@ using Gaby.Server.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gaby.Server.Migrations
 {
     [DbContext(typeof(GabyDbContext))]
-    partial class GabyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220625041805_Fixing_measurements_collection_in_memberclient")]
+    partial class Fixing_measurements_collection_in_memberclient
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -364,7 +366,7 @@ namespace Gaby.Server.Migrations
                     b.Property<float>("HipSize")
                         .HasColumnType("real");
 
-                    b.Property<int?>("MemberClientClientId")
+                    b.Property<int>("MemberClientClientId")
                         .HasColumnType("int");
 
                     b.Property<float>("ThighSize")
@@ -783,8 +785,10 @@ namespace Gaby.Server.Migrations
             modelBuilder.Entity("Gaby.Shared.Model.Measurements", b =>
                 {
                     b.HasOne("Gaby.Shared.Model.MemberClient", "MemberClient")
-                        .WithMany()
-                        .HasForeignKey("MemberClientClientId");
+                        .WithMany("ManyMeasurements")
+                        .HasForeignKey("MemberClientClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.OwnsOne("Gaby.Shared.Utils.BasicDate", "MeasurementsDate", b1 =>
                         {
@@ -808,7 +812,8 @@ namespace Gaby.Server.Migrations
                                 .HasForeignKey("MeasurementsId");
                         });
 
-                    b.Navigation("MeasurementsDate");
+                    b.Navigation("MeasurementsDate")
+                        .IsRequired();
 
                     b.Navigation("MemberClient");
                 });
@@ -1017,6 +1022,8 @@ namespace Gaby.Server.Migrations
             modelBuilder.Entity("Gaby.Shared.Model.MemberClient", b =>
                 {
                     b.Navigation("ClientOffers");
+
+                    b.Navigation("ManyMeasurements");
                 });
 #pragma warning restore 612, 618
         }

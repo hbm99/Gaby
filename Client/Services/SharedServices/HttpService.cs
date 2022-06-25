@@ -1,10 +1,9 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
-using Gaby.Client.Services;
+using System.Text.Json.Serialization;
 using Gaby.Client.Shared;
 using Gaby.Shared.Model;
 using Microsoft.AspNetCore.Components;
@@ -80,8 +79,13 @@ public class HttpService : IHttpService
         var request = new HttpRequestMessage(method, uri);
         if (value != null)
         {
-            var send = JsonSerializer.Serialize(value);
-             request.Content = new StringContent(send, Encoding.UTF8, "application/json");
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = ReferenceHandler.IgnoreCycles,
+                WriteIndented = true
+            };
+            var send = JsonSerializer.Serialize(value, options);
+            request.Content = new StringContent(send, Encoding.UTF8, "application/json");
         }
         return request;
     }

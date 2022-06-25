@@ -14,12 +14,12 @@ namespace Gaby.Shared.Model
         [Key]
         public int MeasurementsId { get; set; }
 
-        public MemberClient MemberClient { get; set; }
+        public MemberClient? MemberClient { get; set; }
 
         /// <summary>
         /// Returns measurements date.
         /// </summary>
-        public BasicDate MeasurementsDate { get; set; }
+        public BasicDate? MeasurementsDate { get; set; }
 
         /// <summary>
         /// Returns client height.
