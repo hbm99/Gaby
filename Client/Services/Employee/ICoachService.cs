@@ -7,4 +7,6 @@ public interface ICoachService : IEmployeeService
     Task AddEmployee(Coach coach);
 
     Task UpdateEmployee(Coach coach);
+    
+    Task DeleteEmployee(Coach coach);
 }

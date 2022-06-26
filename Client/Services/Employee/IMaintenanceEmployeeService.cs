@@ -7,4 +7,6 @@ public interface IMaintenanceEmployeeService : IEmployeeService
     Task AddEmployee(MaintenanceEmployee maintenanceEmployee);
 
     Task UpdateEmployee(MaintenanceEmployee maintenanceEmployee);
+    
+    Task DeleteEmployee(MaintenanceEmployee maintenanceEmployee);
 }

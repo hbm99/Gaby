@@ -1,4 +1,12 @@
 ﻿@page "/employee/createemployee"
+@using Gaby.Shared.Model
+@using Gaby.Client.Services.Employee
+
+@inject PageHistoryState PageHistoryState
+@inject ICoachService CoachService
+@inject IMaintenanceEmployeeService MaintenanceEmployeeService
+@inject ICleanerEmployeeService CleanerEmployeeService
+@inject NavigationManager NavManager
 
 <h4>Agregar Empleado</h4>
 
@@ -7,7 +15,7 @@
     <div class="row">
         <div class="form-group col-md-4">
             <label for="inputFunction">Especialidad :</label>
-            <select type="number" id="inputFunction" class="form-control">
+            <select @bind="employeeType" type="text" id="inputFunction" class="form-control">
                 <option selected>--</option>
                 <option>Entrenador</option>
                 <option>Limpieza</option>
@@ -16,24 +24,48 @@
         </div>
         <div class="form-group col-md-4">
             <label for="inputName1">Nombre y apellidos :</label>
-            <input  type="text" class="form-control" id="inputName1" placeholder="Ej: Camilo Manresa León">
+            <input @bind="name" type="text" class="form-control" id="inputName1" placeholder="Ej: Camilo Manresa León">
         </div>
         <div class="form-group col-md-3">
             <label for="inputBasicSalary1">Salario Básico (Opcional) :</label>
-            <input  type="number" class="form-control" id="inputBasicSalary1" placeholder="Ej: 2500" >
-        </div>
-        <div class="form-group col-md-3">
-            <label for="inputExtraSalary">Salario Extra (Opcional) :</label>
-            <input  type="number" class="form-control" id="inputExtraSalary" placeholder="Ej: 1500">
+            <input @bind="basicSalary" type="number" class="form-control" id="inputBasicSalary1" placeholder="Ej: 2500" >
         </div>
         <div>
             <label for="space1">  </label>
         </div>
         
     </div>
-    <button type="button" class="btn btn-success" >Agregar</button>
+    <button @onclick="AddWorker" type="button" class="btn btn-success" >Agregar</button>
 </form>
 
 @code {
+
+    decimal basicSalary;
+    string name;
+    string employeeType;
     
+    async Task AddWorker()
+    {
+        try
+        {
+            switch (employeeType)
+            {
+                case "Entrenador":
+                    await CoachService.AddEmployee(new Coach { BasicSalary = basicSalary, Name = name });
+                    break;
+                case "Mantenimiento":
+                    await MaintenanceEmployeeService.AddEmployee(new MaintenanceEmployee { BasicSalary = basicSalary, Name = name });
+                    break;
+                case "Limpieza":
+                    await CleanerEmployeeService.AddEmployee(new CleanerEmployee { BasicSalary = basicSalary, Name = name });
+                    break;
+            }
+            NavManager.NavigateTo(PageHistoryState.CanGoBack() ? PageHistoryState.GetGoBackPage() : "/employee");
+        }
+        catch (Exception ex)
+        {
+            StateHasChanged();
+        }
+    }
+
 }

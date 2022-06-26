@@ -9,7 +9,7 @@ public class MaintenanceEmployeeService : EmployeeService, IMaintenanceEmployeeS
     {
     }
     
-    public override async Task<IList<Gaby.Shared.Model.Employee>> GetEmployees(string? name)
+    public override async Task<ICollection<Gaby.Shared.Model.Employee>> GetEmployees(string? name)
     {
         return await _httpService.Get<IList<Gaby.Shared.Model.Employee>>("api/maintenanceemployee" + "?name=" + name);
     }
@@ -22,5 +22,10 @@ public class MaintenanceEmployeeService : EmployeeService, IMaintenanceEmployeeS
     public async Task UpdateEmployee(MaintenanceEmployee maintenanceEmployee)
     {
         await _httpService.Put($"api/maintenanceemployee", maintenanceEmployee);
+    }
+
+    public Task DeleteEmployee(MaintenanceEmployee maintenanceEmployee)
+    {
+        throw new NotImplementedException();
     }
 }

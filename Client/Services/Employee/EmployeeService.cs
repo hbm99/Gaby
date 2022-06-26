@@ -11,18 +11,13 @@ public class EmployeeService : IEmployeeService
         _httpService = httpService;
     }
     
-    public virtual async Task<IList<Gaby.Shared.Model.Employee>> GetEmployees(string? name)
+    public virtual async Task<ICollection<Gaby.Shared.Model.Employee>> GetEmployees(string? name)
     {
-        return await _httpService.Get<IList<Gaby.Shared.Model.Employee>>("api/employee" + "?name=" + name);
+        return await _httpService.Get<ICollection<Gaby.Shared.Model.Employee>>("api/employee" + "?name=" + name);
     }
 
     public async Task<Gaby.Shared.Model.Employee> GetEmployee(string id)
     {
         return await _httpService.Get<Gaby.Shared.Model.Employee>($"api/employee/{id}");
     }
-    public async Task DeleteEmployee(string id)
-    {
-        await _httpService.Delete($"api/employee/{id}");
-    }
-    
 }

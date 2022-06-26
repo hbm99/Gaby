@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Gaby.Server.Infrastructure.Repository
 {
-    public  class GenericRepository<T> : IGenericRepository<T> where T : class, INamed, IRemovable
+    public class GenericRepository<T> : IGenericRepository<T> where T : class, INamed, IRemovable
     {
         protected readonly GabyDbContext context;
         public GenericRepository(GabyDbContext context)
