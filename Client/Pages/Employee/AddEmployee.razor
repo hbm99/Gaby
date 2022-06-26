@@ -23,6 +23,10 @@
             </select>
         </div>
         <div class="form-group col-md-4">
+            <label for="inputCI">CI :</label>
+            <input @bind="CI" type="text" class="form-control" id="inputCI" placeholder="99110108383">
+        </div>
+        <div class="form-group col-md-4">
             <label for="inputName1">Nombre y apellidos :</label>
             <input @bind="name" type="text" class="form-control" id="inputName1" placeholder="Ej: Camilo Manresa León">
         </div>
@@ -43,6 +47,7 @@
     decimal basicSalary;
     string name;
     string employeeType;
+    string CI;
     
     async Task AddWorker()
     {
@@ -51,13 +56,13 @@
             switch (employeeType)
             {
                 case "Entrenador":
-                    await CoachService.AddEmployee(new Coach { BasicSalary = basicSalary, Name = name });
+                    await CoachService.AddEmployee(new Coach { EmployeeId = CI, BasicSalary = basicSalary, Name = name });
                     break;
                 case "Mantenimiento":
-                    await MaintenanceEmployeeService.AddEmployee(new MaintenanceEmployee { BasicSalary = basicSalary, Name = name });
+                    await MaintenanceEmployeeService.AddEmployee(new MaintenanceEmployee { EmployeeId = CI, BasicSalary = basicSalary, Name = name });
                     break;
                 case "Limpieza":
-                    await CleanerEmployeeService.AddEmployee(new CleanerEmployee { BasicSalary = basicSalary, Name = name });
+                    await CleanerEmployeeService.AddEmployee(new CleanerEmployee { EmployeeId = CI, BasicSalary = basicSalary, Name = name });
                     break;
             }
             NavManager.NavigateTo(PageHistoryState.CanGoBack() ? PageHistoryState.GetGoBackPage() : "/employee");

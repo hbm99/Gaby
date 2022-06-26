@@ -8,6 +8,7 @@
 @inject IEmployeeService EmployeeService
 @inject NavigationManager UriHelper
 @inject IUserService UserService
+@inject PageHistoryState PageHistoryState
 
 <h4>Empleados</h4>
 
@@ -40,9 +41,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th style="width:25%">Nombre y Apellidos</th>
-                <th style="width:25%">Salario Básico</th>
-                <th style="width:15%">Salario Extra</th>
+                <th style="width:50%"></th>
                 <th style="width:5%"></th>
             </tr>
         </thead>
@@ -53,14 +52,14 @@
         }
         else
         {
-            @foreach (Coach worker in coaches)
+            @foreach (Employee worker in coaches)
             {
                 <tr>
                     <td>@worker.Name</td>
-                    <td>@worker.BasicSalary</td>
-                    <td>@worker.ExtraSalary</td>
+                    @*<td>@worker.BasicSalary</td>
+                    <td>@worker.ExtraSalary</td>*@
                     <td style="white-space: nowrap">
-                        <NavLink href="@($"/employee/viewemployee/{worker.EmployeeId}")" class="oi oi-eye text-primary mr-3 nounderline"></NavLink>
+                        <NavLink href="@($"/employee/viewemployee/{worker.EmployeeId}")" class="oi oi-eye text-blue-700 mr-3 nounderline"></NavLink>
 
                         <NavLink href="@($"/employee/editemployee/{worker.EmployeeId}")" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
 
@@ -80,9 +79,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th style="width:25%">Nombre y Apellidos</th>
-                <th style="width:25%">Salario Básico</th>
-                <th style="width:15%">Salario Extra</th>
+                <th style="width:50%"></th>
                 <th style="width:5%"></th>
             </tr>
         </thead>
@@ -93,14 +90,14 @@
             }
             else
             {
-                @foreach (MaintenanceEmployee worker in maintenanceEmployees)
+                @foreach (Employee worker in maintenanceEmployees)
                 {
                     <tr>
                         <td>@worker.Name</td>
-                        <td>@worker.BasicSalary</td>
-                        <td>@worker.ExtraSalary</td>
+                        @*<td>@worker.BasicSalary</td>
+                        <td>@worker.ExtraSalary</td>*@
                         <td style="white-space: nowrap">
-                            <NavLink href="@($"/employee/viewemployee/{worker.EmployeeId}")" class="oi oi-eye text-primary mr-3 nounderline"></NavLink>
+                            <NavLink href="@($"/employee/viewemployee/{worker.EmployeeId}")" class="oi oi-eye text-blue-700 mr-3 nounderline"></NavLink>
 
                             <NavLink href="@($"/employee/editemployee/{worker.EmployeeId}")" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
 
@@ -120,8 +117,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th style="width:25%">Nombre y Apellidos</th>
-                <th style="width:25%">Salario Básico</th>
+                <th style="width:50%"></th>
                 <th style="width:5%"></th>
             </tr>
         </thead>
@@ -132,13 +128,13 @@
             }
             else
             {
-                @foreach (CleanerEmployee worker in cleanerEmployees)
+                @foreach (Employee worker in cleanerEmployees)
                 {
                     <tr>
                         <td>@worker.Name</td>
-                        <td>@worker.BasicSalary</td>
+                        @* <td>@worker.BasicSalary</td> *@
                         <td style="white-space: nowrap">
-                            <NavLink href="@($"/employee/viewemployee/{worker.EmployeeId}")" class="oi oi-eye text-primary mr-3 nounderline"></NavLink>
+                            <NavLink href="@($"/employee/viewemployee/{worker.EmployeeId}")" class="oi oi-eye text-blue-700 mr-3 nounderline"></NavLink>
 
                             <NavLink  href="@($"/employee/editemployee/{worker.EmployeeId}")" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
 
@@ -168,16 +164,20 @@
     ICollection<Employee> maintenanceEmployees;
     ICollection<Employee> cleanerEmployees;
 
+    
+    protected override void OnInitialized()
+    {
+        PageHistoryState.AddPageToHistory(UriHelper.Uri);
+        base.OnInitialized();
+    }
+    
     protected override async Task OnParametersSetAsync()
     {
-        FillEmployees();
-    }
-
-    private async Task FillEmployees(string name = null)
-    {
-        coaches = await CoachService.GetEmployees(name);
-        maintenanceEmployees = await MaintenanceEmployeeService.GetEmployees(name);
-        cleanerEmployees = await CleanerEmployeeService.GetEmployees(name);
+        coaches = await CoachService.GetEmployees(null);
+        maintenanceEmployees = await MaintenanceEmployeeService.GetEmployees(null);
+        cleanerEmployees = await CleanerEmployeeService.GetEmployees(null);
+        
+        PageHistoryState.AddPageToHistory(UriHelper.Uri);
     }
 
     private async void DeleteEmployee(Employee employee)
@@ -211,17 +211,23 @@
     {
         if (string.IsNullOrEmpty(SearchTerm))
         {
-            FillEmployees();
+            coaches = await CoachService.GetEmployees(null);
+            maintenanceEmployees = await MaintenanceEmployeeService.GetEmployees(null);
+            cleanerEmployees = await CleanerEmployeeService.GetEmployees(null);
             return;
         }
-        FillEmployees(SearchTerm);
+        coaches = await CoachService.GetEmployees(SearchTerm);
+        maintenanceEmployees = await MaintenanceEmployeeService.GetEmployees(SearchTerm);
+        cleanerEmployees = await CleanerEmployeeService.GetEmployees(SearchTerm);
         StateHasChanged();
     }
 
     protected async Task ClearSearch()
     {
         SearchTerm = string.Empty;
-        FillEmployees(SearchTerm);
+        coaches = await CoachService.GetEmployees(SearchTerm);
+        maintenanceEmployees = await MaintenanceEmployeeService.GetEmployees(SearchTerm);
+        cleanerEmployees = await CleanerEmployeeService.GetEmployees(SearchTerm);
         StateHasChanged();
     }
 }

@@ -4,10 +4,10 @@ using Gaby.Shared.Interfaces;
 
 namespace Gaby.Shared.Model
 {
-    public abstract class Employee : IEmployee, INamed, IRemovable
+    public class Employee : IEmployee, INamed, IRemovable
     {
-        [Key]
-        public string EmployeeId { get; set; }
+        [Key] 
+        public string EmployeeId { get; set; } = "";
 
         /// <summary>
         /// Returns the name of the employee.

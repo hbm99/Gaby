@@ -52,20 +52,20 @@
     {
         employee = await EmployeeService.GetEmployee(Id);
 
-        switch (employee)
+        if (employee is Coach coach)
         {
-            case Coach coach:
-                basicSalary = coach.BasicSalary;
-                extraSalary = coach.ExtraSalary;
-                break;
-            case MaintenanceEmployee maintenanceEmployee:
-                basicSalary = maintenanceEmployee.BasicSalary;
-                extraSalary = maintenanceEmployee.ExtraSalary;
-                break;
-            case CleanerEmployee cleanerEmployee:
-                basicSalary = cleanerEmployee.BasicSalary;
-                extraSalary = 0;
-                break;
+            basicSalary = coach.BasicSalary;
+            extraSalary = coach.ExtraSalary;
+        }
+        else if (employee is MaintenanceEmployee maintenanceEmployee)
+        {
+            basicSalary = maintenanceEmployee.BasicSalary;
+            extraSalary = maintenanceEmployee.ExtraSalary;
+        }
+        else if (employee is CleanerEmployee cleanerEmployee)
+        {
+            basicSalary = cleanerEmployee.BasicSalary;
+            extraSalary = 0;
         }
     }
 
