@@ -2,7 +2,7 @@ using Gaby.Server.Infrastructure.Repository.Employee;
 using Gaby.Shared.Model;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Gaby.Server.Controllers.Employee;
+namespace Gaby.Server.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -13,19 +13,19 @@ public class MaintenanceEmployeeController : GenericEmployeeTypeController<Maint
     }
     
     [HttpGet]
-    public ActionResult GetQuery([FromQuery] string? name)
+    public override ActionResult GetQuery([FromQuery] string? name)
     {
         return base.GetQuery(name);
     }
     
     [HttpPost]
-    public async Task<ActionResult> Add(MaintenanceEmployee maintenanceEmployee)
+    public override Task<ActionResult> Add(MaintenanceEmployee maintenanceEmployee)
     {
-        return await base.Add(maintenanceEmployee);
+        return base.Add(maintenanceEmployee);
     }
     
     [HttpPut]
-    public async Task<ActionResult> Update(MaintenanceEmployee maintenanceEmployee)
+    public override async Task<ActionResult> Update(MaintenanceEmployee maintenanceEmployee)
     {
         return await base.Update(maintenanceEmployee);
     }

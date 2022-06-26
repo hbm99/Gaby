@@ -15,9 +15,9 @@
 {
     <div class="row mb-3">
         <div class="input-group col-md-5 text-md-right">
-            <input name="EmployeeSearchInput" type="text" class="form-control" placeholder="Nombre" @bind="SearchTerm" @onkeyup="SearchBoxKeyPress" />
+            <input name="EmployeeSearchInput" type="text" class="form-control" placeholder="Nombre" @bind="SearchTerm" @onkeyup="SearchBoxKeyPress"/>
             <div class="input-group-btn">
-                <button name="EmployeeSearchButton" class="btn btn-default" @onclick="SearchClick" >
+                <button name="EmployeeSearchButton" class="btn btn-default" @onclick="SearchClick">
                     <i class="oi oi-magnifying-glass" title="buscar" aria-hidden="true"></i>
                 </button>
             </div>
@@ -26,16 +26,12 @@
                     <i class="oi oi-x" title="limpiar" aria-hidden="true"></i>
                 </button>
             </div>
-            <div class="input-group-btn">
-                @if (LoggedIn)
-                {
-                    <button name="EmployeeAddButton" class="btn btn-default" @onclick="AddEmployee">
-                        <i class="oi oi-plus" title="agregar nuevo trabajador" aria-hidden="true"></i>
-                        <NavLink href="/employee/createemployee"></NavLink>
-                    </button>
-                }
-            </div>
+
         </div>
+    </div>
+    
+    <div class="input-group-btn">
+        <NavLink href="/employee/createemployee" class="btn btn-sm btn-success mb-2">Añadir Empleado</NavLink>
     </div>
 
 
@@ -51,6 +47,12 @@
             </tr>
         </thead>
         <tbody>
+        @if (coaches == null)
+        {
+            <p><em>Cargando...</em></p>
+        }
+        else
+        {
             @foreach (Coach worker in coaches)
             {
                 <tr>
@@ -62,13 +64,14 @@
 
                         <NavLink href="@($"/employee/editemployee/{worker.EmployeeId}")" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
 
-                        <button @onclick="@(() => DeleteEmployee(worker))"  class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
+                        <button @onclick="@(() => DeleteEmployee(worker))" class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
                             <span></span>
                         </button>
 
                     </td>
                 </tr>
             }
+        }
         </tbody>
     </table>
 
@@ -84,23 +87,30 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (MaintenanceEmployee worker in maintenanceEmployees)
+            @if (maintenanceEmployees == null)
             {
-                <tr>
-                    <td>@worker.Name</td>
-                    <td>@worker.BasicSalary</td>
-                    <td>@worker.ExtraSalary</td>
-                    <td style="white-space: nowrap">
-                        <NavLink href="@($"/employee/viewemployee/{worker.EmployeeId}")" class="oi oi-eye text-primary mr-3 nounderline"></NavLink>
+                <p><em>Cargando...</em></p>
+            }
+            else
+            {
+                @foreach (MaintenanceEmployee worker in maintenanceEmployees)
+                {
+                    <tr>
+                        <td>@worker.Name</td>
+                        <td>@worker.BasicSalary</td>
+                        <td>@worker.ExtraSalary</td>
+                        <td style="white-space: nowrap">
+                            <NavLink href="@($"/employee/viewemployee/{worker.EmployeeId}")" class="oi oi-eye text-primary mr-3 nounderline"></NavLink>
 
-                        <NavLink href="@($"/employee/editemployee/{worker.EmployeeId}")" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
+                            <NavLink href="@($"/employee/editemployee/{worker.EmployeeId}")" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
 
-                        <button @onclick="@(() => DeleteEmployee(worker))"  class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
-                            <span></span>
-                        </button>
+                            <button @onclick="@(() => DeleteEmployee(worker))"  class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
+                                <span></span>
+                            </button>
 
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
+                }
             }
         </tbody>
     </table>
@@ -116,22 +126,29 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (CleanerEmployee worker in cleanerEmployees)
+            @if (cleanerEmployees == null)
             {
-                <tr>
-                    <td>@worker.Name</td>
-                    <td>@worker.BasicSalary</td>
-                    <td style="white-space: nowrap">
-                        <NavLink href="@($"/employee/viewemployee/{worker.EmployeeId}")" class="oi oi-eye text-primary mr-3 nounderline"></NavLink>
+                <p><em>Cargando...</em></p>
+            }
+            else
+            {
+                @foreach (CleanerEmployee worker in cleanerEmployees)
+                {
+                    <tr>
+                        <td>@worker.Name</td>
+                        <td>@worker.BasicSalary</td>
+                        <td style="white-space: nowrap">
+                            <NavLink href="@($"/employee/viewemployee/{worker.EmployeeId}")" class="oi oi-eye text-primary mr-3 nounderline"></NavLink>
 
-                        <NavLink  href="@($"/employee/editemployee/{worker.EmployeeId}")" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
+                            <NavLink  href="@($"/employee/editemployee/{worker.EmployeeId}")" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
 
-                        <button @onclick="@(() => DeleteEmployee(worker))"  class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
-                            <span></span>
-                        </button>
+                            <button @onclick="@(() => DeleteEmployee(worker))"  class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
+                                <span></span>
+                            </button>
 
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
+                }
             }
         </tbody>
     </table>
@@ -161,11 +178,6 @@
         coaches = await CoachService.GetEmployees(name);
         maintenanceEmployees = await MaintenanceEmployeeService.GetEmployees(name);
         cleanerEmployees = await CleanerEmployeeService.GetEmployees(name);
-    }
-
-    protected void AddEmployee()
-    {
-        UriHelper.NavigateTo("/employee/createemployee");
     }
 
     private async void DeleteEmployee(Employee employee)

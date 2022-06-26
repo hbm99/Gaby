@@ -1,7 +1,7 @@
 using Gaby.Server.Infrastructure.Repository.Employee;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Gaby.Server.Controllers.Employee;
+namespace Gaby.Server.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication;
 using Gaby.Server.Infrastructure.Repository;
 using Gaby.Server.Authorization;
 using Gaby.Server.Helpers;
+using Gaby.Server.Infrastructure.Repository.Employee;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,9 +20,14 @@ builder.Services.AddAuthentication()
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
+builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+builder.Services.AddScoped(typeof(IGenericEmployeeTypeRepository<>), typeof(GenericEmployeeTypeRepository<>));
+
 builder.Services.AddScoped<IMeasurementsRepository, MeasurementsRepository>();
+
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IJwtUtils, JwtUtils>();
+
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
