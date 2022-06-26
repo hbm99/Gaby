@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Gaby.Shared.Utils;
 
 namespace Gaby.Shared.Model
 {
@@ -19,7 +20,7 @@ namespace Gaby.Shared.Model
         /// Returns the date of the expense.
         /// </summary>
         
-        public DateOnly ExpenseDate { get; set; }
+        public BasicDate ExpenseDate { get; set; }
 
 
         [Required]

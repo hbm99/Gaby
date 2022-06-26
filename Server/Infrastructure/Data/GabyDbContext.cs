@@ -83,12 +83,12 @@ namespace Gaby.Server.Infrastructure
                 builder.Property(x => x.Date)
                     .HasConversion<DateOnlyConverter, DateOnlyComparer>();
             });
-            modelBuilder.Entity<Expense>(builder =>
+            /*modelBuilder.Entity<Expense>(builder =>
             {
                 // Date is a DateOnly property and date on database
                 builder.Property(x => x.ExpenseDate)
                     .HasConversion<DateOnlyConverter, DateOnlyComparer>();
-            });
+            });*/
             //modelBuilder.Entity<MemberClient>(builder =>
             //{
             //    // CheckinTime is a TimeOnly property and date on database
@@ -117,6 +117,8 @@ namespace Gaby.Server.Infrastructure
             // modelBuilder.Entity<Measurements>().OwnsOne(x => x.MeasurementsDate);
 
             modelBuilder.Entity<Measurements>().OwnsOne(x => x.MeasurementsDate);
+
+            modelBuilder.Entity<Expense>().OwnsOne(x => x.ExpenseDate);
             
 
             /*modelBuilder.Entity<BasicDate>()
