@@ -17,7 +17,7 @@ public class MeasurementsController : ControllerBase // : GenericController<Meas
     [HttpPost]
     public async Task<ActionResult> AddEntity(Measurements entity)
     {
-        return Ok(await repository.Add(entity)); //return base.AddEntity(entity);
+        return Ok(await repository.Add(entity));
     }
 
     [HttpGet]

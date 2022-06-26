@@ -11,7 +11,7 @@ public class CoachService : EmployeeService, ICoachService
     
     public override async Task<ICollection<Gaby.Shared.Model.Employee>> GetEmployees(string? name)
     {
-        return await _httpService.Get<IList<Gaby.Shared.Model.Employee>>("api/coach" + "?name=" + name);
+        return await _httpService.Get<ICollection<Gaby.Shared.Model.Employee>>("api/coach" + "?name=" + name);
     }
 
     public async Task AddEmployee(Coach coach)
@@ -24,8 +24,8 @@ public class CoachService : EmployeeService, ICoachService
         await _httpService.Put($"api/coach", coach);
     }
 
-    public Task DeleteEmployee(Coach coach)
+    public async Task DeleteEmployee(Coach coach)
     {
-        throw new NotImplementedException();
+        await _httpService.Put($"api/coach", coach);
     }
 }

@@ -11,7 +11,7 @@ public class CleanerEmployeeService : EmployeeService, ICleanerEmployeeService
     
     public override async Task<ICollection<Gaby.Shared.Model.Employee>> GetEmployees(string? name)
     {
-        return await _httpService.Get<IList<Gaby.Shared.Model.Employee>>("api/cleaneremployee" + "?name=" + name);
+        return await _httpService.Get<ICollection<Gaby.Shared.Model.Employee>>("api/cleaneremployee" + "?name=" + name);
     }
 
     public async Task AddEmployee(CleanerEmployee cleanerEmployee)
@@ -24,8 +24,8 @@ public class CleanerEmployeeService : EmployeeService, ICleanerEmployeeService
         await _httpService.Put($"api/cleaneremployee", cleanerEmployee);
     }
 
-    public Task DeleteEmployee(CleanerEmployee cleanerEmployee)
+    public async Task DeleteEmployee(CleanerEmployee cleanerEmployee)
     {
-        throw new NotImplementedException();
+        await _httpService.Put($"api/cleaneremployee", cleanerEmployee);
     }
 }
