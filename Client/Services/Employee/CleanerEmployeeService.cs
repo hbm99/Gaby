@@ -9,9 +9,9 @@ public class CleanerEmployeeService : EmployeeService, ICleanerEmployeeService
     {
     }
     
-    public override async Task<ICollection<Gaby.Shared.Model.Employee>> GetEmployees(string? name)
+    public async Task<ICollection<CleanerEmployee>> Get(string? name)
     {
-        return await _httpService.Get<ICollection<Gaby.Shared.Model.Employee>>("api/cleaneremployee" + "?name=" + name);
+        return await _httpService.Get<ICollection<CleanerEmployee>>("api/cleaneremployee" + "?name=" + name);
     }
 
     public async Task AddEmployee(CleanerEmployee cleanerEmployee)

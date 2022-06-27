@@ -11,7 +11,7 @@ public class EmployeeService : IEmployeeService
         _httpService = httpService;
     }
     
-    public virtual async Task<ICollection<Gaby.Shared.Model.Employee>> GetEmployees(string? name)
+    public async Task<ICollection<Gaby.Shared.Model.Employee>> GetEmployees(string? name)
     {
         return await _httpService.Get<ICollection<Gaby.Shared.Model.Employee>>("api/employee" + "?name=" + name);
     }

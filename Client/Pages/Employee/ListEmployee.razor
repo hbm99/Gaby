@@ -160,9 +160,9 @@
 
     public bool LoggedIn => UserService.User != null;
 
-    ICollection<Employee> coaches;
-    ICollection<Employee> maintenanceEmployees;
-    ICollection<Employee> cleanerEmployees;
+    ICollection<Coach> coaches;
+    ICollection<MaintenanceEmployee> maintenanceEmployees;
+    ICollection<CleanerEmployee> cleanerEmployees;
 
     
     protected override void OnInitialized()
@@ -173,9 +173,9 @@
     
     protected override async Task OnParametersSetAsync()
     {
-        coaches = await CoachService.GetEmployees(null);
-        maintenanceEmployees = await MaintenanceEmployeeService.GetEmployees(null);
-        cleanerEmployees = await CleanerEmployeeService.GetEmployees(null);
+        coaches = await CoachService.Get(null);
+        maintenanceEmployees = await MaintenanceEmployeeService.Get(null);
+        cleanerEmployees = await CleanerEmployeeService.Get(null);
         
         PageHistoryState.AddPageToHistory(UriHelper.Uri);
     }
@@ -211,23 +211,23 @@
     {
         if (string.IsNullOrEmpty(SearchTerm))
         {
-            coaches = await CoachService.GetEmployees(null);
-            maintenanceEmployees = await MaintenanceEmployeeService.GetEmployees(null);
-            cleanerEmployees = await CleanerEmployeeService.GetEmployees(null);
+            coaches = await CoachService.Get(null);
+            maintenanceEmployees = await MaintenanceEmployeeService.Get(null);
+            cleanerEmployees = await CleanerEmployeeService.Get(null);
             return;
         }
-        coaches = await CoachService.GetEmployees(SearchTerm);
-        maintenanceEmployees = await MaintenanceEmployeeService.GetEmployees(SearchTerm);
-        cleanerEmployees = await CleanerEmployeeService.GetEmployees(SearchTerm);
+        coaches = await CoachService.Get(SearchTerm);
+        maintenanceEmployees = await MaintenanceEmployeeService.Get(SearchTerm);
+        cleanerEmployees = await CleanerEmployeeService.Get(SearchTerm);
         StateHasChanged();
     }
 
     protected async Task ClearSearch()
     {
         SearchTerm = string.Empty;
-        coaches = await CoachService.GetEmployees(SearchTerm);
-        maintenanceEmployees = await MaintenanceEmployeeService.GetEmployees(SearchTerm);
-        cleanerEmployees = await CleanerEmployeeService.GetEmployees(SearchTerm);
+        coaches = await CoachService.Get(SearchTerm);
+        maintenanceEmployees = await MaintenanceEmployeeService.Get(SearchTerm);
+        cleanerEmployees = await CleanerEmployeeService.Get(SearchTerm);
         StateHasChanged();
     }
 }

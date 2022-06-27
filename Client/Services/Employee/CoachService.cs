@@ -9,9 +9,9 @@ public class CoachService : EmployeeService, ICoachService
     {
     }
     
-    public override async Task<ICollection<Gaby.Shared.Model.Employee>> GetEmployees(string? name)
+    public async Task<ICollection<Coach>> Get(string? name)
     {
-        return await _httpService.Get<ICollection<Gaby.Shared.Model.Employee>>("api/coach" + "?name=" + name);
+        return await _httpService.Get<ICollection<Coach>>("api/coach" + "?name=" + name);
     }
 
     public async Task AddEmployee(Coach coach)
