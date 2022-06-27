@@ -1,14 +1,20 @@
 ﻿@page "/employee/viewemployee/{id}"
 @using Gaby.Shared.Model
 @using Gaby.Client.Services.Employee
+@using System.Reflection
 @inject IEmployeeService EmployeeService
 @inject PageHistoryState PageHistoryState
 
 <h4>Empleado</h4>
 <br/>
-
-<table class="table col-md-6">
-    <tbody>
+@if (employee == null)
+{
+    <p><em>Cargando...</em></p>
+}
+else
+{
+    <table class="table col-md-6">
+        <tbody>
         <tr>
             <th scope="row">Nombre</th>
             <td>@employee.Name</td>
@@ -28,17 +34,19 @@
                 <td>@extraSalary</td>
             </tr>
         }
-    </tbody>
-</table>
+        </tbody>
+    </table>
 
-<div class="form-group">
-    @if (PageHistoryState.CanGoBack()){
-        <NavLink href="@PageHistoryState.GetGoBackPage()" class="btn btn-link">Atrás</NavLink>
-    }
-    else {
-        <NavLink href="/employee" class="btn btn-link">Atrás</NavLink>
-    }
-</div>
+    <div class="form-group">
+        @if (PageHistoryState.CanGoBack()){
+            <NavLink href="@PageHistoryState.GetGoBackPage()" class="btn btn-link">Atrás</NavLink>
+        }
+        else {
+            <NavLink href="/employee" class="btn btn-link">Atrás</NavLink>
+        }
+    </div>
+}
+
 
 @code {
     [Parameter]
@@ -52,21 +60,40 @@
     {
         employee = await EmployeeService.GetEmployee(Id);
 
-        if (employee is Coach coach)
+        var propertyInfos = employee.GetType().GetProperties();
+        foreach (var propertyInfo in propertyInfos)
         {
+            switch (propertyInfo.Name)
+            {
+                case "BasicSalary":
+                    basicSalary = (decimal)(propertyInfo.GetValue(employee) ?? throw new InvalidOperationException());
+                    break;
+                case "ExtraSalary":
+                    extraSalary = (decimal)(propertyInfo.GetValue(employee) ?? throw new InvalidOperationException());
+                    break;
+            }
+        }
+        
+        
+        /*
+        if (typeof(Coach).IsAssignableFrom(employee.GetType()))
+        {
+            Coach coach = (Coach)employee;
             basicSalary = coach.BasicSalary;
             extraSalary = coach.ExtraSalary;
         }
-        else if (employee is MaintenanceEmployee maintenanceEmployee)
+        else if (employee.GetType() == typeof(MaintenanceEmployee))
         {
+            MaintenanceEmployee maintenanceEmployee = (MaintenanceEmployee)employee;
             basicSalary = maintenanceEmployee.BasicSalary;
             extraSalary = maintenanceEmployee.ExtraSalary;
         }
-        else if (employee is CleanerEmployee cleanerEmployee)
+        else if (employee.GetType() == typeof(CleanerEmployee))
         {
+            CleanerEmployee cleanerEmployee = (CleanerEmployee)employee;
             basicSalary = cleanerEmployee.BasicSalary;
             extraSalary = 0;
-        }
+        }*/
     }
 
     
