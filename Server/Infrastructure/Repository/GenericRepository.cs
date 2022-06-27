@@ -25,6 +25,12 @@ namespace Gaby.Server.Infrastructure.Repository
             await context.SaveChangesAsync();
             return entities;
         }
+
+        public IEnumerable<T> GetAll()
+        {
+            return context.Set<T>().ToList();
+        }
+
         public IEnumerable<T> Find(Expression<Func<T, bool>> expression)
         {
             return context.Set<T>().Where(expression);

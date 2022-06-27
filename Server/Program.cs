@@ -5,6 +5,7 @@ using Gaby.Server.Infrastructure.Repository;
 using Gaby.Server.Authorization;
 using Gaby.Server.Helpers;
 using Gaby.Server.Infrastructure.Repository.Employee;
+using Gaby.Shared.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,9 @@ builder.Services.AddAuthentication()
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
+builder.Services.AddScoped<IGenericRepository<Service>, GymServiceRepository>();
+builder.Services.AddScoped<IGenericRepository<ServiceType>, GymServiceTypeRepository>();
 
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped(typeof(IGenericEmployeeTypeRepository<>), typeof(GenericEmployeeTypeRepository<>));

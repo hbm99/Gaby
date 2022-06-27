@@ -5,7 +5,7 @@ namespace Gaby.Client.Services.GymService;
 
 public interface IGymServiceService
 {
-    Task<PagedResult<Service>> GetServices(string? name, string page);
+    Task<ICollection<Service>> GetServices();
     
     Task<Service> GetService(int id);
 
@@ -14,4 +14,6 @@ public interface IGymServiceService
     Task AddService(Service service);
 
     Task UpdateService(Service service);
+    
+    Task<ICollection<ServiceType>> GetServiceTypes();
 }

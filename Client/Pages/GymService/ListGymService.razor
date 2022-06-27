@@ -1,11 +1,10 @@
-﻿@page "/gymservice/{Page}"
+﻿@page "/gymservice"
 
 @using Gaby.Client.Services.GymService
 @using Gaby.Client.Services.SharedServices
 @using Gaby.Shared.Model
-@using Gaby.Shared.Pager
-@inject IGymServiceService gymServiceService
-@inject IUserService userService
+@inject IGymServiceService GymServiceService
+@inject IUserService UserService
 @inject NavigationManager UriHelper
 @inject PageHistoryState PageHistoryState
 
@@ -14,7 +13,28 @@
 <h4>Servicios</h4>
 <br />
 
-<form>  
+<form>
+    @*@if (LoggedIn)*@
+    @if (ServiceTypes == null)
+    {
+        <p><em>Cargando...</em></p>
+    }
+    else
+    {
+        <div class="form-group col-md-6 group-md-right">
+            <label class="form-label mt-4">Nuevo Servicio</label>
+            <div class="input-group mb-3">
+                <select @bind="SelectedServiceType.ServiceTypeName" id="inputAddress4" class="form-control" placeholder="Tipo de Servicio" aria-label="Tipo de servicio" aria-describedby="button-addon2">
+                    @foreach (var servicetype in ServiceTypes)
+                    {
+                        <option value="@servicetype.ServiceTypeName">@servicetype.ServiceTypeName</option>
+                    }
+                </select>
+                <button class="btn btn-success" type="button" id="button-addon2" @onclick="AddGymService">Añadir</button>
+            </div>
+        </div>
+    }
+
     @if (services == null)
     {
         <p><em>Cargando...</em></p>
@@ -30,13 +50,13 @@
             </tr>
             </thead>
             <tbody>
-            @foreach (var service in services.Results)
+            @foreach (var service in services)
             {
                 <tr>
                     <td>@service.ServiceId</td>
                     <td>@service.ServiceType.ServiceTypeName</td>
                     <td style="white-space: nowrap">
-                        <button @*@onclick="@(() => DeleteGymService(service))"*@  disabled="@false" class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
+                        <button @onclick="@(() => DeleteGymService(service))"  disabled="@false" class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
                             <span></span>
                         </button>
 
@@ -48,60 +68,28 @@
             </tbody>
         </table>
     }
-    <br />
-    <br />
-    
-    
-
-    <form class="form-group" method="post">
-        
-        <form>
-          <fieldset>
-            <legend>Nuevo Servicio</legend>
-              <div class="form-group">
-                  <div class="form-group">
-                      <div class="input-group mb-3">
-                          <select  @bind="gymservice.ServiceType.ServiceTypeName" id="inputAddress4" class="form-control" placeholder="Tipo de Servicio" aria-label="Tipo de servicio" aria-describedby="button-addon2">
-                              <option selected>--</option>
-                              <option>Spinning</option>
-                              <option>CardioGap</option>
-                          </select>
-                          <button class="btn btn-primary" type="button" id="button-addon2" @onclick="AddGymService">Agregar</button>
-                      </div>
-                  </div>
-              </div>
-          </fieldset>
-
-        </form>
-    </form>
 </form>
 
 @code {
-
-    [Parameter]
-    public string Page { get; set; } = "1";
     
-    [Parameter]
-    public string SearchTerm { get; set; } = string.Empty;
+    //Access property
+    public bool LoggedIn => UserService.User != null;
+    
+    //Collection of service types from de DataBase
+    public ICollection<ServiceType> ServiceTypes;
+    
+    //Selected Service type for the new service
+    
+    public ServiceType SelectedServiceType = new();
+    
+   
+    // Gym service that will be added to the DataBase
+    Service gymservice = new Service(){ Active = true};
 
-    /*string servicetype = "";
-    List<Service> services = new List<Service>();
-    { 
-        new Service(){ ServiceId = 1, ServiceType = new ServiceType(){ServiceTypeName = "spinning"}},
-        new Service(){ ServiceId = 2, ServiceType = new ServiceType(){ServiceTypeName = "cardio"}}
-
-    }*/
-
-
-    Service gymservice = new Service()
-    {
-        ServiceType = new ServiceType() { ServiceTypeName = "" }
-        // Active = true
-    };
-
-    protected PagedResult<Service> services;
-
-    //public bool LoggedIn => userService.User != null;
+    // Active services from the DataBase
+    protected ICollection<Service> services;//= new List<Service>();
+    
+    
 
     protected override void OnInitialized()
     {
@@ -111,55 +99,38 @@
 
     protected override async Task OnParametersSetAsync()
     {
-        services = await gymServiceService.GetServices(null, Page); 
-        PageHistoryState.AddPageToHistory(UriHelper.Uri);
-    }
-
-    protected async Task SearchBoxKeyPress(KeyboardEventArgs ev)
-    {
-        if (ev.Key == "Enter")
+        /*ServiceTypes = new List<ServiceType>()
         {
-            await SearchClick();
-        }
-    }
-
-    protected async Task SearchClick()
-    { 
-        if (string.IsNullOrEmpty(SearchTerm))
-        {
-            services = await gymServiceService.GetServices(null, Page);
-            return;
-        }
-        services = await gymServiceService.GetServices(SearchTerm, Page);
-        StateHasChanged();
-    }
-
-    protected async Task ClearSearch()
-    {
-        SearchTerm = string.Empty;
-        services = await gymServiceService.GetServices(SearchTerm, Page);
-        PageHistoryState.AddPageToHistory(UriHelper.Uri);
-        StateHasChanged();
-    }
-
-    protected void PagerPageChanged(int page)
-    {
-        UriHelper.NavigateTo("/gymservice/" + page);
+            new ServiceType() { ServiceTypeName = "cardio" },
+            new ServiceType() { ServiceTypeName = "spinning" }
+        };*/
+        //Getting Service Types from de DB
+        ServiceTypes = await GymServiceService.GetServiceTypes();
+        
+        SelectedServiceType = new ServiceType() { ServiceTypeName = "" };
+        
+       //Obtener todos los servicios(activos)
+        services = await GymServiceService.GetServices();
+        
         PageHistoryState.AddPageToHistory(UriHelper.Uri);
     }
-
+    
     private async void DeleteGymService(Service service)
     {
-        var __service = service;
+        //var __service = service;
         //__client.Active = false;
-        await gymServiceService.DeleteService(__service.ServiceId);
-        services = await gymServiceService.GetServices(null, Page);
-        StateHasChanged();
+        //await GymServiceService.DeleteService(__service.ServiceId);
+      //  services = await gymServiceService.GetServices(null, Page);
+       // StateHasChanged();
     }
     
     async Task AddGymService()
     {
-        await gymServiceService.AddService(gymservice);
+        if (SelectedServiceType.ServiceTypeName == "") return;
+        gymservice.ServiceType = SelectedServiceType;
+        
+        await GymServiceService.AddService(gymservice);
+        StateHasChanged();
     }
 
 }

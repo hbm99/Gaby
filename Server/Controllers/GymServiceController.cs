@@ -6,34 +6,41 @@ namespace Gaby.Server.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class GymServiceController : GenericController<Service, IGenericRepository<Service>>
+public class GymServiceController : ControllerBase
 {
-    public GymServiceController (IGenericRepository<Service> genericRepository) : base(genericRepository)
+    protected IGenericRepository<Service> repository;
+    public GymServiceController (IGenericRepository<Service> gymServiceRepository)
     {
+        repository = gymServiceRepository;
     }
 
     [HttpPost]
-    public override Task<ActionResult> AddEntity(Service entity)
+    public async Task<ActionResult> AddEntity(Service entity)
     {
-        return base.AddEntity(entity);
+        return Ok(await repository.Add(entity));
+        //return base.AddEntity(entity);
     }
 
+    
     [HttpGet]
-    public override ActionResult GetQuery([FromQuery] string? name, int page)
+    public ActionResult GetAll()
     {
-        return base.GetQuery(name, page);
+        return Ok(repository.GetAll());
+        //return base.GetQuery(name,page);
     }
 
+    
     [HttpGet("{id}")]
-    public override async Task<ActionResult> GetEntity(int id)
+    public  async Task<ActionResult> GetEntity(int id)
     {
-        return await base.GetEntity(id);
+        return Ok(await repository.GetById(id));
     }
+    
 
     [HttpPut]
-    public override async Task<ActionResult> UpdateEntity(Service service)
+    public  async Task<ActionResult> UpdateEntity(Service service)
     {
-        return await base.UpdateEntity(service);
+        return Ok(await repository.Update(service));
     }
 
 }
