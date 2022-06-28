@@ -45,7 +45,7 @@ namespace Gaby.Server.Infrastructure
                 .HasKey(lesson => new
                 {
                     lesson.ServiceId,
-                    lesson.EmployeeId
+                    lesson.CoachId
                 });
 
             modelBuilder.Entity<LessonTurn>()

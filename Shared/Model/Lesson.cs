@@ -4,7 +4,7 @@ using Gaby.Shared.Interfaces;
 
 namespace Gaby.Shared.Model
 {
-	public class Lesson : IService, IEmployee
+	public class Lesson : IService
 	{
 		public Lesson()
 		{
@@ -16,8 +16,8 @@ namespace Gaby.Shared.Model
 
 		public virtual Service Service { get; set; }
 
-		[ForeignKey("EmployeeId")]
-		public string EmployeeId { get; set; }
+		[ForeignKey("CoachId")]
+		public string CoachId { get; set; }
 
 		public virtual Coach Coach { get; set; }
 
