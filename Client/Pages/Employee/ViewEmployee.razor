@@ -1,8 +1,10 @@
 ﻿@page "/employee/viewemployee/{id}"
 @using Gaby.Shared.Model
 @using Gaby.Client.Services.Employee
-@using System.Reflection
 @inject IEmployeeService EmployeeService
+@inject ICoachService CoachService
+@inject IMaintenanceEmployeeService MaintenanceEmployeeService
+@inject ICleanerEmployeeService CleanerEmployeeService
 @inject PageHistoryState PageHistoryState
 
 <h4>Empleado</h4>
@@ -58,43 +60,40 @@ else
 
     protected override async Task OnParametersSetAsync()
     {
-        employee = await EmployeeService.GetEmployee(Id);
-
-        var propertyInfos = employee.GetType().GetProperties();
-        foreach (var propertyInfo in propertyInfos)
+        var coaches = await CoachService.Get(null);
+        var maintenanceEmployees = await MaintenanceEmployeeService.Get(null);
+        var cleanerEmployees = await CleanerEmployeeService.Get(null);
+        
+        foreach (var coach in coaches)
         {
-            switch (propertyInfo.Name)
-            {
-                case "BasicSalary":
-                    basicSalary = (decimal)(propertyInfo.GetValue(employee) ?? throw new InvalidOperationException());
-                    break;
-                case "ExtraSalary":
-                    extraSalary = (decimal)(propertyInfo.GetValue(employee) ?? throw new InvalidOperationException());
-                    break;
-            }
+            if (coach.EmployeeId != Id) continue;
+            employee = coach;
+        }
+        foreach (var maintenanceEmployee in maintenanceEmployees)
+        {
+            if (maintenanceEmployee.EmployeeId != Id) continue;
+            employee = maintenanceEmployee;
+        }
+        foreach (var cleanerEmployee in cleanerEmployees)
+        {
+            if (cleanerEmployee.EmployeeId != Id) continue;
+            employee = cleanerEmployee;
         }
         
-        
-        /*
-        if (typeof(Coach).IsAssignableFrom(employee.GetType()))
+        switch (employee)
         {
-            Coach coach = (Coach)employee;
-            basicSalary = coach.BasicSalary;
-            extraSalary = coach.ExtraSalary;
+            case Coach trainer:
+                basicSalary = trainer.BasicSalary;
+                extraSalary = trainer.ExtraSalary;
+                break;
+            case MaintenanceEmployee maintenanceEmployee:
+                basicSalary = maintenanceEmployee.BasicSalary;
+                extraSalary = maintenanceEmployee.ExtraSalary;
+                break;
+            case CleanerEmployee cleanerEmployee:
+                basicSalary = cleanerEmployee.BasicSalary;
+                extraSalary = 0;
+                break;
         }
-        else if (employee.GetType() == typeof(MaintenanceEmployee))
-        {
-            MaintenanceEmployee maintenanceEmployee = (MaintenanceEmployee)employee;
-            basicSalary = maintenanceEmployee.BasicSalary;
-            extraSalary = maintenanceEmployee.ExtraSalary;
-        }
-        else if (employee.GetType() == typeof(CleanerEmployee))
-        {
-            CleanerEmployee cleanerEmployee = (CleanerEmployee)employee;
-            basicSalary = cleanerEmployee.BasicSalary;
-            extraSalary = 0;
-        }*/
     }
-
-    
 }

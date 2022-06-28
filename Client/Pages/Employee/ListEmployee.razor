@@ -180,7 +180,7 @@
         PageHistoryState.AddPageToHistory(UriHelper.Uri);
     }
 
-    private async void DeleteEmployee(Employee employee)
+    private async Task DeleteEmployee(Employee employee)
     {
         var _employee = employee;
         _employee.Active = false;
