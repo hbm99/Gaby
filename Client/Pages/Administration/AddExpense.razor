@@ -1,0 +1,143 @@
+﻿@page "/administration/addexpense"
+
+@using Gaby.Client.Services.SharedServices
+@using Gaby.Client.Services.Administration
+@using Gaby.Client.Services.Equipment
+@using Gaby.Shared.Model
+@using Gaby.Shared.Pager
+@using Gaby.Shared.Utils
+
+@inject NavigationManager UriHelper
+@inject NavigationManager NavManager
+@inject PageHistoryState PageHistoryState
+@inject IExpenseService ExpenseService
+@inject IEquipmentService EquipmentService
+@inject IExpenseTypeService ExpenseTypeService
+@inject IEquipmentExpenseService EquipmentExpenseService
+@inject IUserService UserService
+
+<h3>Agregar gasto</h3>
+@if (expensesTypes == null)
+{
+    <p><em>Cargando...</em></p>
+}
+else
+{
+    <form>
+        <div class="row">
+
+            <div class="form-group col-md-4">
+                <label for="inputExpenseType">Tipo de gasto :</label>
+                <select @bind="expenseTypeSelected" id="inputExpenseType" class="form-control">
+                    <option selected>--</option>
+                    @foreach (ExpenseType expenseType in expensesTypes)
+                    {
+                        <option>@expenseType.ExpenseTypeName</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="inputExpenseAmount1">Cantidad gastada:</label>
+                <input @bind="expense.Amount" type="number" class="form-control" id="inputExpenseAmount1" placeholder="Ej: 100">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputExpenseDate1">Fecha:</label>
+                <input @bind="date" type="date" class="form-control" id="inputExpenseDate1" placeholder="dia/mes/año Ej: 23/2/2022">
+            </div>
+            @if (expenseTypeSelected == "Mantenimiento")
+            {
+                <div class="form-group col-md-4">
+                    <label for="inputEquipment">Equipo :</label>
+                    <select @bind="equipmentSelected" id="inputEquipment" class="form-control">
+                        <option selected>--</option>
+                        @foreach (Equipment equipment in equipments.Results)
+                        {
+                            <option>@equipment.Name</option>
+                        }
+                    </select>
+                </div>
+            }
+            <div>
+                <label for="space1">  </label>
+            </div>
+
+        </div>
+        <button type="button" class="btn btn-success" @onclick="AddNewExpense" >Agregar</button>
+    </form>
+}
+
+
+@code {
+    string equipmentSelected = " ";
+    string expenseTypeSelected = " ";
+    Expense expense = new Expense();
+    DateTime date = new DateTime();
+    PagedResult<Equipment> equipments;
+    IEnumerable<ExpenseType> expensesTypes;
+    string type = "";
+    protected override void OnInitialized()
+    {
+        PageHistoryState.AddPageToHistory(UriHelper.Uri);
+        base.OnInitialized();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        expense.Payments = new List<Payment>();
+        equipments = await EquipmentService.GetEquipments(null, "1");
+        expensesTypes = await ExpenseTypeService.GetAllExpenses();
+        PageHistoryState.AddPageToHistory(UriHelper.Uri);
+    }
+    async Task AddNewExpense()
+    {
+        expense.ExpenseDate = new BasicDate()
+            {
+                Day = date.Day,
+                Month = date.Month,
+                Year = date.Year
+            };
+
+        if (expenseTypeSelected == "Mantenimiento")
+        {
+            EquipmentExpense equipmentExpense = new EquipmentExpense();
+            equipmentExpense.Amount = expense.Amount;
+            equipmentExpense.ExpenseDate = expense.ExpenseDate;
+            equipmentExpense.ExpenseType = GetExpenseType(expenseTypeSelected);
+            Equipment equipment = GetEquipment(equipmentSelected);
+            equipmentExpense.Equipment = equipment;
+            equipmentExpense.Payments = new List<Payment>();
+            await EquipmentExpenseService.AddEquipmentExpense(equipmentExpense);
+            equipment.Expenses.Add(equipmentExpense);
+            await EquipmentService.UpdateEquipment(equipment);
+        }
+        else
+        {
+            expense.ExpenseType = GetExpenseType(expenseTypeSelected);
+            await ExpenseService.AddExpense(expense);
+        }
+        NavManager.NavigateTo("/administration");
+    }
+    protected ExpenseType GetExpenseType(string expenseTypeName)
+    {
+        foreach (ExpenseType expenseType in expensesTypes)
+        {
+            if (expenseType.ExpenseTypeName == expenseTypeName)
+            {
+                return expenseType;
+            }
+        }
+        return null;
+    }
+    protected Equipment GetEquipment(string equipmentName)
+    {
+        foreach(Equipment equipment in equipments.Results)
+        {
+            if (equipment.Name == equipmentName)
+            {
+                return equipment;
+            }
+        }
+        return null;
+    }
+}

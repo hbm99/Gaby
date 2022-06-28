@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication;
 using Gaby.Server.Infrastructure.Repository;
 using Gaby.Server.Authorization;
 using Gaby.Server.Helpers;
+using Gaby.Server.Infrastructure.Repository.Administration;
 using Gaby.Server.Infrastructure.Repository.Employee;
 using Gaby.Shared.Model;
 
@@ -35,6 +36,10 @@ builder.Services.AddScoped<IJwtUtils, JwtUtils>();
 builder.Services.AddScoped<ILessonRepository, LessonRepository>();
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+builder.Services.AddScoped<IExpensesRepository, ExpensesRepository>();
+builder.Services.AddScoped<IExpensesTypesRepository, ExpensesTypesRepository>();
+builder.Services.AddScoped<IEquipmentExpensesRepository, EquipmentExpensesRepository>();
 
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 

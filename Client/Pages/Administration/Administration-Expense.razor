@@ -1,0 +1,103 @@
+﻿@page "/administration/expense"
+
+@using Gaby.Client.Services.SharedServices
+@using Gaby.Client.Services.Administration
+@using Gaby.Shared.Model
+@using Gaby.Shared.Pager
+
+@inject NavigationManager UriHelper
+@inject PageHistoryState PageHistoryState
+@inject IExpenseService ExpenseService
+@inject IUserService UserService
+
+
+
+<h1>Administración</h1>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link disabled" data-bs-toggle="tab" href="administration/espense">Gastos</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" data-bs-toggle="tab" href="administration/payments">Pagos</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" >Gráficos</a>
+  </li>
+</ul>
+
+<h1>Gastos</h1>
+
+<div class="col-md-7">
+
+    <NavLink @onclick="AddNewExpense" class="btn btn-sm btn-success mb-2">Añadir gasto</NavLink>
+
+</div>
+
+@if (expenses == null)
+{
+    <p><em>Cargando...</em></p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th style="width:25%">Tipo</th>
+                <th style="width:25%">Cantidad</th>
+                <th style="width:15%">Fecha</th>
+                <th style="width:5%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Expense expense in expenses.Results)
+            {
+                <tr>
+                    <td>@expense.ExpenseType.ExpenseTypeName</td>
+                    <td>@expense.Amount</td>
+                    <td>@expense.ExpenseDate.ToString()</td>
+                    <td style="white-space: nowrap">
+                        @if (expense is EquipmentExpense)
+                        {
+                            <NavLink @*href="@($" /equipment/viewequipment/{eqt.EquipmentId}")"*@ class="oi oi-eye text-blue-700 mr-3 nounderline"></NavLink>
+                        }
+
+
+                        @if (LoggedIn)
+                        {
+                            <NavLink @*href="@($" /equipment/updateexpense/{expense.ExpenseId}")"*@ class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
+                        }
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@code {
+    [Parameter]
+    public string Page { get; set; } = "1";
+    [Parameter]
+    public string SearchTerm { get; set; } = string.Empty;
+
+    public bool LoggedIn => UserService.User != null;
+
+    PagedResult<Expense> expenses;
+
+    protected override void OnInitialized()
+    {
+        PageHistoryState.AddPageToHistory(UriHelper.Uri);
+        base.OnInitialized();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        expenses = await ExpenseService.GetExpenses(null, Page);
+        PageHistoryState.AddPageToHistory(UriHelper.Uri);
+    }
+    protected void AddNewExpense()
+    {
+        UriHelper.NavigateTo("/administration/addexpense");
+    }
+}

@@ -29,6 +29,7 @@
     <_ContentIncludedByDefault Remove="Services\Client\Measurements\AddMeasurements.razor" />
     <_ContentIncludedByDefault Remove="Services\Client\Measurements\ListMeasurements.razor" />
     <_ContentIncludedByDefault Remove="Pages\GymService\ListGymService.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Administration\Administration.razor" />
   </ItemGroup>
 
   <ItemGroup>
