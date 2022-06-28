@@ -1,0 +1,70 @@
+﻿@page "/lesson/viewlesson/{id}/{coachId}"
+@using Gaby.Client.Services.Lessons
+@using Gaby.Shared.Model
+@inject NavigationManager UriHelper
+@inject PageHistoryState PageHistoryState
+@inject ILessonService LessonService; 
+
+
+<h4>Vista de clase</h4>
+<br/>
+
+<table class="table col-md-6">
+    <tbody>
+        <tr>
+            <th scope="row">Nombre</th>
+            <td>@lesson.Service.ServiceType.ServiceTypeName?</td>
+        </tr>
+        <tr>
+            <th scope="row">Entrenador</th>
+            <td>@lesson.Coach.Active</td>
+        </tr>
+        <tr>
+            <th scope="row">Capacidad</th>
+            <td>@lesson.Capacity</td>
+        </tr>
+        <tr>
+            <th scope="row">Precio</th>
+            <td>@lesson.Price</td>
+        </tr>
+        <tr>
+            <th scope="row">Duracion</th>
+            <td>@lesson.MinutesDuration</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="form-group">
+    <NavLink href="@($"/client/viewclient/{Id}/viewmeasurements")" class="btn btn-sm btn-success mb-2">Ver medidas</NavLink>
+</div>
+
+<div class="form-group">
+    @if (PageHistoryState.CanGoBack()){
+        <NavLink href="@PageHistoryState.GetGoBackPage()" class="btn btn-link">Atrás</NavLink>
+    }
+    else{
+        <NavLink href="/client/1" class="btn btn-link">Atrás</NavLink>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+    
+    [Parameter]
+    public string coachId { get; set; }
+
+    Lesson lesson = new Lesson
+    {
+         Capacity = 0,
+            Price = 0,
+            MinutesDuration = 0
+    };
+
+    protected async override Task OnParametersSetAsync()
+    {
+        lesson = await LessonService.GetLesson(int.Parse(Id),coachId);
+    }
+
+    
+}

@@ -27,7 +27,9 @@ namespace Gaby.Shared.Model
 
 		public decimal MinutesDuration { get; set; }
 
-        
-    }
+		public bool Active { get; set; } = true;
+
+
+	}
 }
 

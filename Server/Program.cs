@@ -32,6 +32,8 @@ builder.Services.AddScoped<IMeasurementsRepository, MeasurementsRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IJwtUtils, JwtUtils>();
 
+builder.Services.AddScoped<ILessonRepository, LessonRepository>();
+
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));

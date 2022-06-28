@@ -1,0 +1,137 @@
+﻿@page "/lesson/{Page}"
+@using Gaby.Client.Services.Client
+@using Gaby.Client.Services.Lessons
+@using Gaby.Client.Services.SharedServices
+@using Gaby.Shared.Model
+@using Gaby.Shared.Pager
+@inject IClientService ClientService
+@inject IUserService UserService
+@inject NavigationManager UriHelper
+@inject PageHistoryState PageHistoryState
+@inject ILessonService LessonService
+
+<PageTitle>Lesson</PageTitle>
+
+<h4>Clases</h4>
+<br />
+
+<div class="row mb-3">
+    <div class="col-md-7">
+        @if (LoggedIn)
+        {
+            <NavLink href="/lesson/createlesson" class="btn btn-sm btn-success mb-2">Añadir clase</NavLink>
+        }
+    </div>
+</div>
+
+
+@if (lessons == null)
+{
+    <p><em>Cargando...</em></p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th style="width:25%">Nombre</th>
+            <th style="width:25%">Entrenador</th>
+            <th style="width:15%">Precio</th>
+            <th style="width:30%">Capacidad</th>
+            <th style="width:5%"></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var lesson in lessons.Results)
+        {
+            <tr>
+                <td>@lesson.Service.ServiceType.ServiceTypeName</td>
+                <td>@lesson.Coach.Name</td>
+                <td>@lesson.Price</td>
+                <td>@lesson.Capacity</td>
+                <td style="white-space: nowrap">
+
+                    @*<NavLink href="@($"/lesson/viewlesson/{lesson.ServiceId}/{lesson.CoachId}")" class="oi oi-eye text-blue-700 mr-3 nounderline"></NavLink>
+                    @if (LoggedIn)
+                    {
+                        <NavLink href="@($"/lesson/updatelesson/{lesson.ServiceId}/{lesson.CoachId}")" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
+
+                        <button @onclick="@(() => DeleteClient(lesson))" class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
+                            <span></span>
+                        </button>
+                    }*@
+
+                </td>
+            </tr>
+
+        }
+        </tbody>
+    </table>
+    <Pager Result=@lessons PageChanged=PagerPageChanged />
+}
+
+@code {
+    [Parameter]
+    public string Page { get; set; } = "1";
+
+    [Parameter]
+    public string SearchTerm { get; set; } = string.Empty;
+
+    protected PagedResult<Lesson> lessons;
+    public bool LoggedIn => UserService.User != null;
+
+    protected override void OnInitialized()
+    {
+       PageHistoryState.AddPageToHistory(UriHelper.Uri);
+        base.OnInitialized();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        lessons = await LessonService.GetLessons(Page);
+        PageHistoryState.AddPageToHistory(UriHelper.Uri);
+    }
+
+    //protected async Task SearchBoxKeyPress(KeyboardEventArgs ev)
+    //{
+    //    if (ev.Key == "Enter")
+    //    {
+    //        await SearchClick();
+    //    }
+    //}
+
+    //protected async Task SearchClick()
+    //{ 
+    //    //if (string.IsNullOrEmpty(SearchTerm))
+    //    //{
+    //    //    clients = await ClientService.GetClients(null, Page);
+    //    //    return;
+    //    //}
+    //    //clients = await ClientService.GetClients(SearchTerm, Page);
+    //    StateHasChanged();
+    //}
+
+    //protected async Task ClearSearch()
+    //{
+    ////    SearchTerm = string.Empty;
+    ////    clients = await ClientService.GetClients(SearchTerm, Page);
+    ////    PageHistoryState.AddPageToHistory(UriHelper.Uri);
+    //    StateHasChanged();
+    //}
+
+    protected void PagerPageChanged(int page)
+    {
+        //UriHelper.NavigateTo("/client/" + page);
+       // PageHistoryState.AddPageToHistory(UriHelper.Uri);
+    }
+
+    private async void DeleteClient(Lesson _lesson)
+    {
+        //var __client = _client;
+        //__client.Active = false;
+        //await ClientService.DeleteClient(__client);
+        //clients = await ClientService.GetClients(null, Page);
+        //StateHasChanged();
+    }
+}
+

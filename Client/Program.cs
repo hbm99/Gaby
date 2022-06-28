@@ -4,6 +4,7 @@ using Gaby.Client.Services.Measurements;
 using Gaby.Client.Services.Employee;
 using Gaby.Client.Services.Equipment;
 using Gaby.Client.Services.GymService;
+using Gaby.Client.Services.Lessons;
 using Gaby.Client.Services.SharedServices;
 using Gaby.Client.Shared;
 using Microsoft.AspNetCore.Components.Web;
@@ -32,6 +33,8 @@ builder.Services.AddScoped<IGymServiceService, GymServiceService>();
 
 // for ListEquipment.razor
 builder.Services.AddScoped<IEquipmentService, EquipmentService>();
+
+builder.Services.AddScoped<ILessonService, LessonService>();
 
 // for ListEmployee.razor
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
