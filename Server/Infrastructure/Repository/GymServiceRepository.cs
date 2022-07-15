@@ -30,7 +30,10 @@ public class GymServiceRepository: IGenericRepository<Service>
     /// <returns></returns>
     public IEnumerable<Service> GetAll()
     {
-        return context.Set<Service>().Include(x => x.ServiceType).ToList();
+        return context.Set<Service>()
+            .Where(x => x.Active)
+            .Include(x => x.ServiceType)
+            .ToList();
     }
     
     
@@ -74,8 +77,21 @@ public class GymServiceRepository: IGenericRepository<Service>
         throw new NotImplementedException();
     }
 
-    public Task<Service?> Update(Service entity)
+    public async Task<Service?> Update(Service entity)
     {
-        throw new NotImplementedException();
+        var result = context.Set<Service>().First(p => p == entity);
+        if (result != null)
+        {
+
+            // Update existing entity
+            context.Entry(result).CurrentValues.SetValues(entity);
+
+            await context.SaveChangesAsync();
+        }
+        else
+        {
+            throw new KeyNotFoundException("Not found");
+        }
+        return entity;
     }
 }

@@ -93,7 +93,7 @@ namespace Gaby.Server.Infrastructure.Repository
             }
             else
             {
-                throw new KeyNotFoundException("Person not found");
+                throw new KeyNotFoundException("Not found");
             }
             return entity;
         }

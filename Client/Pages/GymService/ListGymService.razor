@@ -13,83 +13,87 @@
 <h4>Servicios</h4>
 <br />
 
-<form>
-    @*@if (LoggedIn)*@
-    @if (ServiceTypes == null)
-    {
-        <p><em>Cargando...</em></p>
-    }
-    else
-    {
-        <div class="form-group col-md-6 group-md-right">
-            <label class="form-label mt-4">Nuevo Servicio</label>
-            <div class="input-group mb-3">
-                <select @bind="SelectedServiceType.ServiceTypeName" id="inputAddress4" class="form-control" placeholder="Tipo de Servicio" aria-label="Tipo de servicio" aria-describedby="button-addon2">
-                    @foreach (var servicetype in ServiceTypes)
-                    {
-                        <option value="@servicetype.ServiceTypeName">@servicetype.ServiceTypeName</option>
-                    }
-                </select>
-                <button class="btn btn-success" type="button" id="button-addon2" @onclick="AddGymService">Añadir</button>
-            </div>
+@if (ServiceTypes != null)
+{
+    <div class="row">
+        <label class="form-label mt-4">Nuevo Servicio</label>
+        <div class="input-group mb-3">
+            <select @bind="SelectedServiceType.ServiceTypeName" id="inputAddress4" class="form-control" placeholder="Tipo de Servicio" aria-label="Tipo de servicio" aria-describedby="button-addon2">
+                @foreach (var servicetype in ServiceTypes)
+                {
+                    <option value="@servicetype.ServiceTypeName">@servicetype.ServiceTypeName</option>
+                }
+            </select>
         </div>
+    </div>
+    <div class="row">
+        <label class="form-label mt-4">Descripción</label>
+        <div class="input-group mb-3">
+            <input @bind="serviceDescription" type="text" class="form-control">
+        </div>
+    </div>
+    @if (LoggedIn)
+    {
+        <button class="btn btn-success" type="button" id="button-addon2" @onclick="AddGymService">Añadir</button>
     }
+}
 
-    @if (services == null)
-    {
-        <p><em>Cargando...</em></p>
-    }
-    else
-    {
-        <table class="table table-striped">
-            <thead>
+@if (services == null)
+{
+    <p>
+        <em>Cargando...</em>
+    </p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th style="width:20%">Tipo de servicio</th>
+            <th style="width:80%">Descripción</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var service in services)
+        {
             <tr>
-                <th style="width:20%">Id</th>
-                <th style="width:80%">Tipo de servicio</th>
-
-            </tr>
-            </thead>
-            <tbody>
-            @foreach (var service in services)
-            {
-                <tr>
-                    <td>@service.ServiceId</td>
-                    <td>@service.ServiceType.ServiceTypeName</td>
-                    <td style="white-space: nowrap">
-                        <button @onclick="@(() => DeleteGymService(service))"  disabled="@false" class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
+                <td>@service.ServiceType.ServiceTypeName</td>
+                <td>@service.Description</td>
+                <td style="white-space: nowrap">
+                    @if (LoggedIn)
+                    {
+                        <button @onclick="@(() => DeleteGymService(service))" disabled="@false" class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
                             <span></span>
                         </button>
+                    }
+                </td>
+            </tr>
+        }
 
-                    </td>
-                </tr>
-
-            }
-
-            </tbody>
-        </table>
-    }
-</form>
+        </tbody>
+    </table>
+}
 
 @code {
-    
+
     //Access property
-    public bool LoggedIn => UserService.User != null;
-    
+    private bool LoggedIn => UserService.User != null;
+
     //Collection of service types from de DataBase
-    public ICollection<ServiceType> ServiceTypes;
-    
+    private ICollection<ServiceType> ServiceTypes;
+
     //Selected Service type for the new service
-    
-    public ServiceType SelectedServiceType = new();
-    
-   
+
+    private ServiceType SelectedServiceType = new();
+
+    private string serviceDescription = "Servicio estándar de la modalidad.";
+
     // Gym service that will be added to the DataBase
-    Service gymservice = new Service(){ Active = true};
+    private Service gymservice = new() { Active = true };
 
     // Active services from the DataBase
-    protected ICollection<Service> services;//= new List<Service>();
-    
-    
+    private ICollection<Service> services; //= new List<Service>();
 
     protected override void OnInitialized()
     {
@@ -104,32 +108,39 @@
             new ServiceType() { ServiceTypeName = "cardio" },
             new ServiceType() { ServiceTypeName = "spinning" }
         };*/
+        
         //Getting Service Types from de DB
         ServiceTypes = await GymServiceService.GetServiceTypes();
-        
-        SelectedServiceType = new ServiceType() { ServiceTypeName = "" };
-        
-       //Obtener todos los servicios(activos)
+
+        SelectedServiceType = new ServiceType { ServiceTypeName = "" };
+
+        //Obtener todos los servicios(activos)
         services = await GymServiceService.GetServices();
-        
+
         PageHistoryState.AddPageToHistory(UriHelper.Uri);
     }
-    
+
     private async void DeleteGymService(Service service)
     {
-        /*var __service = service;
-        __service.Active = false;
-        await GymServiceService.DeleteService(__service.ServiceId);
-        services = await gymServiceService.GetServices(null, Page);
-        StateHasChanged();*/
+        service.Active = false;
+        await GymServiceService.UpdateService(service);
+        services = await GymServiceService.GetServices();
+        StateHasChanged();
     }
-    
+
     async Task AddGymService()
     {
-        if (SelectedServiceType.ServiceTypeName == "") return;
-        gymservice.ServiceType = SelectedServiceType;
+        if (SelectedServiceType.ServiceTypeName == "")
+            return;
         
+        gymservice.ServiceType = SelectedServiceType;
+        gymservice.Description = serviceDescription;
+
         await GymServiceService.AddService(gymservice);
+        services = await GymServiceService.GetServices();
+
+        SelectedServiceType = new ServiceType();
+        serviceDescription = "Servicio estándar de la modalidad.";
         StateHasChanged();
     }
 
