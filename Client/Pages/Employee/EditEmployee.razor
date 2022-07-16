@@ -1,7 +1,109 @@
 ﻿@page "/employee/editemployee/{id}"
+@using Gaby.Shared.Model
+@using Gaby.Client.Services.Employee
+@inject IEmployeeService EmployeeService
+@inject ICoachService CoachService
+@inject IMaintenanceEmployeeService MaintenanceEmployeeService
+@inject ICleanerEmployeeService CleanerEmployeeService
+@inject PageHistoryState PageHistoryState
+@inject NavigationManager NavManager
+
 
 <h4>Editando empleado...</h4>
 
+<form>
+    <h4>Ficha</h4>
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label for="inputCI">CI :</label>
+            <input @bind="CI" type="text" class="form-control" id="inputCI" placeholder="actual">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputName1">Nombre y apellidos :</label>
+            <input @bind="name" type="text" class="form-control" id="inputName1" placeholder="actual">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputBasicSalary1">Salario Básico (Opcional) :</label>
+            <input @bind="basicSalary" type="number" class="form-control" id="inputBasicSalary1" placeholder="actual" >
+        </div>
+        <div>
+            <label for="space1">  </label>
+        </div>
+        
+    </div>
+    <button @onclick="EditWorker" type="button" class="btn btn-success" >Editar</button>
+</form>
+
 @code {
+    [Parameter]
+    public string Id { get; set; }
+
+    Employee employee = null!;
+    decimal basicSalary;
+    decimal extraSalary;
+    string name;
+    string CI;
     
+    protected override async Task OnParametersSetAsync()
+    {
+        var coaches = await CoachService.Get(null);
+        var maintenanceEmployees = await MaintenanceEmployeeService.Get(null);
+        var cleanerEmployees = await CleanerEmployeeService.Get(null);
+        
+        foreach (var coach in coaches)
+        {
+            if (coach.EmployeeId != Id) continue;
+            employee = coach;
+        }
+        foreach (var maintenanceEmployee in maintenanceEmployees)
+        {
+            if (maintenanceEmployee.EmployeeId != Id) continue;
+            employee = maintenanceEmployee;
+        }
+        foreach (var cleanerEmployee in cleanerEmployees)
+        {
+            if (cleanerEmployee.EmployeeId != Id) continue;
+            employee = cleanerEmployee;
+        }
+        
+        switch (employee)
+        {
+            case Coach trainer:
+                basicSalary = trainer.BasicSalary;
+                extraSalary = trainer.ExtraSalary;
+                break;
+            case MaintenanceEmployee maintenanceEmployee:
+                basicSalary = maintenanceEmployee.BasicSalary;
+                extraSalary = maintenanceEmployee.ExtraSalary;
+                break;
+            case CleanerEmployee cleanerEmployee:
+                basicSalary = cleanerEmployee.BasicSalary;
+                extraSalary = 0;
+                break;
+        }
+    }
+    
+    async Task EditWorker()
+    {
+        try
+        {
+            switch (employee)
+            {
+                case Coach:
+                    await CoachService.UpdateEmployee(new Coach { EmployeeId = CI, BasicSalary = basicSalary, Name = name, ExtraSalary = extraSalary, Active = true });
+                    break;
+                case MaintenanceEmployee:
+                    await MaintenanceEmployeeService.UpdateEmployee(new MaintenanceEmployee { EmployeeId = CI, BasicSalary = basicSalary, Name = name, ExtraSalary = extraSalary, Active = true });
+                    break;
+                case CleanerEmployee:
+                    await CleanerEmployeeService.UpdateEmployee(new CleanerEmployee { EmployeeId = CI, BasicSalary = basicSalary, Name = name, Active = true });
+                    break;
+            }
+            NavManager.NavigateTo(PageHistoryState.CanGoBack() ? PageHistoryState.GetGoBackPage() : "/employee");
+        }
+        catch (Exception ex)
+        {
+            StateHasChanged();
+        }
+    }
 }

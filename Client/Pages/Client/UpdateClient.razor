@@ -130,9 +130,7 @@
         Ailments = ""
     };
 
-    bool A = true;
-
-    protected async override Task OnParametersSetAsync()
+    protected override async Task OnParametersSetAsync()
     {
         client = await ClientService.GetClient(int.Parse(Id));
     }
