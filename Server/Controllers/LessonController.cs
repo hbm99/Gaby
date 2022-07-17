@@ -28,7 +28,7 @@ namespace Gaby.Server.Controllers
         }
 
         [HttpGet("{id}/{coachId}")]
-        public async Task<ActionResult> GetEntity(int id, string coachId)
+        public ActionResult GetEntity(int id, string coachId)
         {
             return Ok(repository.GetById(id, coachId));
         }

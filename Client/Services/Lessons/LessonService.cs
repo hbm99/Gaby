@@ -21,9 +21,9 @@ namespace Gaby.Client.Services.Lessons
             await _httpService.Put($"api/lesson", lesson);
         }
 
-        public async Task<Lesson> GetLesson(int id, string coachId)
+        public async Task<IList<Lesson>> GetLesson(int id, string coachId)
         {
-            return await _httpService.Get<Lesson>($"api/lesson/{id}/{coachId}");
+            return await _httpService.Get<IList<Lesson>>($"api/lesson/{id}/{coachId}");
         }
 
         public async Task<PagedResult<Lesson>> GetLessons(string? name, string page)

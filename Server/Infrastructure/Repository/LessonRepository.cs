@@ -2,6 +2,7 @@
 using Gaby.Shared.Pager;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 
 
 namespace Gaby.Server.Infrastructure.Repository
@@ -54,14 +55,14 @@ namespace Gaby.Server.Infrastructure.Repository
                 .GetPaged(page, pageSize);
         }
 
-        public async Task<Lesson> GetById(int serviceId, string coachId)
+        public IList<Lesson> GetById(int serviceId, string coachId)
         {
-            var result = await context.Lessons
+            var result = context.Lessons
                 .Where(lesson => lesson.Active && lesson.ServiceId == serviceId && lesson.CoachId == coachId)
                 .Include(lesson => lesson.Coach)
                 .Include(lesson => lesson.Service)
                 .Include(lesson => lesson.Service.ServiceType)
-                .FirstOrDefaultAsync();
+                .ToList();
                 //.Include(x => x.Service.ServiceType)
                 //.FirstOrDefaultAsync(x => x.ServiceId == serviceId && x.CoachId == coachId && x.Service.Active && x.Coach.Active);
             return result;

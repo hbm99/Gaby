@@ -15,11 +15,11 @@
         <tbody>
         <tr>
             <th scope="row">Nombre</th>
-            <td>@lesson.Service.ServiceType.ServiceTypeName?</td>
+            <td>@lesson.Service.ServiceType.ServiceTypeName</td>
         </tr>
         <tr>
             <th scope="row">Entrenador</th>
-            <td>@lesson.Coach.Active</td>
+            <td>@lesson.Coach.Name</td>
         </tr>
         <tr>
             <th scope="row">Capacidad</th>
@@ -31,7 +31,7 @@
         </tr>
         <tr>
             <th scope="row">Duracion</th>
-            <td>@lesson.MinutesDuration</td>
+            <td>@lesson.MinutesDuration minutos</td>
         </tr>
         </tbody>
     </table>
@@ -66,7 +66,8 @@
 
     protected override async Task OnParametersSetAsync()
     {
-        lesson = await LessonService.GetLesson(int.Parse(Id), coachId);
+        var lessonList = await LessonService.GetLesson(int.Parse(Id), coachId);
+        lesson = lessonList[0];
     }
 
 

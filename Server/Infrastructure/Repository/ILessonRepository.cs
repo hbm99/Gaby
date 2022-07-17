@@ -1,12 +1,13 @@
 ﻿using Gaby.Shared.Model;
 using Gaby.Shared.Pager;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Query;
 
 namespace Gaby.Server.Infrastructure.Repository
 {
     public interface ILessonRepository
     {
-        Task<Lesson> GetById(int EmployeId, string coachId);
+        IList<Lesson> GetById(int EmployeId, string coachId);
         PagedResult<Lesson> GetAll([FromQuery] int page);
         IEnumerable<Lesson> Find(string? expression);
         Task<Lesson> Add(Lesson entity);
