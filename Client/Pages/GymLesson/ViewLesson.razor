@@ -9,8 +9,10 @@
 <h4>Vista de clase</h4>
 <br/>
 
-<table class="table col-md-6">
-    <tbody>
+@if (lesson.Coach != null && lesson.Service != null)
+{
+    <table class="table col-md-6">
+        <tbody>
         <tr>
             <th scope="row">Nombre</th>
             <td>@lesson.Service.ServiceType.ServiceTypeName?</td>
@@ -31,40 +33,41 @@
             <th scope="row">Duracion</th>
             <td>@lesson.MinutesDuration</td>
         </tr>
-    </tbody>
-</table>
+        </tbody>
+    </table>
+}
+
 
 <div class="form-group">
-    <NavLink href="@($"/client/viewclient/{Id}/viewmeasurements")" class="btn btn-sm btn-success mb-2">Ver medidas</NavLink>
-</div>
-
-<div class="form-group">
-    @if (PageHistoryState.CanGoBack()){
+    @if (PageHistoryState.CanGoBack())
+    {
         <NavLink href="@PageHistoryState.GetGoBackPage()" class="btn btn-link">Atrás</NavLink>
     }
-    else{
-        <NavLink href="/client/1" class="btn btn-link">Atrás</NavLink>
+    else
+    {
+        <NavLink href="/lesson/1" class="btn btn-link">Atrás</NavLink>
     }
 </div>
 
 @code {
+
     [Parameter]
     public string Id { get; set; }
-    
+
     [Parameter]
     public string coachId { get; set; }
 
     Lesson lesson = new Lesson
     {
-         Capacity = 0,
-            Price = 0,
-            MinutesDuration = 0
+        Capacity = 0,
+        Price = 0,
+        MinutesDuration = 0
     };
 
-    protected async override Task OnParametersSetAsync()
+    protected override async Task OnParametersSetAsync()
     {
-        lesson = await LessonService.GetLesson(int.Parse(Id),coachId);
+        lesson = await LessonService.GetLesson(int.Parse(Id), coachId);
     }
 
-    
+
 }

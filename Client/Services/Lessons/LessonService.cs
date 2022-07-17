@@ -23,12 +23,12 @@ namespace Gaby.Client.Services.Lessons
 
         public async Task<Lesson> GetLesson(int id, string coachId)
         {
-            return await _httpService.Get<Lesson>($"api/lesson/key");
+            return await _httpService.Get<Lesson>($"api/lesson/{id}/{coachId}");
         }
 
-        public async Task<PagedResult<Lesson>> GetLessons(string page)
+        public async Task<PagedResult<Lesson>> GetLessons(string? name, string page)
         {
-            return await _httpService.Get<PagedResult<Lesson>>("api/lesson" + "?page=" + page );
+            return await _httpService.Get<PagedResult<Lesson>>("api/lesson" + "?page=" + page + "&name=" + name);
         }
     }
 }

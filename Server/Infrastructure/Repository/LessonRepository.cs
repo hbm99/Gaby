@@ -8,21 +8,21 @@ namespace Gaby.Server.Infrastructure.Repository
 {
     public class LessonRepository : ILessonRepository
     {
-
         protected readonly GabyDbContext context;
 
         public LessonRepository(GabyDbContext context)
         {
             this.context = context;
         }
+
         public async Task<Lesson> Add(Lesson entity)
         {
             var coach = context.Coaches
-           .FirstOrDefault(c => c.EmployeeId == entity.Coach.EmployeeId);
+                .FirstOrDefault(c => c.EmployeeId == entity.Coach.EmployeeId);
             entity.Coach = coach;
 
             var service = context.Services
-           .Where(c => c.ServiceId == entity.Service.ServiceId).Include(x => x.ServiceType);
+                .Where(c => c.ServiceId == entity.Service.ServiceId).Include(x => x.ServiceType);
             entity.Service = service.ToArray()[0];
 
 
@@ -30,7 +30,7 @@ namespace Gaby.Server.Infrastructure.Repository
             await context.SaveChangesAsync();
             return result.Entity;
         }
-        
+
 
         public Task<IEnumerable<Lesson>> AddRange(IEnumerable<Lesson> entities)
         {
@@ -42,20 +42,28 @@ namespace Gaby.Server.Infrastructure.Repository
             throw new NotImplementedException();
         }
 
-        public PagedResult<Lesson> GetAll([FromQuery]int page)
+        public PagedResult<Lesson> GetAll([FromQuery] int page)
         {
             int pageSize = 10;
-           
-                return context.Lessons
-                    .Where(p => p.Active)
-                    .Include(x => x.Service).Include(a => a.Service.ServiceType)
-                    .Include(y => y.Coach)
-                    .GetPaged(page, pageSize);
+
+            return context.Lessons
+                .Where(p => p.Active)
+                .Include(x => x.Service)
+                .Include(a => a.Service.ServiceType)
+                .Include(y => y.Coach)
+                .GetPaged(page, pageSize);
         }
 
-        public async Task<Lesson> GetById(int employeId, string coachId)
+        public async Task<Lesson> GetById(int serviceId, string coachId)
         {
-            var result = await context.Lessons.FindAsync(employeId, coachId);
+            var result = await context.Lessons
+                .Where(lesson => lesson.Active && lesson.ServiceId == serviceId && lesson.CoachId == coachId)
+                .Include(lesson => lesson.Coach)
+                .Include(lesson => lesson.Service)
+                .Include(lesson => lesson.Service.ServiceType)
+                .FirstOrDefaultAsync();
+                //.Include(x => x.Service.ServiceType)
+                //.FirstOrDefaultAsync(x => x.ServiceId == serviceId && x.CoachId == coachId && x.Service.Active && x.Coach.Active);
             return result;
         }
 
@@ -67,7 +75,6 @@ namespace Gaby.Server.Infrastructure.Repository
         public Task RemoveRange(IEnumerable<Lesson> entities)
         {
             throw new NotImplementedException();
-            
         }
 
         public async Task<Lesson?> Update(Lesson entity)
@@ -75,7 +82,6 @@ namespace Gaby.Server.Infrastructure.Repository
             var result = context.Lessons.First(p => p == entity);
             if (result != null)
             {
-
                 // Update existing entity
                 context.Entry(result).CurrentValues.SetValues(entity);
 
@@ -85,6 +91,7 @@ namespace Gaby.Server.Infrastructure.Repository
             {
                 throw new KeyNotFoundException("Lesson not found");
             }
+
             return entity;
         }
     }

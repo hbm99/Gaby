@@ -22,13 +22,13 @@ namespace Gaby.Server.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetQuery([FromQuery] int page)
+        public ActionResult GetQuery([FromQuery] int page) //hay que arreglar este método para que reciba name, así no pincha el buscador
         {
             return Ok(repository.GetAll(page));
         }
 
-        [HttpGet("{key}")]
-        public async Task<ActionResult> GetEntity([FromQuery] int id, string coachId)
+        [HttpGet("{id}/{coachId}")]
+        public async Task<ActionResult> GetEntity(int id, string coachId)
         {
             return Ok(repository.GetById(id, coachId));
         }

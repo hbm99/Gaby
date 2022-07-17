@@ -11,7 +11,7 @@
 <PageTitle>Client</PageTitle>
 
 <h4>Clientes</h4>
-<br />
+<br/>
 
 <div class="row mb-3">
     <div class="col-md-7">
@@ -21,7 +21,7 @@
         }
     </div>
     <div class="input-group col-md-5 text-md-left">
-        <input name="ClientSearchInput" type="text" class="form-control" placeholder="Nombre" @bind="SearchTerm" @onkeyup="SearchBoxKeyPress" />
+        <input name="ClientSearchInput" type="text" class="form-control" placeholder="Nombre" @bind="SearchTerm" @onkeyup="SearchBoxKeyPress"/>
         <div class="input-group-btn">
             <button name="ClientSearchButton" class="btn btn-default" @onclick="SearchClick">
                 <i class="oi oi-magnifying-glass" title="search" aria-hidden="true"></i>
@@ -38,7 +38,9 @@
 
 @if (clients == null)
 {
-    <p><em>Cargando...</em></p>
+    <p>
+        <em>Cargando...</em>
+    </p>
 }
 else
 {
@@ -74,14 +76,14 @@ else
 
                 </td>
             </tr>
-
         }
         </tbody>
     </table>
-    <Pager Result=@clients PageChanged=PagerPageChanged />
+    <Pager Result=@clients PageChanged=PagerPageChanged/>
 }
 
 @code {
+
     [Parameter]
     public string Page { get; set; } = "1";
 
@@ -113,7 +115,7 @@ else
     }
 
     protected async Task SearchClick()
-    { 
+    {
         if (string.IsNullOrEmpty(SearchTerm))
         {
             clients = await ClientService.GetClients(null, Page);
@@ -145,5 +147,5 @@ else
         clients = await ClientService.GetClients(null, Page);
         StateHasChanged();
     }
-}
 
+}

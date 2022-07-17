@@ -12,7 +12,7 @@
 
 
 
-<h1>Administración</h1>
+<h4>Administración</h4>
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <a class="nav-link disabled" data-bs-toggle="tab" href="administration/espense">Gastos</a>
@@ -25,12 +25,13 @@
   </li>
 </ul>
 
-<h1>Gastos</h1>
+<h5>Gastos</h5>
 
 <div class="col-md-7">
-
-    <NavLink @onclick="AddNewExpense" class="btn btn-sm btn-success mb-2">Añadir gasto</NavLink>
-
+    @if (LoggedIn)
+    {
+        <NavLink @onclick="AddNewExpense" class="btn btn-sm btn-success mb-2">Añadir gasto</NavLink>
+    }
 </div>
 
 @if (expenses == null)

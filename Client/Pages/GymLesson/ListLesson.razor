@@ -13,7 +13,7 @@
 <PageTitle>Lesson</PageTitle>
 
 <h4>Clases</h4>
-<br />
+<br/>
 
 <div class="row mb-3">
     <div class="col-md-7">
@@ -22,12 +22,27 @@
             <NavLink href="/lesson/createlesson" class="btn btn-sm btn-success mb-2">Añadir clase</NavLink>
         }
     </div>
+    <div class="input-group col-md-5 text-md-left">
+        <input name="LessonSearchInput" type="text" class="form-control" placeholder="Nombre" @bind="SearchTerm" @onkeyup="SearchBoxKeyPress"/>
+        <div class="input-group-btn">
+            <button name="LessonSearchButton" class="btn btn-default" @onclick="SearchClick">
+                <i class="oi oi-magnifying-glass" title="search" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="input-group-btn">
+            <button name="LessonSearchClear" class="btn btn-default" @onclick="ClearSearch">
+                <i class="oi oi-x" title="clear" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
 </div>
 
 
 @if (lessons == null)
 {
-    <p><em>Cargando...</em></p>
+    <p>
+        <em>Cargando...</em>
+    </p>
 }
 else
 {
@@ -51,26 +66,25 @@ else
                 <td>@lesson.Capacity</td>
                 <td style="white-space: nowrap">
 
-                    @*<NavLink href="@($"/lesson/viewlesson/{lesson.ServiceId}/{lesson.CoachId}")" class="oi oi-eye text-blue-700 mr-3 nounderline"></NavLink>
+                    <NavLink href="@($"/lesson/viewlesson/{lesson.ServiceId}/{lesson.CoachId}")" class="oi oi-eye text-blue-700 mr-3 nounderline"></NavLink>
                     @if (LoggedIn)
                     {
                         <NavLink href="@($"/lesson/updatelesson/{lesson.ServiceId}/{lesson.CoachId}")" class="oi oi-pencil text-warning mr-2 nounderline"></NavLink>
 
-                        <button @onclick="@(() => DeleteClient(lesson))" class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
+                        <button @onclick="@(() => DeleteLesson(lesson))" class=" btn btn-link oi oi-trash text-danger mr-1 nounderline">
                             <span></span>
                         </button>
-                    }*@
-
+                    }
                 </td>
             </tr>
-
         }
         </tbody>
     </table>
-    <Pager Result=@lessons PageChanged=PagerPageChanged />
+    <Pager Result=@lessons PageChanged=PagerPageChanged/>
 }
 
 @code {
+
     [Parameter]
     public string Page { get; set; } = "1";
 
@@ -78,60 +92,60 @@ else
     public string SearchTerm { get; set; } = string.Empty;
 
     protected PagedResult<Lesson> lessons;
+
     public bool LoggedIn => UserService.User != null;
 
     protected override void OnInitialized()
     {
-       PageHistoryState.AddPageToHistory(UriHelper.Uri);
+        PageHistoryState.AddPageToHistory(UriHelper.Uri);
         base.OnInitialized();
     }
 
     protected override async Task OnParametersSetAsync()
     {
-        lessons = await LessonService.GetLessons(Page);
+        lessons = await LessonService.GetLessons(null, Page);
         PageHistoryState.AddPageToHistory(UriHelper.Uri);
     }
 
-    //protected async Task SearchBoxKeyPress(KeyboardEventArgs ev)
-    //{
-    //    if (ev.Key == "Enter")
-    //    {
-    //        await SearchClick();
-    //    }
-    //}
+    protected async Task SearchBoxKeyPress(KeyboardEventArgs ev)
+    {
+        if (ev.Key == "Enter")
+        {
+            await SearchClick();
+        }
+    }
 
-    //protected async Task SearchClick()
-    //{ 
-    //    //if (string.IsNullOrEmpty(SearchTerm))
-    //    //{
-    //    //    clients = await ClientService.GetClients(null, Page);
-    //    //    return;
-    //    //}
-    //    //clients = await ClientService.GetClients(SearchTerm, Page);
-    //    StateHasChanged();
-    //}
+    protected async Task SearchClick()
+    {
+        if (string.IsNullOrEmpty(SearchTerm))
+        {
+            lessons = await LessonService.GetLessons(null, Page);
+            return;
+        }
+        lessons = await LessonService.GetLessons(SearchTerm, Page);
+        StateHasChanged();
+    }
 
-    //protected async Task ClearSearch()
-    //{
-    ////    SearchTerm = string.Empty;
-    ////    clients = await ClientService.GetClients(SearchTerm, Page);
-    ////    PageHistoryState.AddPageToHistory(UriHelper.Uri);
-    //    StateHasChanged();
-    //}
+    protected async Task ClearSearch()
+    {
+        SearchTerm = string.Empty;
+        lessons = await LessonService.GetLessons(SearchTerm, Page);
+        PageHistoryState.AddPageToHistory(UriHelper.Uri);
+        StateHasChanged();
+    }
 
     protected void PagerPageChanged(int page)
     {
-        //UriHelper.NavigateTo("/client/" + page);
-       // PageHistoryState.AddPageToHistory(UriHelper.Uri);
+        UriHelper.NavigateTo("/lesson/" + page);
+        PageHistoryState.AddPageToHistory(UriHelper.Uri);
     }
 
-    private async void DeleteClient(Lesson _lesson)
+    private async void DeleteLesson(Lesson _lesson)
     {
-        //var __client = _client;
-        //__client.Active = false;
-        //await ClientService.DeleteClient(__client);
-        //clients = await ClientService.GetClients(null, Page);
-        //StateHasChanged();
+        _lesson.Active = false;
+        await LessonService.DeleteLesson(_lesson);
+        lessons = await LessonService.GetLessons(null, Page);
+        StateHasChanged();
     }
-}
 
+}
