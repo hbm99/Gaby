@@ -2,7 +2,6 @@
 using Gaby.Shared.Pager;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query;
 
 
 namespace Gaby.Server.Infrastructure.Repository
@@ -31,8 +30,7 @@ namespace Gaby.Server.Infrastructure.Repository
             await context.SaveChangesAsync();
             return result.Entity;
         }
-
-
+        
         public Task<IEnumerable<Lesson>> AddRange(IEnumerable<Lesson> entities)
         {
             throw new NotImplementedException();

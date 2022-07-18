@@ -27,11 +27,11 @@
         </tr>
         <tr>
             <th scope="row">Precio</th>
-            <td>@lesson.Price</td>
+            <td>@lesson.Price pesos</td>
         </tr>
         <tr>
             <th scope="row">Duracion</th>
-            <td>@lesson.MinutesDuration minutos</td>
+            <td>@minutesDuration minutos</td>
         </tr>
         </tbody>
     </table>
@@ -64,10 +64,13 @@
         MinutesDuration = 0
     };
 
+    private int minutesDuration;
+    
     protected override async Task OnParametersSetAsync()
     {
         var lessonList = await LessonService.GetLesson(int.Parse(Id), coachId);
         lesson = lessonList[0];
+        minutesDuration = (int)lesson.MinutesDuration;
     }
 
 

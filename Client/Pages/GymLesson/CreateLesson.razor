@@ -4,8 +4,6 @@
 @using Gaby.Client.Services.Lessons
 @using Gaby.Shared.Model
 @using Gaby.Client.Services.Employee
-@using Gaby.Client.Services.SharedServices
-@using Gaby.Shared.Pager
 
 @inject NavigationManager UriHelper
 @inject PageHistoryState PageHistoryState
@@ -14,69 +12,74 @@
 @inject NavigationManager NavManager
 @inject ILessonService LessonService
 
-<h3>Crear Clase</h3>
-@if(services == null || coaches == null)
+<h4>Creando clase...</h4>
+@if (services == null || coaches == null)
 {
-     <p><em>Cargando...</em></p>
+    <p>
+        <em>Cargando...</em>
+    </p>
 }
-else{
-<form>
-    <div class="row">
-        <div class="form-group col-md-4">
-            <label for="fom-group col-md-4">Servicio</label>
-            <select @bind="currentService" id="inputService" class="form-control">
-                <option selected>--</option>
-                @foreach (Service service in services)
-                {
-                    <option>@service.ServiceType.ServiceTypeName</option>
-                }
-            </select>
+else
+{
+    <form>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="fom-group col-md-4">Servicio</label>
+                <select @bind="currentService" id="inputService" class="form-control">
+                    <option selected>--</option>
+                    @foreach (Service service in services)
+                    {
+                        <option>@service.ServiceType.ServiceTypeName---@service.Description</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="fom-group col-md-4">Entrenador</label>
+                <select @bind="currentCoach" id="inputService" class="form-control">
+                    <option selected>--</option>
+                    @foreach (Coach coach in coaches)
+                    {
+                        <option>@coach.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputPrice1">Precio:</label>
+                <input @bind="lesson.Price" type="number" class="form-control" id="inputPrice1" placeholder="Ej: 100">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputCapacity1">Capacidad:</label>
+                <input @bind="lesson.Capacity" type="number" class="form-control" id="inputCapacity1" placeholder="Ej: 15">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputCapacity1">Duracion:</label>
+                <input @bind="lesson.MinutesDuration" type="number" class="form-control" id="inputCapacity1" placeholder="Ej: 20">
+            </div>
+            <div>
+                <label for="space1"> </label>
+            </div>
+
         </div>
 
-        <div class="form-group col-md-4">
-            <label for="fom-group col-md-4">Entrenador</label>
-            <select @bind="currentCoach" id="inputService" class="form-control">
-                <option selected>--</option>
-                @foreach (Coach coach in coaches)
-                {
-                    <option>@coach.Name</option>
-                }
-            </select>
-        </div>
-        <div class="form-group col-md-3">
-            <label for="inputPrice1">Precio:</label>
-            <input @bind="lesson.Price" type="number" class="form-control" id="inputPrice1" placeholder="Ej: 100">
-        </div>
-        <div class="form-group col-md-3">
-            <label for="inputCapacity1">Capacidad:</label>
-            <input @bind="lesson.Capacity" type="number" class="form-control" id="inputCapacity1" placeholder="Ej: 15">
-        </div>
-        <div class="form-group col-md-3">
-            <label for="inputCapacity1">Duracion:</label>
-            <input @bind="lesson.MinutesDuration" type="number" class="form-control" id="inputCapacity1" placeholder="Ej: 20">
-        </div>
-        <div>
-            <label for="space1">  </label>
-        </div>
-
-    </div>
-    
-    <button type="button" class="btn btn-success" @onclick="AddLesson">Agregar</button>
-</form>
+        <button type="button" class="btn btn-success" @onclick="AddLesson">Agregar</button>
+    </form>
 }
 
 @code {
-    public ICollection<Coach> coaches;
-    public ICollection<Service> services;
+    
+    private ICollection<Coach> coaches;
+    private ICollection<Service> services;
     string currentCoach = " ";
     string currentService = " ";
-    Coach selectedCoach = new Coach();
-    Service selectedService = new Service();
-    public Lesson lesson = new Lesson
+    Coach selectedCoach = new();
+    Service selectedService = new();
+
+    private readonly Lesson lesson = new Lesson
     {
         Capacity = 0,
-            Price = 0,
-            MinutesDuration = 0
+        Price = 0,
+        MinutesDuration = 0
     };
 
 
@@ -92,15 +95,18 @@ else{
         services = await GymService.GetServices();
         PageHistoryState.AddPageToHistory(UriHelper.Uri);
     }
-    protected async Task AddLesson()
+
+    private async Task AddLesson()
     {
-        AsingCoachServices();
+        AsignCoachServices();
         lesson.Coach = selectedCoach;
         lesson.Service = selectedService;
         lesson.CoachId = lesson.Coach.EmployeeId;
         await LessonService.AddLesson(lesson);
+        NavManager.NavigateTo(PageHistoryState.CanGoBack() ? PageHistoryState.GetGoBackPage() : "/lesson");
     }
-    protected void AsingCoachServices()
+
+    private void AsignCoachServices()
     {
         foreach (var item in coaches)
         {
@@ -111,10 +117,11 @@ else{
         }
         foreach (var item in services)
         {
-            if (item.ServiceType.ServiceTypeName == currentService)
+            if (item.ServiceType.ServiceTypeName + "---" + item.Description == currentService)
             {
                 selectedService = item;
             }
         }
     }
+
 }
